@@ -27,7 +27,7 @@ texture:
     github:  kasyapgirijan
     linkedIn: in/kasyapgirijan
     #rss: rss
-baseurl: kasyapgirijan
+#baseurl: kasyapgirijan
 
 # If you want to link only specific pages in your header, uncomment
 # this and add the path to the pages in order as they should show up
