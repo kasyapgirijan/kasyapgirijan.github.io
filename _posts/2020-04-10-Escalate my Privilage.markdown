@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Escalate my Privilage 1"
+title:  "Escalate my Privilege 1"
 date:  2020-04-10 16:03:36 +0530
-categories: CTF Wiretup Walkthrough
+categories: CTF Wirtetup Walkthrough
 ---
 Hello all, Today we will see a walkthrough on “escalate my privilege” machine from vulnhub.
 
