@@ -35,7 +35,7 @@ command : __sqlmap -u http://192.168.0.197:8080/mercuryfacts/ -D mercury - -tabl
 
 ![SQLMap_TB](/images/Mercury_5.png)
 
-Now Lets dump password from users tabled with command __*"sqlmap -u http://192.168.0.197:8080/mercuryfacts/ -D mercury -T users - -dump - -batch "*__
+Now Lets dump password from users tables with command __*"sqlmap -u http://192.168.0.197:8080/mercuryfacts/ -D mercury -T users - -dump - -batch "*__
 
 ![SQLMap_PSD](/images/Mercury_6.png)
 
@@ -63,7 +63,7 @@ Reading the check_syslog.sh file I could understand it basically runs __*"tail"*
 
 Maybe if we can manipulate to vim to run instead of tail we can do !bash to get root access.
 
-After few google-fu I could learn that with *"ln -s"* command we can create a symbolic link between tail and vim.
+After few google-fu I learned that with *"ln -s"* command we can create a symbolic link between tail and vim.
 
 __*Command : "ln -s /var/bin/vim tail"*__.
 
