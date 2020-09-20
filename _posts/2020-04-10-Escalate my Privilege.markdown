@@ -2,7 +2,8 @@
 layout: post
 title:  "Escalate my Privilege 1"
 date:  2020-04-10 16:03:36 +0530
-categories: writeup Vulnhub_CTF
+categories: Vulnhub_CTF
+tags: Writeup; Walkthrough
 ---
 Hello all, Today we will see a walkthrough on “escalate my privilege” machine from vulnhub.
 

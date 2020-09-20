@@ -2,7 +2,8 @@
 layout: post
 title:  "Vulnhub: Sar 1"
 date:  2020-04-12 16:03:36 +0530
-categories: writeup Vulnhub_CTF
+categories: Vulnhub_CTF
+tags: Writeup; Walkthrough
 ---
 Hello All, Today I am writing a walkthrough on vulnhub machine Sar: 1.
 

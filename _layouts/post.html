@@ -1,40 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  {%- include head.html -%}
-</head>
-<body>
-  <header class="texture-{{ site.texture.style }}">
-    <div class="container">
-      {%- include nav.html -%}
-    </div>
-    {%- include post_header.html -%}  
-  </header>
-  <main>
-    <div class="container">
-      <div class="post-container">
-          {{ content }}
-      </div>
+---
+layout: default
+---
+<div class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-        <!-- Configure Disqus -->
-      {%- if site.texture.disqus_shortname -%}
-        <div id="disqus_thread" style="margin-top:25px"></div>
-        <script>
-          var disqus_config = function () {
-            this.page.url = '{{ page.url | absolute_url }}';
-            this.page.identifier = '{{ page.url | absolute_url }}';
-          };
-          (function() {
-            var d = document, s = d.createElement('script');
-            s.src = 'https://{{ site.texture.disqus_shortname }}.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-      {%- endif -%}
-    </div>
-  </main>
-  {%- include footer.html -%}
-</body>
-</html>
+  <header class="post-header">
+    <h1 itemprop="name" class="post-title">{{ page.title }}</h1>
+    <meta itemprop="keywords" content="{{ page.tags | join: ',' }}" />
+    <p class="post-meta">
+    {{ site.locales[site.default_locale].PostedInCategories }}
+    {% for cat in page.categories %}
+    <a href="{{site.baseurl}}/categories/#{{ cat }}">{{ cat }}</a>{% unless page.categories.last == cat %}, {% endunless %}
+    {% endfor %} 
+    {% if page.tags != empty %}
+    {{ site.locales[site.default_locale].Taggedwith }}
+    {% for tag in page.tags %}
+    <a href="{{ site.baseurl }}/tags/#{{ tag }}" title="{{ tag }}">{{ tag }}</a>{% unless page.tags.last == tag %}, {% endunless %}
+    {% endfor %}
+    {% endif %}
+    <time itemprop="datePublished" datetime="{{ page.date | date: '%Y-%m-%d' }}">
+    {{ site.locales[site.default_locale].PostDate }}{{ page.date | date: "%b %-d, %Y" }}
+    </time>
+    </p>
+  </header>
+
+  <article class="post-content" itemprop="articleBody">
+    {{ content }}
+  </article>
+  <hr />
+</div>
+
+
+{% include page_pagination.html%}
+{% include comments.html %}
+
