@@ -29,7 +29,7 @@ Possible SQL injection here, provided I started off with sqlmap
 
 ![SQLMap_DB](/images/Mercury_4.png)
 
-Got the database name  with the command __*sqlmap -u http://192.168.0.197:8080/mercuryfacts/ - -dbs*__ now lets enumerate for tables.
+Got the database name  with the command __*sqlmap -u http://192.168.0.197:8080/mercuryfacts/ - -dbs*__  now lets enumerate for tables.
 
 command : __sqlmap -u http://192.168.0.197:8080/mercuryfacts/ -D mercury - -tables - -batch__
 
