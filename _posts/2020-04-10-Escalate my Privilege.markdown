@@ -13,6 +13,7 @@ The difficulty of this machine is set to Easy / Beginner Level. You can download
 
 <h2>Testing Methodology:</h2>
 
+
 <h2>Network Scanning:</h2>
 
 Let us scan for the local N/W and identify the IP address of the machine using netdiscover.
