@@ -11,8 +11,6 @@ According to the author this box is specially made for learning and sharpening L
 
 The difficulty of this machine is set to Easy / Beginner Level. You can download the machine from https://www.vulnhub.com/series/escalate-my-privileges,291/.
 
-<h2>Testing Methodology:</h2>
-
 
 <h2>Network Scanning:</h2>
 
