@@ -3,7 +3,7 @@ layout: post
 title:  "Vulnhub: Sar 1"
 date:  2020-04-12 16:03:36 +0530
 categories: Vulnhub_CTF
-tags: Writeup; Walkthrough
+tags: Writeup Walkthrough
 ---
 Hello All, Today I am writing a walkthrough on vulnhub machine Sar: 1.
 
@@ -15,6 +15,7 @@ __Network Scanning:__
 
 The Nmap scan __*“nmap -A -T4 192.168.0.101”*__ gives the below output.
 ![nmap](/images/sar1_1.png)
+
 As mentioned in the result we can observe that HTTP service would be landing us into the default apache web page.
 
 __Enumeration:_
