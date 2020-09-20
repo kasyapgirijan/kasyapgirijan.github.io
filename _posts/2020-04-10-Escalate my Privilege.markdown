@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Escalate my Privilege 1"
+title:  "Vulnhub: Escalate my Privilege 1"
 date:  2020-04-10 16:03:36 +0530
 categories: Vulnhub_CTF
 tags: Writeup Walkthrough
