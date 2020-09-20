@@ -11,7 +11,7 @@ About the Machine: Mercury is an easier box, with no bruteforcing required. Ther
 
 Let's begin!
 
-__Network Scanning:__
+<h2>Network Scanning:</h2>
 
 To identify the services running lets run nmap scan with command __*“nmap -sC -SV 192.168.0.197”*__  .
 ![nmap](/images/Mercury_1.png)
@@ -43,7 +43,8 @@ With few attempts I was able to login with SSH using the user __*"webmaster"*__ 
 
 ![SQLMap_PSD](/images/Mercury_7.png)
 
-<h2>__Privilege Escalation:__</h2>
+
+<h2>Privilege Escalation:</h2>
 
 Enumerating the home directory I observed mercury_proj folder which had two accounts details mentioned in *"notes.txt"*.
 
