@@ -11,7 +11,7 @@ About the Machine: Mercury is an easier box, with no bruteforcing required. Ther
 
 Let's begin!
 
-##__Network Scanning:__
+__Network Scanning:__
 
 To identify the services running lets run nmap scan with command __*“nmap -sC -SV 192.168.0.197”*__  .
 ![nmap](/images/Mercury_1.png)
