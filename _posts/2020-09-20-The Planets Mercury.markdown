@@ -43,7 +43,7 @@ With few attempts I was able to login with SSH using the user __*"webmaster"*__ 
 
 ![SQLMap_PSD](/images/Mercury_7.png)
 
-##__Privilege Escalation:__
+<h2>__Privilege Escalation:__</h2>
 
 Enumerating the home directory I observed mercury_proj folder which had two accounts details mentioned in *"notes.txt"*.
 
