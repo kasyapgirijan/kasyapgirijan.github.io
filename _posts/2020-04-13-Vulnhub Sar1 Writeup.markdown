@@ -18,7 +18,7 @@ The Nmap scan __*“nmap -A -T4 192.168.0.101”*__ gives the below output.
 
 As mentioned in the result we can observe that HTTP service would be landing us into the default apache web page.
 
-<h2>Enumeration:<h2>
+<h2>Enumeration:</h2>
 So without wasting much time I went ahead and ran a dirb to identify the web contents.
 
 __*dirb http://192.168.0.101/*__ which gave the following result.
