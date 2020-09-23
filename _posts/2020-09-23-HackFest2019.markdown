@@ -1,0 +1,48 @@
+---
+layout: post
+title: "OffSec: HackFest2019"
+date:  2020-09-22 12:00:00 +0530
+categories: OffSec CTF
+tags: Writeup Walkthrough
+---
+
+We will be looking in to hackfest2019 CTF machine which has a difficulty level Easy over OffSec Play (offensive Security Playground).
+
+<h2>Network Scanning:</h2>
+
+So starting off with nmap scan as usual we get to learn that we have port 80 (apache httpd), 21 (FTP), 22(SSH) and 1000(webmin) Open.
+
+__*Command : nmap -A -T4 192.168.80.32 -Pn*__
+
+![nmap](/images/HackFest2019/1.png)
+![nmap](/images/HackFest2019/2.png)
+
+With the nmap scan result I noticed that web application is using wordpress hence without wasting time I went ahead and ran wp-scan.
+
+__*Command : wp-scan -url http://192.168.80.32/*__
+
+I noticed that Site is using outdated version of Google Maps plugin.
+
+![wp-scan](/images/HackFest2019/3.png)
+
+With some google-fu came to learn that google maps plugin has an SQLi vulnerability and msf module available for it. Lets Exploit !!!
+
+![wp-scan](/images/HackFest2019/4.png)
+
+We got the following hash through the SQLi exploit.
+
+__*Webmaster: $P$Bsq0diLTcye6ASlofreys4GzRlRvSrl*__
+
+I went ahead and used john to decrpty the DB hash and got the password kittykat1 for webmaster user
+
+__*Command: john --wordlist=/usr/share/wordlists/rockyou.txt hash*__
+
+![wp-scan](/images/HackFest2019/5.png)
+
+Further I tried login to target machine through SSH with the cracked password and it worked!!, we own the user now.
+
+![wp-scan](/images/HackFest2019/6.png)
+
+As usual I ran __sudo -l__ to check the privileges and noticed this user has (ALL)all command as root with out root password. This made the privilage esicaltion part easy I just simply  had  to run "__sudo su -__" and I got the root shell :)
+
+![wp-scan](/images/HackFest2019/7.png)
