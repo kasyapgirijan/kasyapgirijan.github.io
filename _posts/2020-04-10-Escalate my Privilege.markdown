@@ -52,7 +52,7 @@ Probably the password to login to armour user would be md5 hash of “rootroot1�
 I opened up a new terminal and using the __*echo -n “rootroot1” | md5sum*__ command got the md5 of
 __“rootroot1”:b7bc8489abe360486b4b19dbc242e885.__
 
-<h2>Privilege Escalation:/<h2>
+<h2>Privilege Escalation:</h2>
 
 Using the hash generated I was able to successfully log in to armour using switch user. Which gave a blank shell and had to break it using python TTY command.
 
