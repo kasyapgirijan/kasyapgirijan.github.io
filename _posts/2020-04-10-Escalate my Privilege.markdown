@@ -11,9 +11,7 @@ According to the author this box is specially made for learning and sharpening L
 
 The difficulty of this machine is set to Easy / Beginner Level. You can download the machine from https://www.vulnhub.com/series/escalate-my-privileges,291/.
 
-**Testing Methodology:**
-
-**Network Scanning:**
+<h2>Network Scanning:</h2>
 
 Let us scan for the local N/W and identify the IP address of the machine using netdiscover.
 
@@ -25,7 +23,7 @@ Post identifying the IP our next step will be to identifying the running ports a
 ![netdiscover](/images/escaltemypriv/emp1_3.png)
 
 
-**Enumeration:**
+<h2>Enumeration:</h2>
 
 Within the Nmap scan, we can identify that there is a page called /phpbash.php
 
@@ -54,7 +52,7 @@ Probably the password to login to armour user would be md5 hash of “rootroot1�
 I opened up a new terminal and using the __*echo -n “rootroot1” | md5sum*__ command got the md5 of
 __“rootroot1”:b7bc8489abe360486b4b19dbc242e885.__
 
-__Privilege Escalation:__
+<h2>Privilege Escalation:/<h2>
 
 Using the hash generated I was able to successfully log in to armour using switch user. Which gave a blank shell and had to break it using python TTY command.
 

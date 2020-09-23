@@ -17,6 +17,7 @@ __*Command : nmap -A -T4 192.168.80.32 -Pn*__
 ![nmap](/images/HackFest2019/1.png)
 ![nmap](/images/HackFest2019/2.png)
 
+<h2>Enumeration:</h2>
 With the nmap scan result I noticed that web application is using wordpress hence without wasting time I went ahead and ran wp-scan.
 
 __*Command : wp-scan -url http://192.168.80.32/*__
@@ -38,6 +39,8 @@ I went ahead and used john to decrpty the DB hash and got the password kittykat1
 __*Command: john --wordlist=/usr/share/wordlists/rockyou.txt hash*__
 
 ![wp-scan](/images/HackFest2019/5.png)
+
+<h2>Privilege Escalation</h2>
 
 Further I tried login to target machine through SSH with the cracked password and it worked!!, we own the user now.
 

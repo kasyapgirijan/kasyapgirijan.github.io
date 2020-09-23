@@ -11,14 +11,14 @@ As per the creator of this machine “Sar is an OSCP-Like VM with the intent of 
 
 Let us begin with basic enumerations!
 
-__Network Scanning:__
+<h2>Network Scanning:</h2>
 
 The Nmap scan __*“nmap -A -T4 192.168.0.101”*__ gives the below output.
 ![nmap](/images/sar_1/sar1_1.png)
 
 As mentioned in the result we can observe that HTTP service would be landing us into the default apache web page.
 
-__Enumeration:_
+<h2>Enumeration:<h2>
 So without wasting much time I went ahead and ran a dirb to identify the web contents.
 
 __*dirb http://192.168.0.101/*__ which gave the following result.
