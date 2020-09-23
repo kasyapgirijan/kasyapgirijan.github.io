@@ -6,7 +6,7 @@ categories: OffSec CTF
 tags: Writeup Walkthrough
 ---
 
-We will be looking in to hackfest2019 CTF machine which has a difficulty level Easy over OffSec Play (offensive Security Playground).
+We will be looking in to hackfest2019 CTF machine which has a difficulty level Easy. This VM now part of OffSec Play (offensive Security Playground).
 
 <h2>Network Scanning:</h2>
 
