@@ -105,7 +105,6 @@ Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/)
 ```
 
 Now we know that command injection works, I went ahead and tried a oneliner payload which didn't worked. 
-
 However with some research I leanered that we can encode the payload to base64 and then URL encode will work.
 
 Converting payload to base64:
@@ -127,7 +126,6 @@ As we know this playload will not work as we need to remove the spaces, like we 
 ```
 
 I went ahead and pasted the payload in to burp repeater and URL encoded the payload. I started a netcat listener and send the payload to the target. 
-
 It should hang and the RCE attempt is successful. Now we have access as app user to the machine.
 
 ![img-description](/assets/img/htb/crazyhosting/8.png) _gaining reverse shell_
