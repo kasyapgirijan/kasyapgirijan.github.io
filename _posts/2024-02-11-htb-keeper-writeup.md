@@ -44,7 +44,8 @@ OS and Service detection performed. Please report any incorrect results at https
 ```
 
 So, we have a SSH on default 22 and HTTP on port 80. I went ahead and browsed by pasting the IP address which gave out the host entry that I need to do to access the web application.
-### Initial Steps:
+
+## Foothold:
 
 ![img-description](/assets/img/htb/keeper/1.png) _Host entry_
 
@@ -60,9 +61,9 @@ Post login I the first thing that came to my eyes was admin options which enable
 
 ![img-description](/assets/img/htb/keeper/4.png) _Exploring Admin Options_
 
-### Privilege Escalation:
+## Privilege Escalation:
 
-#### To User Access:
+### To User Access:
 
 While exploring the user attributes, we can see in comment section the temporary password set for the user.
 
@@ -74,7 +75,7 @@ Using the credentials we obtained, I was able to gain access to the machine with
 
 We now own the USER for this machine!
 
-#### From User to Root:
+### From User to Root:
 
 As we see in above screenshot, we do have a ZIP file placed under the user’s folder. I downloaded the file and extracted the contents. 
 

@@ -55,13 +55,13 @@ Which worked and presented me with ActiveMQ admin page. While looking further it
 
 ![img-description](/assets/img/htb/broker/2.png) _Version Disclosure_
 
-### Initial Steps:
+## Foothold:
 
 I went ahead and searched for any relevant vulnerability, and it came out there is a vulnerability for `5.15.15` version of ActiveMQ [CVE-2023-46604](https://www.prio-n.com/blog/cve-2023-46604-attacking-defending-ActiveMQ).
 
-### Privilege Escalation:
+## Privilege Escalation:
 
-#### To User Access:
+### To User Access:
 
 I cloned the github repo and modified the poc.xml file with a payload for reverse shell and started netcat listener on port 4444.
 
@@ -98,9 +98,9 @@ Now I executed the ActiveMQ exploit.
 
 ![img-description](/assets/img/htb/broker/4.png) _reverse shell_
 
-I was able obtain reverse shell and seems like we owned the user of machine
+I was able obtain reverse shell and now we own the user of machine.
 
-#### From User to Root:
+### From User to Root:
 
 I ensured to stabilize the shell.
 

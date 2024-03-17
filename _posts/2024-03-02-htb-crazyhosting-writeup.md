@@ -46,6 +46,7 @@ OS and Service detection performed. Please report any incorrect results at https
 
 Nmap scan gave out SSH running on port 22, Nginx HTTP web server running on port 80. 
 
+### Web:
 Let's add cozyhosting.htb to our /etc/hosts file with the corresponding IP address in order for
 us to be able to access the domain in our browser.
 
@@ -70,7 +71,7 @@ While accessing the `/login` page and attempting to authenticate with common cre
 
 ![img-description](/assets/img/htb/crazyhosting/3.png) _Login Page_
 
-### Initial Steps:
+## Foothold:
 
 I went ahead and started Burp and intercepted, looking at the `actuator/sessions` endpoint, we are able to list all the active sessions and their session IDs. 
 
@@ -140,9 +141,9 @@ stty raw -echo; fg
 #Press Enter twice, and type the command 
 export TERM=xterm 
 ```
-### Privilege Escalation:
+## Privilege Escalation:
 
-#### To User Access:
+### To User Access:
 Now that we have our shell setup, let’s look around for user flag.
 It seems the user flag is in the user josh’s home directory. There is a jar file placed under the app directory.  
 
@@ -206,7 +207,7 @@ ssh josh@crazyhosting.htb
 ![img-description](/assets/img/htb/crazyhosting/11.png) _SSH Login_
 
 
-#### From User to Root:
+### From User to Root:
 
 Once logged in, Upon checking the sudo permissions for the user josh, I discover that they can run `/usr/bin/ssh` as root.
 
