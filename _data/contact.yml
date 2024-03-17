@@ -23,9 +23,9 @@
   icon: 'fab fa-linkedin-in'   # icons powered by <https://fontawesome.com/>
   url:  'https://www.linkedin.com/in/kasyapgirijan'                  # Fill with your Linkedin homepage
 
-- type: bmc
-  icon: 'fas fa-mug-saucer'
-  url: 'https://www.buymeacoffee.com/kasyapgirijan'
+# - type: bmc
+#   icon: 'fas fa-mug-saucer'
+#   url: 'https://www.buymeacoffee.com/kasyapgirijan'
 # - type: stack-overflow
 #   icon: 'fab fa-stack-overflow'
 #   url:  ''                  # Fill with your stackoverflow homepage

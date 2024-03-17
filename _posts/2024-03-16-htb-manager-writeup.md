@@ -1,6 +1,6 @@
 ---
 title: Hack The Box | Manager Writeup  
-date: 2024-03-15 23:00:00 +0530
+date: 2024-03-16 23:00:00 +0530
 categories: [Blogging, Writeup, Hack The Box]
 tags: [Manager, HTB, Writeup] 
 pin: false
@@ -11,6 +11,18 @@ image:
   path: /assets/img/headers/manager.png
   lqip: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAABhGlDQ1BJQ0MgUHJvZmlsZQAAeJx9kT1Iw0AcxV/TSkUqKnYQccjQOlkQFXHUKhShQqgVWnUwufQLmjQkKS6OgmvBwY/FqoOLs64OroIg+AHi7OCk6CIl/i8ptIj14Lgf7+497t4BQr3MNCswDmi6baYScTGTXRWDr/CjHwMIICozy5iTpCQ6jq97+Ph6F+NZnc/9OXrVnMUAn0g8ywzTJt4gnt60Dc77xGFWlFXic+Ixky5I/Mh1xeM3zgWXBZ4ZNtOpeeIwsVhoY6WNWdHUiKeII6qmU76Q8VjlvMVZK1dZ8578haGcvrLMdZojSGARS5AgQkEVJZRhI0arToqFFO3HO/iHXb9ELoVcJTByLKACDbLrB/+D391a+ckJLykUB7peHOcjCgR3gUbNcb6PHadxAvifgSu95a/UgZlP0mstLXIE9G0DF9ctTdkDLneAoSdDNmVX8tMU8nng/Yy+KQsM3gI9a15vzX2cPgBp6ip5AxwcAqMFyl7v8O7u9t7+PdPs7wc0mHKOWhBNVgAAAyxJREFUeJyVlU9v3EYMxX/kjLR/vFrbSZughxyCHnpo77n1+3+QHooUjp31rqTVDMkepHXRi70RIBACNMPH9x5Juf/lt+AHHxVAoFTYr4W7nVBq8HgCqQ0qCRGl3SaaFVh1ihnhTpvmf23KRDj5R5MnheMIHvBxH/y0Fx6e4eEIXdMgklBVAiXnRJOCRNBoQkNQAQ2nV0VdrgfQrYVd07BJHR8+d7zbZbKvAEE+TTw+9Xw7FPo6MIZzmsCqMVqQEohACfAquCdEFbiCgQCaBLuVsPYVN+2ed/sdP2+F87BHJHOzPyGm9INRDXI7UAMmE1QFlUAlEJFZv4CcoRa9AkDMAG5aJU0tN5stnz6u+XwrHL/fAYnuvdHQ889TYhwbNI+sGhgrpKWIiCUiBOAoSKCvJZeFgqSwykLbtmy6htv7Nfv7jqfa8bVf40lpW8OkEBLkJOT0fxrjvxsRgUAR4XUAFwkW0xMilAo2KVGU6kYNQ02RaJlqYOFcmL4cjJe7BAhi4QJ4WwKR2fHVIWvFbKQ/rRjawnYd7G4SWR1HUK1orlgE9YXyJb0oEYEHRAT4jOFVAJfqi8FYg3U70Zcjfz8q4pnDNKBJGS346+HEYXwmmAgLzlVmqiNmFkQWLzgO1Nqjkq5joFQ4jAbpjLvwtXeGaHg+OxHOJjkPjyeOZaBJifOUGMusboQvUYnw5RWKDYhcMQdUBFGlknEEAaZS+V4Lw2QAFDWmWmlzRlQ5ngUPUBWIIEIwB49YZAgQwT3ekCACzZnVqiW3LZ4ym+2GrmvYNIHgqMzOHgo8nYynUyVRaLRi5oTHYntfWnGOIkLwBoCLBADTVBjPE8NYeTxk1i1khZQSIFgIx6HSnw0zI5ZqI+aud+fl2wPcZmmuGsURgbnjZgwRVDOSziYTkXmpJCV8rs599r5HQDiEvNCPO+GynHtrEIlQSuV06jEz7u/vaFctd3e35KZlnIzb3Zbff/3An1/+YL3Z0Kw3TKUynQu1VCafO67TgkYw2jwrLoXJtes4IiiloiqY+TzjVSnFuN0q3Vap1TmeBcktOWdkYUEIOikcJmECcMd93g3/AuUs/1f4gqqXAAAAAElFTkSuQmCC
 ---
+
+## Summary:
+
+Manager, a medium difficulty Windows machine, acts as a domain controller with Active Directory and additional services like a web server and an SQL server.
+
+The attack starts by exploiting a common weakness `RID cycling` to enumerate user accounts. Then, a password spraying attack specifically targets the MSSQL service to crack weak passwords.
+
+Once inside the SQL server, the attacker leverages the potentially vulnerable stored procedure `xp_dirtree`, revealing a website backup containing credentials.
+
+These credentials grant access to the server using the Windows Remote Management (WinRM) protocol. Finally, the attacker exploits a known vulnerability `ESC7` in `Active Directory Certificate Services (AD CS)` to escalate privileges and gain full control of the system
+
+
 ## Enumeration:
 
 ### Port Scan:
@@ -180,7 +192,6 @@ Given its location within the web root folder, we can go ahead and use wget to d
 
 ```bash
 wget http://manager.htb/website-backup-27-07-23-old.zip
-
 ```
 ## Privilege Escalation:
 
@@ -307,7 +318,4 @@ Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
 -ar---        3/13/2024   2:36 PM             34 root.txt
 ```
-
-
 We have the machine `ROOTED!`  
-
