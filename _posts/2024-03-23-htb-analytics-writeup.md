@@ -2,7 +2,7 @@
 title: Hack The Box | Analytics Writeup  
 date: 2024-03-23 23:00:00 +0530
 categories: [Blogging, Writeup, Hack The Box]
-tags: [Analytics, HTB, Writeup] 
+tags: [Analytics, HTB, Writeup, Easy] 
 pin: false
 math: true
 mermaid: true
