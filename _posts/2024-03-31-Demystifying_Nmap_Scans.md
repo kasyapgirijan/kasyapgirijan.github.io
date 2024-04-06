@@ -77,7 +77,7 @@ UDP (User Datagram Protocol), is like a fast courier service for your computer. 
 
 ## Inital Scan:
 
-Now that we have covered some fundamental network concepts, let us delve deeper into Nmap scanning. To illustrate, we will target [scanme.nmap.org](http://scanme.nmap.org/), a learning resource created by Fyodor (Gordon Lyon). 
+Now that we have covered some fundamental network concepts, let us delve deeper into Nmap scanning. To illustrate, we will target `scanme.nmap.org` a learning resource created by Fyodor (Gordon Lyon). 
 
 The basic command to being with nmap is `nmap <target>, where target can be an IP address, domain, or a range of address, for example:
 ```bash
