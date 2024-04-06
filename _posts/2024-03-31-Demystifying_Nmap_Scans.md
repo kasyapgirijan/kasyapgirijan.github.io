@@ -280,18 +280,18 @@ By sending a FIN packet, the scanner hopes the target might respond with an RST 
 #### TCP NULL Scan (-sN) 
 Nmap sends a TCP segment with no flags set (empty header), trying to bypass firewalls that filter based on flags in the TCP header. A completely empty packet might be allowed through, and the target's response (RST or no response) could provide clues about the port state. 
 - __Limitations:__ 
-   - Target behavior is unpredictable, making interpretation of responses challenging. 
+   - Target behaviour is unpredictable, making interpretation of responses challenging. 
    - Like FIN scan, it might only distinguish open/closed ports. 
    - Firewalls and IDS systems are likely to flag such unusual packets. 
 
 #### Xmas Scan (-sX) 
 Nmap sends a TCP segment with all flags set (FIN, SYN, PSH, URG, RST, ACK). This combination resembles a string of Christmas lights, hence the name. Like NULL scans, this aims to exploit firewalls that filter based on specific flag combinations. The scanner hopes for a response that might reveal the port state. 
 - __Limitations:__ 
-   -  Target behavior is highly unpredictable, making response interpretation almost impossible. 
+   -  Target behaviour is highly unpredictable, making response interpretation almost impossible. 
    - Provides extraordinarily little value in determining port states. 
    - Firewalls and IDS systems are likely to identify this as a suspicious scan attempt. 
 
-Below sample for `FIN Scan` where, I have specifed the ports 25,135,139 using `-p` flag. 
+Below sample for `FIN Scan` where, I have specifed the ports 25,135,139 using `-p` flag. The output for NULL and Xmas are the same as what we get in FIN.
    
 ```bash
 root@Brahma:/home/kasyap# nmap -sF -p 25,135,139 scanme.nmap.org
