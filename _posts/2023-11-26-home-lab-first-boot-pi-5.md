@@ -38,53 +38,53 @@ Once installed connect your MicroSD card to your system either through an adapte
 
 Open Raspberry Pi imager select your device in my case its Raspberry Pi 5.
 
-![img-description](/assets/img/posts/first-boot-pi-1.png)
+![img-description](/assets/img/posts/hslpi/first-boot-pi-1.png)
 _Raspberry PI Imager_
 
-![img-description](/assets/img/posts/first-boot-pi-2.png) _Device Selection_
+![img-description](/assets/img/posts/hslpi/first-boot-pi-2.png) _Device Selection_
 
 ### Selecting the OS 
 
 Select the desired OS there are few to select the one that is displayed by default are either 64 bit or 32 bit which with desktop environment (GUI). 
 
-![img-description](/assets/img/posts/first-boot-pi-3.png) _OS Selection_
+![img-description](/assets/img/posts/hslpi/first-boot-pi-3.png) _OS Selection_
 
 If you want to see more options scroll down a bit and you can see Raspberry Pi OS (other)
-![img-description](/assets/img/posts/first-boot-pi-3a.png) _Raspberry Pi OS other options_
+![img-description](/assets/img/posts/hslpi/first-boot-pi-3a.png) _Raspberry Pi OS other options_
 
 Personally, I prefer Raspberry Pi OS lite (x64) given its light with no desktop environment and is only 400MB in size. Which makes it perfect for my use case as I can utilize the extra resource for docker instances I get eliminating desktop environments.
 
-![img-description](/assets/img/posts/first-boot-pi-3b.png) _Selecting 64bit Lite Version_
+![img-description](/assets/img/posts/hslpi/first-boot-pi-3b.png) _Selecting 64bit Lite Version_
 
 ### Selecting Storage Media and OS Customization
 
 Once you have selected the OS, now select the storage device in our case, the MicroSD card.
-![img-description](/assets/img/posts/first-boot-pi-3c.png) _Selecting Storage Device_
+![img-description](/assets/img/posts/hslpi/first-boot-pi-3c.png) _Selecting Storage Device_
 
 Further when we move to the next step the imager will prompt you if you would like to customize you OS. 
 
-![img-description](/assets/img/posts/first-boot-pi-5.png) _OS Customization_
+![img-description](/assets/img/posts/hslpi/first-boot-pi-5.png) _OS Customization_
 
 Provide a hostname for your device, username password, configure wireless connection in case you need to and select the region. 
 
-![img-description](/assets/img/posts/first-boot-pi-5_a.png) _Customization_
+![img-description](/assets/img/posts/hslpi/first-boot-pi-5_a.png) _Customization_
 
 Moving on to the next tab “Services” select password authentication for your SSH login. 
 
-![img-description](/assets/img/posts/first-boot-pi-5_b.png) _Enabling SSH_
+![img-description](/assets/img/posts/hslpi/first-boot-pi-5_b.png) _Enabling SSH_
 
 You can generate a keypair now, but I would suggest doing it later as we need to do some hardening later.
 
 Click next and you will be getting another prompt with confirmation asking if you are sure with applying the customization. Hit Yes !
 
-![img-description](/assets/img/posts/first-boot-pi-6.png) _Prompt on Customization_
-![img-description](/assets/img/posts/first-boot-pi-7.png) _Prompt on Storage Data Wipe_
-![img-description](/assets/img/posts/first-boot-pi-8.png) _Writing Data_
+![img-description](/assets/img/posts/hslpi/first-boot-pi-6.png) _Prompt on Customization_
+![img-description](/assets/img/posts/hslpi/first-boot-pi-7.png) _Prompt on Storage Data Wipe_
+![img-description](/assets/img/posts/hslpi/first-boot-pi-8.png) _Writing Data_
 
 It will take up to 15 minutes depending on your system and microSD card. 
 Raspberry Pi imager will write the OS and verify your files before completing. 
 
-![img-description](/assets/img/posts/first-boot-pi-9.png) _Done!_
+![img-description](/assets/img/posts/hslpi/first-boot-pi-9.png) _Done!_
 
 Done!  Now put your MicroSD card into your Pi and connect the power source.
 
