@@ -1,6 +1,6 @@
 ---
 title: Hack The Box | Codify Writeup 
-date: 2024-03-31 23:00:00 +0530
+date: 2024-04-06 23:00:00 +0530
 categories: [Blogging, Writeup, Hack The Box]
 tags: [Codify, HTB, Writeup, Easy] 
 pin: false
