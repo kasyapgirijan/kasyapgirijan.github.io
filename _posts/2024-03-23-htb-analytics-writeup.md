@@ -37,7 +37,6 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 # Nmap done at Sat Mar 23 13:40:12 2024 -- 1 IP address (1 host up) scanned in 9.36 seconds
 ```
-
 With port scan we have port 22 and port 80 open, which is default for SSH and HTTP services, respectively.  
 
 #### Web

@@ -14,7 +14,7 @@ image:
 ## Introdution
 Nmap, also known as the Network Mapper, is a free and open-source tool that helps IT professionals uncover the secrets of their network as well as for security auditing. It is like a flashlight that allows network discover, to see which devices are connected, what services are running on those devices (like web servers or email), and even what operating systems they are using (Windows, Linux, etc.). Nmap achieves this by sending specially crafted messages or packets across the network and analysing the responses.
 Nmap is not just for discovery; it is also a versatile tool for network management. Network administrators use it to keep track of devices on their network (inventory), schedule updates for services, and even monitor if devices or services are up and running. Nmap is designed for large networks, it can also be used to scan a single computer.
-## Why do a “network scanning”?
+## Why do “network scanning”?
 Networking scanning is vital process which gives a deep view on inventory of what system and services are available in network. It allows maintaining a healthy secure and managed network.
 Enabling network administrators and security professional to gain a clear understating of their network to proactively identify and address any potential vulnerabilities, unauthorized devices and services that can be a point of entry for attackers.
 Remember, it is crucial to only scan networks with proper authorization.
