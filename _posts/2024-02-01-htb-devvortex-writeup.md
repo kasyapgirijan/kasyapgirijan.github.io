@@ -1,6 +1,6 @@
 ---
 title: Hack The Box | Devvortex Writeup  
-date: 2024-04-27 23:00:00 +0530
+date: 2024-04-27 21:00:00 +0530
 categories: [Blogging, Writeup, Hack The Box]
 tags: [Devvortex, HTB, Writeup] 
 pin: false
