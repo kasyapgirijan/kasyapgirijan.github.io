@@ -13,6 +13,9 @@ image:
 ---
 ## Summary:
 
+Codify is a beginner-friendly Linux machine, offering a web application for testing Node.js code. 
+However, the application has a weakness in its vm2 library, allowing attackers to remotely execute code on the system. By exploring the target system, we can find a SQLite database with a hashed password. Cracking this hash unlocks SSH access to the machine. Finally, a vulnerable Bash script with elevated privileges can be exploited to reveal the root password, granting complete control over the machine.`
+
 ### Port Scan:
 
 Lets start with nmap scan to discover some open ports.

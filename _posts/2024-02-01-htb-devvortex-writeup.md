@@ -12,13 +12,8 @@ image:
   lqip: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAADIklEQVR4nJWVS24rVRCGvzqPftiOQyLgiuiCQLoSO2ALbIEJA5aGmLEMxncGO2BEcqXEjuPuPo8qBm0njpBIUlK3dAZd/ddXf52Si6++N94Q4sAUhntFFfqVo+mh6YQoC7xrADs8/w1VfXYOb/15Ho3YeH74ccW7byKxg7ubyp9/jAz3hf5MURVAkJNvDRCgvlmAgY/C+iKyWnWEGAlNgOy5/TsCUGvh6w89NSu1KNOY2W0KORkixzQHIkdVMud+UYABsYXYOkKMxCawWAfWFw3LRYMZjEPifqvsNoYThwvgoqKjzS0z5pc8Ja1WXkFAAIXQCM4LPjpCH1h/seT8fEnXrDCD2O+xZsOY9mQqFMM3oGbIox3smS1EBHsVAYMQBXHzOcaWzy8v6NszRM9RE0K7JQRhc6OkYQdixChgj6RnCscOyAGIvMGEhlFqpWsbzpc9XdOhJaKAk45sC677PbvNDsThPHgPzp8W/4SgZn0FgYPKWqDkSpK5bw8PA6kmUrmjmtF5I6eMGUy5ME0Zq3MLZgqnzpsTN3428MsEBMpk+KjUOrHdTlxfT6w/a5EgmMB2X7jfTGzuE/thQmuF5B95iwhykHFkENvwSgEYaVJ86xCX2e92fLo2xqHHh3YWWBIPu5HhYaSWiqhQ0rFuQQ3c4zjOUUrFsP8X4JzDudmtmoTYCzUlyhjRpqH3c11aFMuZkkZQI42g2XDe4ZxDRHCnMzhzwewFAW3b0jaREAJt27Bat7QLR2jmOU+6m/EGpV9GzJYEWTCEQkmVqhVTo5b61P5DIx7S9LKA5vDzEALeeYLr0cmoqmSDLIZZRRVqhTx6ggS6plB9IecCBqMO8OiB+VJetC3CKzwwTYlhGDEzUs6Py0ScYTaLCdHjnFCq4sSTUp4rFWhjg8K8wU4i+leYcLPZIgK//PwTd5t7rq7ecXe3petabm/vuLy4oMrA2XnHx49/cbn+kvfvr/jn5hMfvvuWX3/7nTRNxONlcBLH3SAvrWMzw3tPzpmUMjFGSimICFWV5aIj9BUfBM2O/a5gGOvVGeuzFaXWZ+MHJ3ZA+BcNsqz461PEEQAAAABJRU5ErkJggg==
 ---
 
-The Machine IP address (victim) : 10.129.229.146
-
-added it as part of the hosts file by 
-
-``` bash
-echo "10.129.229.146    devvorotex.htb" >> /etc/hosts
-```
+## Summary
+Devvortex, a beginner-friendly Linux machine, is vulnerable thanks to its Joomla CMS having an information disclosure flaw. This vulnerability exposes configuration data, including login credentials for the Joomla administrator account. By exploiting this access, an attacker can modify the Joomla template to embed malicious PHP code, ultimately gaining complete control over the system through a shell. Further investigation reveals hashed passwords within the database. Cracking these passwords unlocks SSH access to the machine. Finally, by exploiting a privilege escalation vulnerability in the apport-cli tool, the attacker gains full root access.
 
 ## Enumeration: 
 
@@ -46,6 +41,12 @@ Service detection performed. Please report any incorrect results at https://nmap
 # Nmap done at Thu Feb  1 21:21:55 2024 -- 1 IP address (1 host up) scanned in 29.15 seconds
 ```
 Nothing much here just port 80 with NGINX and SSH on default 22, i will settele with my scan for now and will initiate another one if needed later on.
+
+Up on visitng the web application I had to add the host entry to hosts file. 
+
+``` bash
+echo "10.129.229.146    devvorotex.htb" >> /etc/hosts
+```
 
 ### Directory Enumeration: 
 
