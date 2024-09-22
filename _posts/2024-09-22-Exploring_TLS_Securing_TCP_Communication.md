@@ -26,13 +26,14 @@ TLS was first proposed by the `Internet Engineering Task Force (IETF)` in 1999 w
 To better understand how TLS secures communication, we can break down its operation into three key phases: Handshake, Key Derivation, and Data Transfer.
 
 ### Handshake:
+
 The handshake process is the first step in establishing a secure connection between the client (e.g., your browser) and the server. During this phase, both parties agree on cryptographic algorithms and exchange keys.
 
 -	__ClientHello__: The client sends a "hello" message to the server, which includes supported cryptographic algorithms and a randomly generated number.
 -	__ServerHello__: The server responds with its choice of algorithm, its certificate (to prove its identity), and its own random number.
 -	__Authentication__ and Pre-Master Secret: If the client trusts the server’s certificate, it encrypts a pre-master secret using the server's public key and sends it to the server. Only the server can decrypt this secret with its private key.
 
-![img-description](/assets/img/posts/tls/1.png) _TLS handshake_
+![img-description](/assets/img/posts/tls/1.png) _TLS Handshake_
 
 >In TLS 1.3, the handshake has been simplified, reducing the number of round trips, making the connection establishment faster compared to TLS 1.2.
 {:.prompt-info }

@@ -1,7 +1,7 @@
 ---
 title: "Demystifying Nmap Scans: A Deep Dive into Network Exploration"
 date: 2024-03-31 23:00:00 +0530
-categories: [Blogging, Writeup, CyberSec]
+categories: [Blogging, Writeup, Cybersecurity]
 tags: [Blogging, Tutorial, Writeup] 
 pin: false
 math: true
