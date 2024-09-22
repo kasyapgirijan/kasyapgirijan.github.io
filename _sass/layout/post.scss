@@ -14,20 +14,33 @@
   padding-right: $pr;
 }
 
-h1 + .post-meta {
-  > span + span::before {
-    @include dot;
+header {
+  .post-desc {
+    @extend %heading;
+
+    font-size: 1.125rem;
+    line-height: 1.6;
   }
 
-  em,
-  time {
-    @extend %text-highlight;
-  }
-
-  em {
-    a {
-      color: inherit;
+  .post-meta {
+    span + span::before {
+      @include dot;
     }
+
+    em,
+    time {
+      @extend %text-highlight;
+    }
+
+    em {
+      a {
+        color: inherit;
+      }
+    }
+  }
+
+  h1 + .post-meta {
+    margin-top: 1.5rem;
   }
 }
 
@@ -160,12 +173,12 @@ h1 + .post-meta {
     }
 
     &:first-child {
-      border-radius: $base-radius 0 0 $base-radius;
+      border-radius: $radius-lg 0 0 $radius-lg;
       left: 0.5px;
     }
 
     &:last-child {
-      border-radius: 0 $base-radius $base-radius 0;
+      border-radius: 0 $radius-lg $radius-lg 0;
       right: 0.5px;
     }
   }
@@ -354,40 +367,4 @@ h1 + .post-meta {
     margin-left: -0.5rem;
     margin-right: -0.5rem;
   }
-}
-
-.buy-coffee-section {
-  text-align: center;  /* Center the content horizontally */
-}
-
-.banner-top,
-.banner-bottom {
-  font-weight: bold;
-  margin: 1rem 0;  /* Add some margin for spacing */
-}
-
-.banner-top {
-  color: #333;  /* Adjust color as needed */
-}
-
-.banner-bottom {
-  color: #999;  /* Adjust color as needed */
-  font-size: 0.9rem;  /* Adjust font size if needed */
-}
-.banner-line {
-  margin: 1rem 0;  /* Add some margin for spacing */
-  width: 100%;  /* Set the width of the line */
-  height: 1px;  /* Set the height of the line */
-  background-color: #333;  /* Set the color of the line */
-}
-
-.buy-coffee-button {
-  display: flex;  /* Make the button container use flexbox */
-  justify-content: center;  /* Center the image horizontally within */
-  align-items: center;  /* Center the image vertically within (if needed) */
-}
-
-.bmc-img {
-  width: 180px;  /* Adjust width as needed */
-  height: 50px;  /* Adjust height as needed */
 }
