@@ -18,7 +18,7 @@ Analytics is a vulnerable Linux machine on HackTheBox. Basic web enumeration tec
 This subdomain is exploitable through a known vulnerability `CVE-2023-38646` allowing attackers to gain a foothold.
 
 Privilege escalation to root user is achieved by exploiting another vulnerability called `gameoverlay` on the system.
-
+## Enumeration: 
 ### Port Scan:
 
 Lets start with nmap scan to discover some open ports.

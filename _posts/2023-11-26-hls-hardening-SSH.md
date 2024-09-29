@@ -119,7 +119,7 @@ PasswordAuthentication no
 
 #### Allowing only users from a Group(s):
 
-Limit SSH access to specific groups. This helps in controlling who can connect to the server. This 
+Limit SSH access to specific groups. This helps in controlling who can connect to the server.
 
 ``` bash
 AllowGroups sshgroup
