@@ -35,19 +35,19 @@
 <meta property="og:locale" content="en" />
 <meta name="description" content="Summary: In this challenge, I explored and exploited a subdomain hosting Dolibarr CRM. After conducting some research, I was able to gain access using default credentials. Through further enumeration, I identified a vulnerability within the version of Dolibarr that allowed remote code execution, granting me an initial foothold." />
 <meta property="og:description" content="Summary: In this challenge, I explored and exploited a subdomain hosting Dolibarr CRM. After conducting some research, I was able to gain access using default credentials. Through further enumeration, I identified a vulnerability within the version of Dolibarr that allowed remote code execution, granting me an initial foothold." />
-<link rel="canonical" href="http://localhost:4000/posts/htb-BoardLight-writeup/" />
-<meta property="og:url" content="http://localhost:4000/posts/htb-BoardLight-writeup/" />
+<link rel="canonical" href="https://introvertedbytes.com/posts/htb-BoardLight-writeup/" />
+<meta property="og:url" content="https://introvertedbytes.com/posts/htb-BoardLight-writeup/" />
 <meta property="og:site_name" content="INTROVERTED BYTES" />
-<meta property="og:image" content="http://localhost:4000/assets/img/headers/boardlight.png" />
+<meta property="og:image" content="https://introvertedbytes.com/assets/img/headers/boardlight.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2024-09-27T23:00:00+05:30" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="http://localhost:4000/assets/img/headers/boardlight.png" />
+<meta property="twitter:image" content="https://introvertedbytes.com/assets/img/headers/boardlight.png" />
 <meta property="twitter:title" content="Hack The Box BoardLight Writeup" />
 <meta name="twitter:site" content="@kasyapgirijan" />
 <meta name="twitter:creator" content="@kasyapgirijan" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Kasyap Girijan","url":"https://github.com/kasyapgirijan/"},"dateModified":"2024-09-27T23:00:00+05:30","datePublished":"2024-09-27T23:00:00+05:30","description":"Summary: In this challenge, I explored and exploited a subdomain hosting Dolibarr CRM. After conducting some research, I was able to gain access using default credentials. Through further enumeration, I identified a vulnerability within the version of Dolibarr that allowed remote code execution, granting me an initial foothold.","headline":"Hack The Box BoardLight Writeup","image":{"lqip":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAABg2lDQ1BJQ0MgUHJvZmlsZQAAeJx9kT1Iw0AcxV9TpSotDmYQdchQnexSRRxrFYpQIdQKrTqYj35Bk4YkxcVRcC04+LFYdXBx1tXBVRAEP0CcHZwUXaTE/yWFFjEeHPfj3b3H3TuAa1YVzepJAJpum5lUUsjlV4XQK/oxigh4xCXFMuZEMQ3f8XWPAFvvYizL/9yfI6IWLAUICMQJxTBt4g3imU3bYLxPzCtlSSU+J5406YLEj0yXPX5jXHKZY5m8mc3ME/PEQqmL5S5WyqZGPE0cVTWd8rmcxyrjLcZata6078leGC7oK8tMpzmGFBaxBBECZNRRQRU2YrTqpFjI0H7Sxz/i+kVyyeSqQCHHAmrQILl+sD/43a1VnIp7SeEk0PviOB/jQGgXaDUc5/vYcVonQPAZuNI7/loTmP0kvdHRokfA4DZwcd3R5D3gcgcYfjIkU3KlIE2uWATez+ib8sDQLTCw5vXW3sfpA5ClrtI3wMEhMFGi7HWfd/d19/bvmXZ/P8cMcsjGb8DqAAADIUlEQVR4nJ2Vz2/kRBCFv1fd7bEnJLtZhUNuSAhxRKAV//91L0hIcAWBFGARBCXD/LDdXbUHOwsXyEBfbKml7u+9elWt69tPg/+xLEE4pGwMV0DAaQ/VRUkiEAAVgUABTxflp78I8n+9WAJ32D84KYntVXD6c9mYmhiKeKFKBDTEIxkBEUEEILiyRoogxJkAAWUj+svEsElYNnIxth0IOLYFyrxxOAW7HdQxyAQlGgCOFk8iOLjYKCjy8wBk0A2GbQo5i6zEi2R8ICHBQWI3B26GFWc7OOMcyN/zYwFa6yDBrkLflecBIiAlkXuDrqPPcLPdcHuz4WJbQOI4Vn75beL+cGIP5FapKWh1uVTxpF4rjkiIpjMAYAlc7oR3hT43rraZ4SKzi44IcdEHl9vEfk5ghjXDklNX5SahCGItRUhkFifsHACAlAUmunAuqXRRmQ4z02Gm85krKhtvyIycRZIwIElkiSwjmWESxrIvzg0h4C0gghF4mCFPEM0JGadZ7FpiRBCBO4DW2C0N+aTUY60EQJwJ4A51CsiNKcHRDbfMh9cZmTiNwd6DUwOPRp2hOUuLaLE8iOWrpRStNVqdnweQFvV1dFKeOGXxdjcytsZgIIlDiIdTMNUGrdEmp9YFoEX8pZzAF+E0FpCzHIiA6ehs0sSYoXWNqsSQWBwIo7bApxmfnXp0vAW2Bq8F6zACjyWK7W9h/MeVktGVDplIydiWQhkECazLHBXvbSpZBAkDxtxgG0SdqNVxX+xndUOAm+jtX0ZxRJAs0XUFSeSc6cuWoStYcfoLw1lGbpBQGIdpJBRYnnA1CMdbZfYKtgTx6T24zNBFfaYEEu7BXCc4jdTW2O8TzRulGLU1QGz6DSkb8zjiLRjnhjfHwmksOYhYAVYXLtMzGZBErZXHxx1fvv6c1198xu/3f1C6wqvrl3z3/Q8Mfc9wkbj79Ueur254dX3L3d0dmyR++vktX339LbkfcNNq/HJuxrmvix967jmOCLpSsJSIcCSDCI6nE8MwIODlTU+o8vFHn/DmzTdM00zpCrU59tTz60wI1ijEMlfeAU13texQy3o3AAAAAElFTkSuQmCC","url":"http://localhost:4000/assets/img/headers/boardlight.png","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/htb-BoardLight-writeup/"},"url":"http://localhost:4000/posts/htb-BoardLight-writeup/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Kasyap Girijan","url":"https://github.com/kasyapgirijan/"},"dateModified":"2025-02-03T21:51:30+05:30","datePublished":"2024-09-27T23:00:00+05:30","description":"Summary: In this challenge, I explored and exploited a subdomain hosting Dolibarr CRM. After conducting some research, I was able to gain access using default credentials. Through further enumeration, I identified a vulnerability within the version of Dolibarr that allowed remote code execution, granting me an initial foothold.","headline":"Hack The Box BoardLight Writeup","image":{"lqip":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAABg2lDQ1BJQ0MgUHJvZmlsZQAAeJx9kT1Iw0AcxV9TpSotDmYQdchQnexSRRxrFYpQIdQKrTqYj35Bk4YkxcVRcC04+LFYdXBx1tXBVRAEP0CcHZwUXaTE/yWFFjEeHPfj3b3H3TuAa1YVzepJAJpum5lUUsjlV4XQK/oxigh4xCXFMuZEMQ3f8XWPAFvvYizL/9yfI6IWLAUICMQJxTBt4g3imU3bYLxPzCtlSSU+J5406YLEj0yXPX5jXHKZY5m8mc3ME/PEQqmL5S5WyqZGPE0cVTWd8rmcxyrjLcZata6078leGC7oK8tMpzmGFBaxBBECZNRRQRU2YrTqpFjI0H7Sxz/i+kVyyeSqQCHHAmrQILl+sD/43a1VnIp7SeEk0PviOB/jQGgXaDUc5/vYcVonQPAZuNI7/loTmP0kvdHRokfA4DZwcd3R5D3gcgcYfjIkU3KlIE2uWATez+ib8sDQLTCw5vXW3sfpA5ClrtI3wMEhMFGi7HWfd/d19/bvmXZ/P8cMcsjGb8DqAAADIUlEQVR4nJ2Vz2/kRBCFv1fd7bEnJLtZhUNuSAhxRKAV//91L0hIcAWBFGARBCXD/LDdXbUHOwsXyEBfbKml7u+9elWt69tPg/+xLEE4pGwMV0DAaQ/VRUkiEAAVgUABTxflp78I8n+9WAJ32D84KYntVXD6c9mYmhiKeKFKBDTEIxkBEUEEILiyRoogxJkAAWUj+svEsElYNnIxth0IOLYFyrxxOAW7HdQxyAQlGgCOFk8iOLjYKCjy8wBk0A2GbQo5i6zEi2R8ICHBQWI3B26GFWc7OOMcyN/zYwFa6yDBrkLflecBIiAlkXuDrqPPcLPdcHuz4WJbQOI4Vn75beL+cGIP5FapKWh1uVTxpF4rjkiIpjMAYAlc7oR3hT43rraZ4SKzi44IcdEHl9vEfk5ghjXDklNX5SahCGItRUhkFifsHACAlAUmunAuqXRRmQ4z02Gm85krKhtvyIycRZIwIElkiSwjmWESxrIvzg0h4C0gghF4mCFPEM0JGadZ7FpiRBCBO4DW2C0N+aTUY60EQJwJ4A51CsiNKcHRDbfMh9cZmTiNwd6DUwOPRp2hOUuLaLE8iOWrpRStNVqdnweQFvV1dFKeOGXxdjcytsZgIIlDiIdTMNUGrdEmp9YFoEX8pZzAF+E0FpCzHIiA6ehs0sSYoXWNqsSQWBwIo7bApxmfnXp0vAW2Bq8F6zACjyWK7W9h/MeVktGVDplIydiWQhkECazLHBXvbSpZBAkDxtxgG0SdqNVxX+xndUOAm+jtX0ZxRJAs0XUFSeSc6cuWoStYcfoLw1lGbpBQGIdpJBRYnnA1CMdbZfYKtgTx6T24zNBFfaYEEu7BXCc4jdTW2O8TzRulGLU1QGz6DSkb8zjiLRjnhjfHwmksOYhYAVYXLtMzGZBErZXHxx1fvv6c1198xu/3f1C6wqvrl3z3/Q8Mfc9wkbj79Ueur254dX3L3d0dmyR++vktX339LbkfcNNq/HJuxrmvix967jmOCLpSsJSIcCSDCI6nE8MwIODlTU+o8vFHn/DmzTdM00zpCrU59tTz60wI1ijEMlfeAU13texQy3o3AAAAAElFTkSuQmCC","url":"https://introvertedbytes.com/assets/img/headers/boardlight.png","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://introvertedbytes.com/posts/htb-BoardLight-writeup/"},"url":"https://introvertedbytes.com/posts/htb-BoardLight-writeup/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -925,6 +925,29 @@
 
       <!-- lastmod date -->
       
+        <span>
+          Updated
+          <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
+  
+  data-ts="1738599690"
+  data-df="ll"
+  
+    data-bs-toggle="tooltip" data-bs-placement="bottom"
+  
+>
+  Feb  3, 2025
+</time>
+
+        </span>
+      
 
       
         
@@ -1456,21 +1479,21 @@ uid=0(root) gid=0(root) groups=0(root),4(adm),1000(larissa)
 
       
 
-      <a href="https://twitter.com/intent/tweet?text=Hack%20The%20Box%20%7C%20BoardLight%20Writeup%20-%20INTROVERTED%20BYTES&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fhtb-BoardLight-writeup%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter">
+      <a href="https://twitter.com/intent/tweet?text=Hack%20The%20Box%20%7C%20BoardLight%20Writeup%20-%20INTROVERTED%20BYTES&url=https%3A%2F%2Fintrovertedbytes.com%2Fposts%2Fhtb-BoardLight-writeup%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter">
         <i class="fa-fw fa-brands fa-square-x-twitter"></i>
       </a>
     
 
       
 
-      <a href="https://www.facebook.com/sharer/sharer.php?title=Hack%20The%20Box%20%7C%20BoardLight%20Writeup%20-%20INTROVERTED%20BYTES&u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fhtb-BoardLight-writeup%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook">
+      <a href="https://www.facebook.com/sharer/sharer.php?title=Hack%20The%20Box%20%7C%20BoardLight%20Writeup%20-%20INTROVERTED%20BYTES&u=https%3A%2F%2Fintrovertedbytes.com%2Fposts%2Fhtb-BoardLight-writeup%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook">
         <i class="fa-fw fab fa-facebook-square"></i>
       </a>
     
 
       
 
-      <a href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fhtb-BoardLight-writeup%2F&text=Hack%20The%20Box%20%7C%20BoardLight%20Writeup%20-%20INTROVERTED%20BYTES" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram" aria-label="Telegram">
+      <a href="https://t.me/share/url?url=https%3A%2F%2Fintrovertedbytes.com%2Fposts%2Fhtb-BoardLight-writeup%2F&text=Hack%20The%20Box%20%7C%20BoardLight%20Writeup%20-%20INTROVERTED%20BYTES" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram" aria-label="Telegram">
         <i class="fa-fw fab fa-telegram"></i>
       </a>
     
@@ -1525,35 +1548,35 @@ uid=0(root) gid=0(root) groups=0(root),4(adm),1000(larissa)
         
         
         <li class="text-truncate lh-lg">
+          <a href="/posts/htb-keeper-writeup/">Hack The Box | Keeper Writeup</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/posts/htb-crazyhosting-writeup/">Hack The Box | CrazyHosting Writeup</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/posts/htb-builder-writeup/">Hack The Box | Builder Writeup</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/posts/htb-manager-writeup/">Hack The Box | Manager Writeup</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
           <a href="/posts/htb-analytics-writeup/">Hack The Box | Analytics Writeup</a>
-        </li>
-      
-        
-        
-        
-        <li class="text-truncate lh-lg">
-          <a href="/posts/htb-codify-writeup/">Hack The Box | Codify Writeup</a>
-        </li>
-      
-        
-        
-        
-        <li class="text-truncate lh-lg">
-          <a href="/posts/hls-hardening-SSH/">Home Lab Series | Part 2 | Hardening SSH login</a>
-        </li>
-      
-        
-        
-        
-        <li class="text-truncate lh-lg">
-          <a href="/posts/htb-BoardLight-writeup/">Hack The Box | BoardLight Writeup</a>
-        </li>
-      
-        
-        
-        
-        <li class="text-truncate lh-lg">
-          <a href="/posts/Demystifying_Nmap_Scans/">Demystifying Nmap Scans: A Deep Dive into Network Exploration</a>
         </li>
       
     </ul>

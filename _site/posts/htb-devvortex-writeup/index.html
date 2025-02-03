@@ -35,19 +35,19 @@
 <meta property="og:locale" content="en" />
 <meta name="description" content="Summary Devvortex, a beginner-friendly Linux machine, is vulnerable thanks to its Joomla CMS having an information disclosure flaw. This vulnerability exposes configuration data, including login credentials for the Joomla administrator account. By exploiting this access, an attacker can modify the Joomla template to embed malicious PHP code, ultimately gaining complete control over the system through a shell. Further investigation reveals hashed passwords within the database. Cracking these passwords unlocks SSH access to the machine. Finally, by exploiting a privilege escalation vulnerability in the apport-cli tool, the attacker gains full root access." />
 <meta property="og:description" content="Summary Devvortex, a beginner-friendly Linux machine, is vulnerable thanks to its Joomla CMS having an information disclosure flaw. This vulnerability exposes configuration data, including login credentials for the Joomla administrator account. By exploiting this access, an attacker can modify the Joomla template to embed malicious PHP code, ultimately gaining complete control over the system through a shell. Further investigation reveals hashed passwords within the database. Cracking these passwords unlocks SSH access to the machine. Finally, by exploiting a privilege escalation vulnerability in the apport-cli tool, the attacker gains full root access." />
-<link rel="canonical" href="http://localhost:4000/posts/htb-devvortex-writeup/" />
-<meta property="og:url" content="http://localhost:4000/posts/htb-devvortex-writeup/" />
+<link rel="canonical" href="https://introvertedbytes.com/posts/htb-devvortex-writeup/" />
+<meta property="og:url" content="https://introvertedbytes.com/posts/htb-devvortex-writeup/" />
 <meta property="og:site_name" content="INTROVERTED BYTES" />
-<meta property="og:image" content="http://localhost:4000/assets/img/headers/devvortex.png" />
+<meta property="og:image" content="https://introvertedbytes.com/assets/img/headers/devvortex.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2024-04-27T21:00:00+05:30" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="http://localhost:4000/assets/img/headers/devvortex.png" />
+<meta property="twitter:image" content="https://introvertedbytes.com/assets/img/headers/devvortex.png" />
 <meta property="twitter:title" content="Hack The Box Devvortex Writeup" />
 <meta name="twitter:site" content="@kasyapgirijan" />
 <meta name="twitter:creator" content="@kasyapgirijan" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Kasyap Girijan","url":"https://github.com/kasyapgirijan/"},"dateModified":"2024-05-13T17:23:59+05:30","datePublished":"2024-04-27T21:00:00+05:30","description":"Summary Devvortex, a beginner-friendly Linux machine, is vulnerable thanks to its Joomla CMS having an information disclosure flaw. This vulnerability exposes configuration data, including login credentials for the Joomla administrator account. By exploiting this access, an attacker can modify the Joomla template to embed malicious PHP code, ultimately gaining complete control over the system through a shell. Further investigation reveals hashed passwords within the database. Cracking these passwords unlocks SSH access to the machine. Finally, by exploiting a privilege escalation vulnerability in the apport-cli tool, the attacker gains full root access.","headline":"Hack The Box Devvortex Writeup","image":{"lqip":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAADIklEQVR4nJWVS24rVRCGvzqPftiOQyLgiuiCQLoSO2ALbIEJA5aGmLEMxncGO2BEcqXEjuPuPo8qBm0njpBIUlK3dAZd/ddXf52Si6++N94Q4sAUhntFFfqVo+mh6YQoC7xrADs8/w1VfXYOb/15Ho3YeH74ccW7byKxg7ubyp9/jAz3hf5MURVAkJNvDRCgvlmAgY/C+iKyWnWEGAlNgOy5/TsCUGvh6w89NSu1KNOY2W0KORkixzQHIkdVMud+UYABsYXYOkKMxCawWAfWFw3LRYMZjEPifqvsNoYThwvgoqKjzS0z5pc8Ja1WXkFAAIXQCM4LPjpCH1h/seT8fEnXrDCD2O+xZsOY9mQqFMM3oGbIox3smS1EBHsVAYMQBXHzOcaWzy8v6NszRM9RE0K7JQRhc6OkYQdixChgj6RnCscOyAGIvMGEhlFqpWsbzpc9XdOhJaKAk45sC677PbvNDsThPHgPzp8W/4SgZn0FgYPKWqDkSpK5bw8PA6kmUrmjmtF5I6eMGUy5ME0Zq3MLZgqnzpsTN3428MsEBMpk+KjUOrHdTlxfT6w/a5EgmMB2X7jfTGzuE/thQmuF5B95iwhykHFkENvwSgEYaVJ86xCX2e92fLo2xqHHh3YWWBIPu5HhYaSWiqhQ0rFuQQ3c4zjOUUrFsP8X4JzDudmtmoTYCzUlyhjRpqH3c11aFMuZkkZQI42g2XDe4ZxDRHCnMzhzwewFAW3b0jaREAJt27Bat7QLR2jmOU+6m/EGpV9GzJYEWTCEQkmVqhVTo5b61P5DIx7S9LKA5vDzEALeeYLr0cmoqmSDLIZZRRVqhTx6ggS6plB9IecCBqMO8OiB+VJetC3CKzwwTYlhGDEzUs6Py0ScYTaLCdHjnFCq4sSTUp4rFWhjg8K8wU4i+leYcLPZIgK//PwTd5t7rq7ecXe3petabm/vuLy4oMrA2XnHx49/cbn+kvfvr/jn5hMfvvuWX3/7nTRNxONlcBLH3SAvrWMzw3tPzpmUMjFGSimICFWV5aIj9BUfBM2O/a5gGOvVGeuzFaXWZ+MHJ3ZA+BcNsqz461PEEQAAAABJRU5ErkJggg==","url":"http://localhost:4000/assets/img/headers/devvortex.png","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/htb-devvortex-writeup/"},"url":"http://localhost:4000/posts/htb-devvortex-writeup/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Kasyap Girijan","url":"https://github.com/kasyapgirijan/"},"dateModified":"2025-02-03T21:51:30+05:30","datePublished":"2024-04-27T21:00:00+05:30","description":"Summary Devvortex, a beginner-friendly Linux machine, is vulnerable thanks to its Joomla CMS having an information disclosure flaw. This vulnerability exposes configuration data, including login credentials for the Joomla administrator account. By exploiting this access, an attacker can modify the Joomla template to embed malicious PHP code, ultimately gaining complete control over the system through a shell. Further investigation reveals hashed passwords within the database. Cracking these passwords unlocks SSH access to the machine. Finally, by exploiting a privilege escalation vulnerability in the apport-cli tool, the attacker gains full root access.","headline":"Hack The Box Devvortex Writeup","image":{"lqip":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAADIklEQVR4nJWVS24rVRCGvzqPftiOQyLgiuiCQLoSO2ALbIEJA5aGmLEMxncGO2BEcqXEjuPuPo8qBm0njpBIUlK3dAZd/ddXf52Si6++N94Q4sAUhntFFfqVo+mh6YQoC7xrADs8/w1VfXYOb/15Ho3YeH74ccW7byKxg7ubyp9/jAz3hf5MURVAkJNvDRCgvlmAgY/C+iKyWnWEGAlNgOy5/TsCUGvh6w89NSu1KNOY2W0KORkixzQHIkdVMud+UYABsYXYOkKMxCawWAfWFw3LRYMZjEPifqvsNoYThwvgoqKjzS0z5pc8Ja1WXkFAAIXQCM4LPjpCH1h/seT8fEnXrDCD2O+xZsOY9mQqFMM3oGbIox3smS1EBHsVAYMQBXHzOcaWzy8v6NszRM9RE0K7JQRhc6OkYQdixChgj6RnCscOyAGIvMGEhlFqpWsbzpc9XdOhJaKAk45sC677PbvNDsThPHgPzp8W/4SgZn0FgYPKWqDkSpK5bw8PA6kmUrmjmtF5I6eMGUy5ME0Zq3MLZgqnzpsTN3428MsEBMpk+KjUOrHdTlxfT6w/a5EgmMB2X7jfTGzuE/thQmuF5B95iwhykHFkENvwSgEYaVJ86xCX2e92fLo2xqHHh3YWWBIPu5HhYaSWiqhQ0rFuQQ3c4zjOUUrFsP8X4JzDudmtmoTYCzUlyhjRpqH3c11aFMuZkkZQI42g2XDe4ZxDRHCnMzhzwewFAW3b0jaREAJt27Bat7QLR2jmOU+6m/EGpV9GzJYEWTCEQkmVqhVTo5b61P5DIx7S9LKA5vDzEALeeYLr0cmoqmSDLIZZRRVqhTx6ggS6plB9IecCBqMO8OiB+VJetC3CKzwwTYlhGDEzUs6Py0ScYTaLCdHjnFCq4sSTUp4rFWhjg8K8wU4i+leYcLPZIgK//PwTd5t7rq7ecXe3petabm/vuLy4oMrA2XnHx49/cbn+kvfvr/jn5hMfvvuWX3/7nTRNxONlcBLH3SAvrWMzw3tPzpmUMjFGSimICFWV5aIj9BUfBM2O/a5gGOvVGeuzFaXWZ+MHJ3ZA+BcNsqz461PEEQAAAABJRU5ErkJggg==","url":"https://introvertedbytes.com/assets/img/headers/devvortex.png","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://introvertedbytes.com/posts/htb-devvortex-writeup/"},"url":"https://introvertedbytes.com/posts/htb-devvortex-writeup/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1577,13 +1577,13 @@
 
 <time
   
-  data-ts="1715601239"
+  data-ts="1738599690"
   data-df="ll"
   
     data-bs-toggle="tooltip" data-bs-placement="bottom"
   
 >
-  May 13, 2024
+  Feb  3, 2025
 </time>
 
         </span>
@@ -2135,21 +2135,21 @@ Please choose <span class="o">(</span>S/V/K/I/C<span class="o">)</span>: v
 
       
 
-      <a href="https://twitter.com/intent/tweet?text=Hack%20The%20Box%20%7C%20Devvortex%20Writeup%20-%20INTROVERTED%20BYTES&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fhtb-devvortex-writeup%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter">
+      <a href="https://twitter.com/intent/tweet?text=Hack%20The%20Box%20%7C%20Devvortex%20Writeup%20-%20INTROVERTED%20BYTES&url=https%3A%2F%2Fintrovertedbytes.com%2Fposts%2Fhtb-devvortex-writeup%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter">
         <i class="fa-fw fa-brands fa-square-x-twitter"></i>
       </a>
     
 
       
 
-      <a href="https://www.facebook.com/sharer/sharer.php?title=Hack%20The%20Box%20%7C%20Devvortex%20Writeup%20-%20INTROVERTED%20BYTES&u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fhtb-devvortex-writeup%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook">
+      <a href="https://www.facebook.com/sharer/sharer.php?title=Hack%20The%20Box%20%7C%20Devvortex%20Writeup%20-%20INTROVERTED%20BYTES&u=https%3A%2F%2Fintrovertedbytes.com%2Fposts%2Fhtb-devvortex-writeup%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook">
         <i class="fa-fw fab fa-facebook-square"></i>
       </a>
     
 
       
 
-      <a href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fhtb-devvortex-writeup%2F&text=Hack%20The%20Box%20%7C%20Devvortex%20Writeup%20-%20INTROVERTED%20BYTES" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram" aria-label="Telegram">
+      <a href="https://t.me/share/url?url=https%3A%2F%2Fintrovertedbytes.com%2Fposts%2Fhtb-devvortex-writeup%2F&text=Hack%20The%20Box%20%7C%20Devvortex%20Writeup%20-%20INTROVERTED%20BYTES" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram" aria-label="Telegram">
         <i class="fa-fw fab fa-telegram"></i>
       </a>
     
@@ -2204,35 +2204,35 @@ Please choose <span class="o">(</span>S/V/K/I/C<span class="o">)</span>: v
         
         
         <li class="text-truncate lh-lg">
+          <a href="/posts/htb-keeper-writeup/">Hack The Box | Keeper Writeup</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/posts/htb-crazyhosting-writeup/">Hack The Box | CrazyHosting Writeup</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/posts/htb-builder-writeup/">Hack The Box | Builder Writeup</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/posts/htb-manager-writeup/">Hack The Box | Manager Writeup</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
           <a href="/posts/htb-analytics-writeup/">Hack The Box | Analytics Writeup</a>
-        </li>
-      
-        
-        
-        
-        <li class="text-truncate lh-lg">
-          <a href="/posts/htb-codify-writeup/">Hack The Box | Codify Writeup</a>
-        </li>
-      
-        
-        
-        
-        <li class="text-truncate lh-lg">
-          <a href="/posts/hls-hardening-SSH/">Home Lab Series | Part 2 | Hardening SSH login</a>
-        </li>
-      
-        
-        
-        
-        <li class="text-truncate lh-lg">
-          <a href="/posts/htb-BoardLight-writeup/">Hack The Box | BoardLight Writeup</a>
-        </li>
-      
-        
-        
-        
-        <li class="text-truncate lh-lg">
-          <a href="/posts/Demystifying_Nmap_Scans/">Demystifying Nmap Scans: A Deep Dive into Network Exploration</a>
         </li>
       
     </ul>

@@ -35,19 +35,19 @@
 <meta property="og:locale" content="en" />
 <meta name="description" content="Summary:" />
 <meta property="og:description" content="Summary:" />
-<link rel="canonical" href="http://localhost:4000/posts/htb-manager-writeup/" />
-<meta property="og:url" content="http://localhost:4000/posts/htb-manager-writeup/" />
+<link rel="canonical" href="https://introvertedbytes.com/posts/htb-manager-writeup/" />
+<meta property="og:url" content="https://introvertedbytes.com/posts/htb-manager-writeup/" />
 <meta property="og:site_name" content="INTROVERTED BYTES" />
-<meta property="og:image" content="http://localhost:4000/assets/img/headers/manager.png" />
+<meta property="og:image" content="https://introvertedbytes.com/assets/img/headers/manager.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2024-03-16T23:00:00+05:30" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="http://localhost:4000/assets/img/headers/manager.png" />
+<meta property="twitter:image" content="https://introvertedbytes.com/assets/img/headers/manager.png" />
 <meta property="twitter:title" content="Hack The Box Manager Writeup" />
 <meta name="twitter:site" content="@kasyapgirijan" />
 <meta name="twitter:creator" content="@kasyapgirijan" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Kasyap Girijan","url":"https://github.com/kasyapgirijan/"},"dateModified":"2024-03-22T20:28:18+05:30","datePublished":"2024-03-16T23:00:00+05:30","description":"Summary:","headline":"Hack The Box Manager Writeup","image":{"lqip":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAABhGlDQ1BJQ0MgUHJvZmlsZQAAeJx9kT1Iw0AcxV/TSkUqKnYQccjQOlkQFXHUKhShQqgVWnUwufQLmjQkKS6OgmvBwY/FqoOLs64OroIg+AHi7OCk6CIl/i8ptIj14Lgf7+497t4BQr3MNCswDmi6baYScTGTXRWDr/CjHwMIICozy5iTpCQ6jq97+Ph6F+NZnc/9OXrVnMUAn0g8ywzTJt4gnt60Dc77xGFWlFXic+Ixky5I/Mh1xeM3zgWXBZ4ZNtOpeeIwsVhoY6WNWdHUiKeII6qmU76Q8VjlvMVZK1dZ8578haGcvrLMdZojSGARS5AgQkEVJZRhI0arToqFFO3HO/iHXb9ELoVcJTByLKACDbLrB/+D391a+ckJLykUB7peHOcjCgR3gUbNcb6PHadxAvifgSu95a/UgZlP0mstLXIE9G0DF9ctTdkDLneAoSdDNmVX8tMU8nng/Yy+KQsM3gI9a15vzX2cPgBp6ip5AxwcAqMFyl7v8O7u9t7+PdPs7wc0mHKOWhBNVgAAAyxJREFUeJyVlU9v3EYMxX/kjLR/vFrbSZughxyCHnpo77n1+3+QHooUjp31rqTVDMkepHXRi70RIBACNMPH9x5Juf/lt+AHHxVAoFTYr4W7nVBq8HgCqQ0qCRGl3SaaFVh1ihnhTpvmf23KRDj5R5MnheMIHvBxH/y0Fx6e4eEIXdMgklBVAiXnRJOCRNBoQkNQAQ2nV0VdrgfQrYVd07BJHR8+d7zbZbKvAEE+TTw+9Xw7FPo6MIZzmsCqMVqQEohACfAquCdEFbiCgQCaBLuVsPYVN+2ed/sdP2+F87BHJHOzPyGm9INRDXI7UAMmE1QFlUAlEJFZv4CcoRa9AkDMAG5aJU0tN5stnz6u+XwrHL/fAYnuvdHQ889TYhwbNI+sGhgrpKWIiCUiBOAoSKCvJZeFgqSwykLbtmy6htv7Nfv7jqfa8bVf40lpW8OkEBLkJOT0fxrjvxsRgUAR4XUAFwkW0xMilAo2KVGU6kYNQ02RaJlqYOFcmL4cjJe7BAhi4QJ4WwKR2fHVIWvFbKQ/rRjawnYd7G4SWR1HUK1orlgE9YXyJb0oEYEHRAT4jOFVAJfqi8FYg3U70Zcjfz8q4pnDNKBJGS346+HEYXwmmAgLzlVmqiNmFkQWLzgO1Nqjkq5joFQ4jAbpjLvwtXeGaHg+OxHOJjkPjyeOZaBJifOUGMusboQvUYnw5RWKDYhcMQdUBFGlknEEAaZS+V4Lw2QAFDWmWmlzRlQ5ngUPUBWIIEIwB49YZAgQwT3ekCACzZnVqiW3LZ4ym+2GrmvYNIHgqMzOHgo8nYynUyVRaLRi5oTHYntfWnGOIkLwBoCLBADTVBjPE8NYeTxk1i1khZQSIFgIx6HSnw0zI5ZqI+aud+fl2wPcZmmuGsURgbnjZgwRVDOSziYTkXmpJCV8rs599r5HQDiEvNCPO+GynHtrEIlQSuV06jEz7u/vaFctd3e35KZlnIzb3Zbff/3An1/+YL3Z0Kw3TKUynQu1VCafO67TgkYw2jwrLoXJtes4IiiloiqY+TzjVSnFuN0q3Vap1TmeBcktOWdkYUEIOikcJmECcMd93g3/AuUs/1f4gqqXAAAAAElFTkSuQmCC","url":"http://localhost:4000/assets/img/headers/manager.png","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/htb-manager-writeup/"},"url":"http://localhost:4000/posts/htb-manager-writeup/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Kasyap Girijan","url":"https://github.com/kasyapgirijan/"},"dateModified":"2025-02-03T21:51:30+05:30","datePublished":"2024-03-16T23:00:00+05:30","description":"Summary:","headline":"Hack The Box Manager Writeup","image":{"lqip":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAABhGlDQ1BJQ0MgUHJvZmlsZQAAeJx9kT1Iw0AcxV/TSkUqKnYQccjQOlkQFXHUKhShQqgVWnUwufQLmjQkKS6OgmvBwY/FqoOLs64OroIg+AHi7OCk6CIl/i8ptIj14Lgf7+497t4BQr3MNCswDmi6baYScTGTXRWDr/CjHwMIICozy5iTpCQ6jq97+Ph6F+NZnc/9OXrVnMUAn0g8ywzTJt4gnt60Dc77xGFWlFXic+Ixky5I/Mh1xeM3zgWXBZ4ZNtOpeeIwsVhoY6WNWdHUiKeII6qmU76Q8VjlvMVZK1dZ8578haGcvrLMdZojSGARS5AgQkEVJZRhI0arToqFFO3HO/iHXb9ELoVcJTByLKACDbLrB/+D391a+ckJLykUB7peHOcjCgR3gUbNcb6PHadxAvifgSu95a/UgZlP0mstLXIE9G0DF9ctTdkDLneAoSdDNmVX8tMU8nng/Yy+KQsM3gI9a15vzX2cPgBp6ip5AxwcAqMFyl7v8O7u9t7+PdPs7wc0mHKOWhBNVgAAAyxJREFUeJyVlU9v3EYMxX/kjLR/vFrbSZughxyCHnpo77n1+3+QHooUjp31rqTVDMkepHXRi70RIBACNMPH9x5Juf/lt+AHHxVAoFTYr4W7nVBq8HgCqQ0qCRGl3SaaFVh1ihnhTpvmf23KRDj5R5MnheMIHvBxH/y0Fx6e4eEIXdMgklBVAiXnRJOCRNBoQkNQAQ2nV0VdrgfQrYVd07BJHR8+d7zbZbKvAEE+TTw+9Xw7FPo6MIZzmsCqMVqQEohACfAquCdEFbiCgQCaBLuVsPYVN+2ed/sdP2+F87BHJHOzPyGm9INRDXI7UAMmE1QFlUAlEJFZv4CcoRa9AkDMAG5aJU0tN5stnz6u+XwrHL/fAYnuvdHQ889TYhwbNI+sGhgrpKWIiCUiBOAoSKCvJZeFgqSwykLbtmy6htv7Nfv7jqfa8bVf40lpW8OkEBLkJOT0fxrjvxsRgUAR4XUAFwkW0xMilAo2KVGU6kYNQ02RaJlqYOFcmL4cjJe7BAhi4QJ4WwKR2fHVIWvFbKQ/rRjawnYd7G4SWR1HUK1orlgE9YXyJb0oEYEHRAT4jOFVAJfqi8FYg3U70Zcjfz8q4pnDNKBJGS346+HEYXwmmAgLzlVmqiNmFkQWLzgO1Nqjkq5joFQ4jAbpjLvwtXeGaHg+OxHOJjkPjyeOZaBJifOUGMusboQvUYnw5RWKDYhcMQdUBFGlknEEAaZS+V4Lw2QAFDWmWmlzRlQ5ngUPUBWIIEIwB49YZAgQwT3ekCACzZnVqiW3LZ4ym+2GrmvYNIHgqMzOHgo8nYynUyVRaLRi5oTHYntfWnGOIkLwBoCLBADTVBjPE8NYeTxk1i1khZQSIFgIx6HSnw0zI5ZqI+aud+fl2wPcZmmuGsURgbnjZgwRVDOSziYTkXmpJCV8rs599r5HQDiEvNCPO+GynHtrEIlQSuV06jEz7u/vaFctd3e35KZlnIzb3Zbff/3An1/+YL3Z0Kw3TKUynQu1VCafO67TgkYw2jwrLoXJtes4IiiloiqY+TzjVSnFuN0q3Vap1TmeBcktOWdkYUEIOikcJmECcMd93g3/AuUs/1f4gqqXAAAAAElFTkSuQmCC","url":"https://introvertedbytes.com/assets/img/headers/manager.png","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://introvertedbytes.com/posts/htb-manager-writeup/"},"url":"https://introvertedbytes.com/posts/htb-manager-writeup/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1515,13 +1515,13 @@
 
 <time
   
-  data-ts="1711119498"
+  data-ts="1738599690"
   data-df="ll"
   
     data-bs-toggle="tooltip" data-bs-placement="bottom"
   
 >
-  Mar 22, 2024
+  Feb  3, 2025
 </time>
 
         </span>
@@ -2145,21 +2145,21 @@ Mode                LastWriteTime         Length Name
 
       
 
-      <a href="https://twitter.com/intent/tweet?text=Hack%20The%20Box%20%7C%20Manager%20Writeup%20-%20INTROVERTED%20BYTES&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fhtb-manager-writeup%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter">
+      <a href="https://twitter.com/intent/tweet?text=Hack%20The%20Box%20%7C%20Manager%20Writeup%20-%20INTROVERTED%20BYTES&url=https%3A%2F%2Fintrovertedbytes.com%2Fposts%2Fhtb-manager-writeup%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter">
         <i class="fa-fw fa-brands fa-square-x-twitter"></i>
       </a>
     
 
       
 
-      <a href="https://www.facebook.com/sharer/sharer.php?title=Hack%20The%20Box%20%7C%20Manager%20Writeup%20-%20INTROVERTED%20BYTES&u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fhtb-manager-writeup%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook">
+      <a href="https://www.facebook.com/sharer/sharer.php?title=Hack%20The%20Box%20%7C%20Manager%20Writeup%20-%20INTROVERTED%20BYTES&u=https%3A%2F%2Fintrovertedbytes.com%2Fposts%2Fhtb-manager-writeup%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook">
         <i class="fa-fw fab fa-facebook-square"></i>
       </a>
     
 
       
 
-      <a href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fhtb-manager-writeup%2F&text=Hack%20The%20Box%20%7C%20Manager%20Writeup%20-%20INTROVERTED%20BYTES" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram" aria-label="Telegram">
+      <a href="https://t.me/share/url?url=https%3A%2F%2Fintrovertedbytes.com%2Fposts%2Fhtb-manager-writeup%2F&text=Hack%20The%20Box%20%7C%20Manager%20Writeup%20-%20INTROVERTED%20BYTES" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram" aria-label="Telegram">
         <i class="fa-fw fab fa-telegram"></i>
       </a>
     
@@ -2214,35 +2214,35 @@ Mode                LastWriteTime         Length Name
         
         
         <li class="text-truncate lh-lg">
+          <a href="/posts/htb-keeper-writeup/">Hack The Box | Keeper Writeup</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/posts/htb-crazyhosting-writeup/">Hack The Box | CrazyHosting Writeup</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/posts/htb-builder-writeup/">Hack The Box | Builder Writeup</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/posts/htb-manager-writeup/">Hack The Box | Manager Writeup</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
           <a href="/posts/htb-analytics-writeup/">Hack The Box | Analytics Writeup</a>
-        </li>
-      
-        
-        
-        
-        <li class="text-truncate lh-lg">
-          <a href="/posts/htb-codify-writeup/">Hack The Box | Codify Writeup</a>
-        </li>
-      
-        
-        
-        
-        <li class="text-truncate lh-lg">
-          <a href="/posts/hls-hardening-SSH/">Home Lab Series | Part 2 | Hardening SSH login</a>
-        </li>
-      
-        
-        
-        
-        <li class="text-truncate lh-lg">
-          <a href="/posts/htb-BoardLight-writeup/">Hack The Box | BoardLight Writeup</a>
-        </li>
-      
-        
-        
-        
-        <li class="text-truncate lh-lg">
-          <a href="/posts/Demystifying_Nmap_Scans/">Demystifying Nmap Scans: A Deep Dive into Network Exploration</a>
         </li>
       
     </ul>
