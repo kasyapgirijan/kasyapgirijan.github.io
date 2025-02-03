@@ -1,0 +1,3655 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- `site.alt_lang` can specify a language different from the UI -->
+<html lang="en" >
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-5613781450810642">
+    <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1e">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta
+    name="viewport"
+    content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
+  ><!-- Setup Open Graph image -->
+
+  
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Home Lab Series Part 1 First Boot with Raspberry Pi" />
+<meta name="author" content="7h3h0und" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="In this article, we will focus on setting up Raspberry pi with Raspbian OS (Raspberry Pi OS) and further establish a connection with SSH considering best practice to have a secure way to sign in." />
+<meta property="og:description" content="In this article, we will focus on setting up Raspberry pi with Raspbian OS (Raspberry Pi OS) and further establish a connection with SSH considering best practice to have a secure way to sign in." />
+<link rel="canonical" href="http://localhost:4000/posts/home-lab-first-boot-pi-5/" />
+<meta property="og:url" content="http://localhost:4000/posts/home-lab-first-boot-pi-5/" />
+<meta property="og:site_name" content="INTROVERTED BYTES" />
+<meta property="og:image" content="http://localhost:4000/assets/img/headers/pi.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-11-26T11:00:00+05:30" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="http://localhost:4000/assets/img/headers/pi.png" />
+<meta property="twitter:title" content="Home Lab Series Part 1 First Boot with Raspberry Pi" />
+<meta name="twitter:site" content="@kasyapgirijan" />
+<meta name="twitter:creator" content="@7h3h0und" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"7h3h0und"},"dateModified":"2023-11-26T11:00:00+05:30","datePublished":"2023-11-26T11:00:00+05:30","description":"In this article, we will focus on setting up Raspberry pi with Raspbian OS (Raspberry Pi OS) and further establish a connection with SSH considering best practice to have a secure way to sign in.","headline":"Home Lab Series Part 1 First Boot with Raspberry Pi","image":{"lqip":"data:image/png;base64,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","url":"http://localhost:4000/assets/img/headers/pi.png","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/home-lab-first-boot-pi-5/"},"url":"http://localhost:4000/posts/home-lab-first-boot-pi-5/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <title>Home Lab Series | Part 1 | First Boot with Raspberry Pi | INTROVERTED BYTES
+  </title>
+
+  <!--
+  The Favicons for Web, Android, Microsoft, and iOS (iPhone and iPad) Apps
+  Generated by: https://realfavicongenerator.net/
+-->
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png">
+
+  <link rel="manifest" href="/assets/img/favicons/site.webmanifest">
+
+<link rel="shortcut icon" href="/assets/img/favicons/favicon.ico">
+<meta name="apple-mobile-web-app-title" content="INTROVERTED BYTES">
+<meta name="application-name" content="INTROVERTED BYTES">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+
+  <!-- Resource Hints -->
+  
+    
+      
+        <link rel="preconnect" href="https://fonts.googleapis.com" >
+      
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" >
+      
+    
+      
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" >
+      
+    
+      
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" >
+      
+        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" >
+      
+    
+  
+
+  <!-- Bootstrap -->
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  
+
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/assets/css/jekyll-theme-chirpy.css">
+
+  <!-- Web Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Source+Sans+Pro:wght@400;600;700;900&display=swap">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.1/css/all.min.css">
+
+  <!-- 3rd-party Dependencies -->
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.32.2/dist/tocbot.min.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.min.css">
+  
+
+  
+    <!-- Image Popup -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css">
+  
+
+  <!-- Scripts -->
+
+  <script src="/assets/js/dist/theme.min.js"></script>
+
+  <!-- JS selector for site. -->
+
+<!-- commons -->
+
+
+
+<!-- layout specified -->
+
+
+  
+
+  
+    <!-- image lazy-loading & popup & clipboard -->
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/combine/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.umd.min.js,npm/glightbox@3.3.0/dist/js/glightbox.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js,npm/dayjs@1.11.13/dayjs.min.js,npm/dayjs@1.11.13/locale/en.js,npm/dayjs@1.11.13/plugin/relativeTime.js,npm/dayjs@1.11.13/plugin/localizedFormat.js,npm/tocbot@4.32.2/dist/tocbot.min.js,npm/mermaid@11.4.0/dist/mermaid.min.js"></script>
+
+
+
+
+
+
+
+<script defer src="/assets/js/dist/post.min.js"></script>
+
+
+  <!-- MathJax -->
+  <script async src="/assets/js/data/mathjax.js"></script>
+  <script async src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+
+
+<!-- Pageviews -->
+
+  
+
+  
+
+
+
+  
+
+  <!-- A placeholder to allow defining custom metadata -->
+
+</head>
+
+  </head>
+
+  <body>
+    <!-- The Side Bar -->
+
+<aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end">
+  <header class="profile-wrapper">
+    <a href="/" id="avatar" class="rounded-circle"><img src="/assets/img/avatar.jpg" width="112" height="112" alt="avatar" onerror="this.style.display='none'"></a>
+
+    <a class="site-title d-block" href="/">INTROVERTED BYTES</a>
+    <p class="site-subtitle fst-italic mb-0">Cyber Security Enthusiast | Pentester | CTF Player</p>
+  </header>
+  <!-- .profile-wrapper -->
+
+  <nav class="flex-column flex-grow-1 w-100 ps-0">
+    <ul class="nav">
+      <!-- home -->
+      <li class="nav-item">
+        <a href="/" class="nav-link">
+          <i class="fa-fw fas fa-home"></i>
+          <span>HOME</span>
+        </a>
+      </li>
+      <!-- the real tabs -->
+      
+        <li class="nav-item">
+          <a href="/categories/" class="nav-link">
+            <i class="fa-fw fas fa-stream"></i>
+            
+
+            <span>CATEGORIES</span>
+          </a>
+        </li>
+        <!-- .nav-item -->
+      
+        <li class="nav-item">
+          <a href="/tags/" class="nav-link">
+            <i class="fa-fw fas fa-tags"></i>
+            
+
+            <span>TAGS</span>
+          </a>
+        </li>
+        <!-- .nav-item -->
+      
+        <li class="nav-item">
+          <a href="/archives/" class="nav-link">
+            <i class="fa-fw fas fa-archive"></i>
+            
+
+            <span>ARCHIVES</span>
+          </a>
+        </li>
+        <!-- .nav-item -->
+      
+        <li class="nav-item">
+          <a href="/about/" class="nav-link">
+            <i class="fa-fw fas fa-info-circle"></i>
+            
+
+            <span>ABOUT</span>
+          </a>
+        </li>
+        <!-- .nav-item -->
+      
+    </ul>
+  </nav>
+
+  <div class="sidebar-bottom d-flex flex-wrap  align-items-center w-100">
+    
+      <button type="button" class="btn btn-link nav-link" aria-label="Switch Mode" id="mode-toggle">
+        <i class="fas fa-adjust"></i>
+      </button>
+
+      
+        <span class="icon-border"></span>
+      
+    
+
+    
+      
+
+      
+        <a
+          href="https://github.com/kasyapgirijan"
+          aria-label="github"
+          
+
+          
+            target="_blank"
+            
+          
+
+          
+
+          
+            rel="noopener noreferrer"
+          
+        >
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+
+      
+        <a
+          href="https://twitter.com/kasyapgirijan"
+          aria-label="twitter"
+          
+
+          
+            target="_blank"
+            
+          
+
+          
+
+          
+            rel="noopener noreferrer"
+          
+        >
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+      
+    
+      
+
+      
+        <a
+          href="javascript:location.href = 'mailto:' + ['karthakasyap18','gmail.com'].join('@')"
+          aria-label="email"
+          
+
+          
+
+          
+
+          
+        >
+          <i class="fas fa-envelope"></i>
+        </a>
+      
+    
+      
+
+      
+        <a
+          href="/feed.xml"
+          aria-label="rss"
+          
+
+          
+
+          
+
+          
+        >
+          <i class="fas fa-rss"></i>
+        </a>
+      
+    
+  </div>
+  <!-- .sidebar-bottom -->
+</aside>
+<!-- #sidebar -->
+
+
+    <div id="main-wrapper" class="d-flex justify-content-center">
+      <div class="container d-flex flex-column px-xxl-5">
+        <!-- The Top Bar -->
+
+<header id="topbar-wrapper" aria-label="Top Bar">
+  <div
+    id="topbar"
+    class="d-flex align-items-center justify-content-between px-lg-3 h-100"
+  >
+    <nav id="breadcrumb" aria-label="Breadcrumb">
+      
+
+      
+        
+          
+            <span>
+              <a href="/">Home</a>
+            </span>
+
+          
+        
+          
+        
+          
+            
+              <span>Home Lab Series | Part 1 | First Boot with Raspberry Pi</span>
+            
+
+          
+        
+      
+    </nav>
+    <!-- endof #breadcrumb -->
+
+    <button type="button" id="sidebar-trigger" class="btn btn-link">
+      <i class="fas fa-bars fa-fw"></i>
+    </button>
+
+    <div id="topbar-title">
+      Post
+    </div>
+
+    <button type="button" id="search-trigger" class="btn btn-link">
+      <i class="fas fa-search fa-fw"></i>
+    </button>
+
+    <search id="search" class="align-items-center ms-3 ms-lg-0">
+      <i class="fas fa-search fa-fw"></i>
+      <input
+        class="form-control"
+        id="search-input"
+        type="search"
+        aria-label="search"
+        autocomplete="off"
+        placeholder="Search..."
+      >
+    </search>
+    <button type="button" class="btn btn-link text-decoration-none" id="search-cancel">Cancel</button>
+  </div>
+</header>
+
+
+        <div class="row flex-grow-1">
+          <main aria-label="Main Content" class="col-12 col-lg-11 col-xl-9 px-md-4">
+            
+              <!-- Refactor the HTML structure -->
+
+
+
+<!--
+  In order to allow a wide table to scroll horizontally,
+  we suround the markdown table with `<div class="table-wrapper">` and `</div>`
+-->
+
+
+
+<!--
+  Fixed kramdown code highlight rendering:
+  https://github.com/penibelst/jekyll-compress-html/issues/101
+  https://github.com/penibelst/jekyll-compress-html/issues/71#issuecomment-188144901
+-->
+
+
+
+<!-- Change the icon of checkbox -->
+
+
+
+<!-- Handle images -->
+
+
+
+
+  
+  
+
+  
+    
+      
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+      
+
+      
+
+      <!-- add image placeholder -->
+      
+
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+
+  
+
+
+<!-- Add header for code snippets -->
+
+
+
+<!-- Create heading anchors -->
+
+
+
+
+
+  
+  
+
+  
+    
+    
+
+    
+      
+        
+        
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+
+    
+  
+
+  
+  
+
+  
+    
+    
+
+    
+      
+        
+        
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+
+    
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+
+
+
+<!-- return -->
+
+
+
+
+
+
+
+
+
+
+<article class="px-1" data-toc="true">
+  <header>
+    <h1 data-toc-skip>Home Lab Series | Part 1 | First Boot with Raspberry Pi</h1>
+    
+
+    <div class="post-meta text-muted">
+      <!-- published date -->
+      <span>
+        Posted
+        <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
+  
+  data-ts="1700976600"
+  data-df="ll"
+  
+    data-bs-toggle="tooltip" data-bs-placement="bottom"
+  
+>
+  Nov 26, 2023
+</time>
+
+      </span>
+
+      <!-- lastmod date -->
+      
+
+      
+        
+        
+        
+
+        
+
+        <div class="mt-3 mb-3">
+          <a href="/assets/img/headers/pi.png" class="popup img-link preview-img blur"><img data-src="/assets/img/headers/pi.png"  alt="Preview Image" width="1200" height="630" data-lqip="true" src="data:image/png;base64,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" ></a></div>
+      
+
+      <div class="d-flex justify-content-between">
+        <!-- author(s) -->
+        <span>
+          
+
+          By
+
+          <em>
+            
+              
+                
+                
+              
+            
+          </em>
+        </span>
+
+        <div>
+          <!-- pageviews -->
+          
+
+          <!-- read time -->
+          <!-- Calculate the post's reading time, and display the word count in tooltip -->
+
+
+
+<!-- words per minute -->
+
+
+
+
+
+
+
+
+
+
+<!-- return element -->
+<span
+  class="readtime"
+  data-bs-toggle="tooltip"
+  data-bs-placement="bottom"
+  title="544 words"
+>
+  <em>3 min</em> read</span>
+
+        </div>
+      </div>
+    </div>
+  </header>
+
+  
+    <div id="toc-bar" class="d-flex align-items-center justify-content-between invisible">
+      <span class="label text-truncate">Home Lab Series | Part 1 | First Boot with Raspberry Pi</span>
+      <button type="button" class="toc-trigger btn me-1">
+        <i class="fa-solid fa-list-ul fa-fw"></i>
+      </button>
+    </div>
+
+    <button id="toc-solo-trigger" type="button" class="toc-trigger btn btn-outline-secondary btn-sm">
+      <span class="label ps-2 pe-1">Contents</span>
+      <i class="fa-solid fa-angle-right fa-fw"></i>
+    </button>
+
+    <dialog id="toc-popup" class="p-0">
+      <div class="header d-flex flex-row align-items-center justify-content-between">
+        <div class="label text-truncate py-2 ms-4">Home Lab Series | Part 1 | First Boot with Raspberry Pi</div>
+        <button id="toc-popup-close" type="button" class="btn mx-1 my-1 opacity-75">
+          <i class="fas fa-close"></i>
+        </button>
+      </div>
+      <div id="toc-popup-content" class="px-4 py-3 pb-4"></div>
+    </dialog>
+  
+
+  <div class="content">
+    <p>In this article, we will focus on setting up Raspberry pi with Raspbian OS (Raspberry Pi OS) and further establish a connection with SSH considering best practice to have a secure way to sign in.</p>
+
+<p>Choosing the right OS essentially depends on the use case of your home lab/server, what do you plan to do with it? a media server, selfhosting a website, NAS storage or all of them. This can be achieved by deploying multiple docker instances or by installing relevant packages and configuring them either way it up to you and your personal choice.
+For me, I am going to stick with Raspberry OS and docker instance for each relevant use case.</p>
+
+<h2 id="pre--requirements"><span class="me-2">Pre- requirements:</span><a href="#pre--requirements" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<ol>
+  <li>Micro SD card</li>
+  <li>Raspberry Pi Imager (Download link - <a href="https://www.raspberrypi.com/software/">https://www.raspberrypi.com/software/</a>)</li>
+  <li>Internet connection (of course)</li>
+  <li>Raspberry PI device (you might need one :P)</li>
+  <li>USB card reader or an adapter</li>
+</ol>
+
+<h2 id="installing-an-os"><span class="me-2">Installing an OS</span><a href="#installing-an-os" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<h3 id="installing-raspberry-pi-imager"><span class="me-2">Installing Raspberry Pi Imager</span><a href="#installing-raspberry-pi-imager" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<p>Download the official <a href="https://www.raspberrypi.com/software/">Raspberry Pi imager</a> and install according to your host system.
+For ubuntu or similar distro use the below command to install Raspberry Pi Imager</p>
+<div class="language-bash highlighter-rouge"><div class="code-header">
+        <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nb">sudo </span>apt <span class="nb">install </span>rpi-imager
+</pre></td></tr></tbody></table></code></div></div>
+
+<p>Once installed connect your MicroSD card to your system either through an adapter or USB card reader.</p>
+
+<h3 id="selecting-pi-device"><span class="me-2">Selecting Pi Device</span><a href="#selecting-pi-device" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>Open Raspberry Pi imager select your device in my case its Raspberry Pi 5.</p>
+
+<p><a href="/assets/img/posts/hslpi/first-boot-pi-1.png" class="popup img-link  shimmer"><img src="/assets/img/posts/hslpi/first-boot-pi-1.png" alt="img-description" loading="lazy"></a>
+<em>Raspberry PI Imager</em></p>
+
+<p><a href="/assets/img/posts/hslpi/first-boot-pi-2.png" class="popup img-link  shimmer"><img src="/assets/img/posts/hslpi/first-boot-pi-2.png" alt="img-description" loading="lazy"></a> <em>Device Selection</em></p>
+
+<h3 id="selecting-the-os"><span class="me-2">Selecting the OS</span><a href="#selecting-the-os" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>Select the desired OS there are few to select the one that is displayed by default are either 64 bit or 32 bit which with desktop environment (GUI).</p>
+
+<p><a href="/assets/img/posts/hslpi/first-boot-pi-3.png" class="popup img-link  shimmer"><img src="/assets/img/posts/hslpi/first-boot-pi-3.png" alt="img-description" loading="lazy"></a> <em>OS Selection</em></p>
+
+<p>If you want to see more options scroll down a bit and you can see Raspberry Pi OS (other)
+<a href="/assets/img/posts/hslpi/first-boot-pi-3a.png" class="popup img-link  shimmer"><img src="/assets/img/posts/hslpi/first-boot-pi-3a.png" alt="img-description" loading="lazy"></a> <em>Raspberry Pi OS other options</em></p>
+
+<p>Personally, I prefer Raspberry Pi OS lite (x64) given its light with no desktop environment and is only 400MB in size. Which makes it perfect for my use case as I can utilize the extra resource for docker instances I get eliminating desktop environments.</p>
+
+<p><a href="/assets/img/posts/hslpi/first-boot-pi-3b.png" class="popup img-link  shimmer"><img src="/assets/img/posts/hslpi/first-boot-pi-3b.png" alt="img-description" loading="lazy"></a> <em>Selecting 64bit Lite Version</em></p>
+
+<h3 id="selecting-storage-media-and-os-customization"><span class="me-2">Selecting Storage Media and OS Customization</span><a href="#selecting-storage-media-and-os-customization" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>Once you have selected the OS, now select the storage device in our case, the MicroSD card.
+<a href="/assets/img/posts/hslpi/first-boot-pi-3c.png" class="popup img-link  shimmer"><img src="/assets/img/posts/hslpi/first-boot-pi-3c.png" alt="img-description" loading="lazy"></a> <em>Selecting Storage Device</em></p>
+
+<p>Further when we move to the next step the imager will prompt you if you would like to customize you OS.</p>
+
+<p><a href="/assets/img/posts/hslpi/first-boot-pi-5.png" class="popup img-link  shimmer"><img src="/assets/img/posts/hslpi/first-boot-pi-5.png" alt="img-description" loading="lazy"></a> <em>OS Customization</em></p>
+
+<p>Provide a hostname for your device, username password, configure wireless connection in case you need to and select the region.</p>
+
+<p><a href="/assets/img/posts/hslpi/first-boot-pi-5_a.png" class="popup img-link  shimmer"><img src="/assets/img/posts/hslpi/first-boot-pi-5_a.png" alt="img-description" loading="lazy"></a> <em>Customization</em></p>
+
+<p>Moving on to the next tab “Services” select password authentication for your SSH login.</p>
+
+<p><a href="/assets/img/posts/hslpi/first-boot-pi-5_b.png" class="popup img-link  shimmer"><img src="/assets/img/posts/hslpi/first-boot-pi-5_b.png" alt="img-description" loading="lazy"></a> <em>Enabling SSH</em></p>
+
+<p>You can generate a keypair now, but I would suggest doing it later as we need to do some hardening later.</p>
+
+<p>Click next and you will be getting another prompt with confirmation asking if you are sure with applying the customization. Hit Yes !</p>
+
+<p><a href="/assets/img/posts/hslpi/first-boot-pi-6.png" class="popup img-link  shimmer"><img src="/assets/img/posts/hslpi/first-boot-pi-6.png" alt="img-description" loading="lazy"></a> <em>Prompt on Customization</em>
+<a href="/assets/img/posts/hslpi/first-boot-pi-7.png" class="popup img-link  shimmer"><img src="/assets/img/posts/hslpi/first-boot-pi-7.png" alt="img-description" loading="lazy"></a> <em>Prompt on Storage Data Wipe</em>
+<a href="/assets/img/posts/hslpi/first-boot-pi-8.png" class="popup img-link  shimmer"><img src="/assets/img/posts/hslpi/first-boot-pi-8.png" alt="img-description" loading="lazy"></a> <em>Writing Data</em></p>
+
+<p>It will take up to 15 minutes depending on your system and microSD card. 
+Raspberry Pi imager will write the OS and verify your files before completing.</p>
+
+<p><a href="/assets/img/posts/hslpi/first-boot-pi-9.png" class="popup img-link  shimmer"><img src="/assets/img/posts/hslpi/first-boot-pi-9.png" alt="img-description" loading="lazy"></a> <em>Done!</em></p>
+
+<p>Done!  Now put your MicroSD card into your Pi and connect the power source.</p>
+
+<h3 id="post-installation"><span class="me-2">Post Installation</span><a href="#post-installation" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<blockquote class="prompt-tip">
+  <p><code class="language-plaintext highlighter-rouge">You can either login to your router page or use nmap to list the IP address of your Pi</code></p>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="code-header">
+        <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="nb">sudo </span>nmap <span class="nt">-sn</span> <span class="o">[</span>Your router<span class="s1">'s IP address]/24
+# Example:  nmap -sn 192.168.0.1/24
+</span></pre></td></tr></tbody></table></code></div></div>
+
+
+    <div class="buy-coffee-section">
+      <div class="banner-line"></div> 
+      <p class="banner-top">Want to show your appreciation?</p>
+      <p>If you enjoyed this article or my other content, consider buying me a coffee. Your support helps me create more!</p>
+      <div class="buy-coffee-button">
+        <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="kasyapgirijan" data-color="#FFDD00" data-emoji="" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>       
+      </div>
+      <p class="banner-bottom">Support for honest content, directly to the author.</p>
+    </div>
+  </div>
+
+  <div class="post-tail-wrapper text-muted">
+    <!-- categories -->
+    
+      <div class="post-meta mb-3">
+        <i class="far fa-folder-open fa-fw me-1"></i>
+        
+          <a href="/categories/blogging/">Blogging</a>,
+          <a href="/categories/tutorial/">Tutorial</a>,
+          <a href="/categories/home-lab-series/">Home Lab Series</a>
+      </div>
+    
+
+    <!-- tags -->
+    
+      <div class="post-tags">
+        <i class="fa fa-tags fa-fw me-1"></i>
+        
+          <a
+            href="/tags/raspberry-pi/"
+            class="post-tag no-text-decoration"
+          >Raspberry Pi</a>
+        
+          <a
+            href="/tags/write-up/"
+            class="post-tag no-text-decoration"
+          >Write Up</a>
+        
+      </div>
+    
+
+    <div
+      class="
+        post-tail-bottom
+        d-flex justify-content-between align-items-center mt-5 pb-2
+      "
+    >
+      <div class="license-wrapper">
+        
+          
+
+          This post is licensed under 
+        <a href="https://creativecommons.org/licenses/by/4.0/">
+          CC BY 4.0
+        </a>
+         by the author.
+        
+      </div>
+
+      <!-- Post sharing snippet -->
+
+<div class="share-wrapper d-flex align-items-center">
+  <span class="share-label text-muted">Share</span>
+  <span class="share-icons">
+    
+    
+    
+
+    
+
+      
+
+      <a href="https://twitter.com/intent/tweet?text=Home%20Lab%20Series%20%7C%20Part%201%20%7C%20First%20Boot%20with%20Raspberry%20Pi%20-%20INTROVERTED%20BYTES&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fhome-lab-first-boot-pi-5%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter">
+        <i class="fa-fw fa-brands fa-square-x-twitter"></i>
+      </a>
+    
+
+      
+
+      <a href="https://www.facebook.com/sharer/sharer.php?title=Home%20Lab%20Series%20%7C%20Part%201%20%7C%20First%20Boot%20with%20Raspberry%20Pi%20-%20INTROVERTED%20BYTES&u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fhome-lab-first-boot-pi-5%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook">
+        <i class="fa-fw fab fa-facebook-square"></i>
+      </a>
+    
+
+      
+
+      <a href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fhome-lab-first-boot-pi-5%2F&text=Home%20Lab%20Series%20%7C%20Part%201%20%7C%20First%20Boot%20with%20Raspberry%20Pi%20-%20INTROVERTED%20BYTES" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram" aria-label="Telegram">
+        <i class="fa-fw fab fa-telegram"></i>
+      </a>
+    
+
+    <button
+      id="copy-link"
+      aria-label="Copy link"
+      class="btn small"
+      data-bs-toggle="tooltip"
+      data-bs-placement="top"
+      title="Copy link"
+      data-title-succeed="Link copied successfully!"
+    >
+      <i class="fa-fw fas fa-link pe-none fs-6"></i>
+    </button>
+  </span>
+</div>
+
+    </div>
+    <!-- .post-tail-bottom -->
+  </div>
+  <!-- div.post-tail-wrapper -->
+</article>
+
+
+            
+          </main>
+
+          <!-- panel -->
+          <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 text-muted">
+            <div class="access">
+              <!-- Get 5 last posted/updated posts -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <section id="access-lastmod">
+    <h2 class="panel-heading">Recently Updated</h2>
+    <ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/posts/htb-BoardLight-writeup/">Hack The Box | BoardLight Writeup</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/posts/exploring_tls_securing_tcp_communication/">Exploring TLS: Securing TCP Communication</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/posts/htb-devvortex-writeup/">Hack The Box | Devvortex Writeup</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/posts/htb-codify-writeup/">Hack The Box | Codify Writeup</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/posts/Demystifying_Nmap_Scans/">Demystifying Nmap Scans: A Deep Dive into Network Exploration</a>
+        </li>
+      
+    </ul>
+  </section>
+  <!-- #access-lastmod -->
+
+
+              <!-- The trending tags list -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+
+
+  <section>
+    <h2 class="panel-heading">Trending Tags</h2>
+    <div class="d-flex flex-wrap mt-3 mb-1 me-3">
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/writeup/">Writeup</a>
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/htb/">HTB</a>
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/easy/">Easy</a>
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/blogging/">Blogging</a>
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/raspberry-pi/">Raspberry Pi</a>
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/tutorial/">Tutorial</a>
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/write-up/">Write Up</a>
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/analytics/">Analytics</a>
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/boardlight/">BoardLight</a>
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/broker/">Broker</a>
+      
+    </div>
+  </section>
+
+
+            </div>
+
+            
+              
+              
+
+
+
+
+
+
+  <div class="toc-border-cover z-3"></div>
+  <section id="toc-wrapper" class="invisible position-sticky ps-0 pe-4 pb-4">
+    <h2 class="panel-heading ps-3 pb-2 mb-0">Contents</h2>
+    <nav id="toc"></nav>
+  </section>
+
+
+            
+          </aside>
+        </div>
+
+        <div class="row">
+          <!-- tail -->
+          <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 px-md-4">
+            
+              
+              <!-- Recommend the other 3 posts according to the tags and categories of the current post. -->
+
+<!-- The total size of related posts -->
+
+
+<!-- An random integer that bigger than 0 -->
+
+
+<!-- Equals to TAG_SCORE / {max_categories_hierarchy} -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  <aside id="related-posts" aria-labelledby="related-label">
+    <h3 class="mb-4" id="related-label">Further Reading</h3>
+    <nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
+      
+        <article class="col">
+          <a href="/posts/hls-hardening-SSH/" class="post-preview card h-100">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
+  
+  data-ts="1701509400"
+  data-df="ll"
+  
+>
+  Dec  2, 2023
+</time>
+
+              <h4 class="pt-0 my-2">Home Lab Series | Part 2 | Hardening SSH login</h4>
+              <div class="text-muted">
+                <p>If you’re utilizing SSH for device access, is it secure? The questions you may ask yourself: is your SSH login robust? Are default accounts in use? Is your device exposed to the internet, potential...</p>
+              </div>
+            </div>
+          </a>
+        </article>
+      
+        <article class="col">
+          <a href="/posts/htb-codify-writeup/" class="post-preview card h-100">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
+  
+  data-ts="1712424600"
+  data-df="ll"
+  
+>
+  Apr  6, 2024
+</time>
+
+              <h4 class="pt-0 my-2">Hack The Box | Codify Writeup</h4>
+              <div class="text-muted">
+                <p>Summary:
+
+Codify is a beginner-friendly Linux machine, offering a web application for testing Node.js code. 
+However, the application has a weakness in its vm2 library, allowing attackers to remote...</p>
+              </div>
+            </div>
+          </a>
+        </article>
+      
+        <article class="col">
+          <a href="/posts/Demystifying_Nmap_Scans/" class="post-preview card h-100">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
+  
+  data-ts="1711906200"
+  data-df="ll"
+  
+>
+  Mar 31, 2024
+</time>
+
+              <h4 class="pt-0 my-2">Demystifying Nmap Scans: A Deep Dive into Network Exploration</h4>
+              <div class="text-muted">
+                <p>Introdution
+Nmap, also known as the Network Mapper, is a free and open-source tool that helps IT professionals uncover the secrets of their network as well as for security auditing. It is like a fl...</p>
+              </div>
+            </div>
+          </a>
+        </article>
+      
+    </nav>
+  </aside>
+  <!-- #related-posts -->
+
+
+            
+              
+              <!-- Navigation buttons at the bottom of the post. -->
+
+<nav class="post-navigation d-flex justify-content-between" aria-label="Post Navigation">
+  
+  
+
+  
+    <div class="btn btn-outline-primary disabled" aria-label="Older">
+      <p>-</p>
+    </div>
+  
+
+  
+    <a
+      href="/posts/hls-hardening-SSH/"
+      class="btn btn-outline-primary"
+      aria-label="Newer"
+    >
+      <p>Home Lab Series | Part 2 | Hardening SSH login</p>
+    </a>
+  
+</nav>
+
+            
+
+            <!-- The Footer -->
+
+<footer
+  aria-label="Site Info"
+  class="
+    d-flex flex-column justify-content-center text-muted
+    flex-lg-row justify-content-lg-between align-items-lg-center pb-lg-3
+  "
+>
+  <p>©
+    <time>2025</time>
+
+    
+      <a href="https://twitter.com/kasyapgirijan">Kasyap Girijan</a>.
+    
+
+    
+      <span
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author."
+      >Some rights reserved.</span>
+    
+  </p>
+
+  <p>Using the <a
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="v7.2.4"
+        href="https://github.com/cotes2020/jekyll-theme-chirpy"
+        target="_blank"
+        rel="noopener"
+      >Chirpy</a> theme for <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>.
+  </p>
+</footer>
+
+          </div>
+        </div>
+
+        <!-- The Search results -->
+
+<div id="search-result-wrapper" class="d-flex justify-content-center d-none">
+  <div class="col-11 content">
+    <div id="search-hints">
+      <!-- The trending tags list -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+
+
+  <section>
+    <h2 class="panel-heading">Trending Tags</h2>
+    <div class="d-flex flex-wrap mt-3 mb-1 me-3">
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/writeup/">Writeup</a>
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/htb/">HTB</a>
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/easy/">Easy</a>
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/blogging/">Blogging</a>
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/raspberry-pi/">Raspberry Pi</a>
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/tutorial/">Tutorial</a>
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/write-up/">Write Up</a>
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/analytics/">Analytics</a>
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/boardlight/">BoardLight</a>
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/broker/">Broker</a>
+      
+    </div>
+  </section>
+
+
+    </div>
+    <div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div>
+  </div>
+</div>
+
+      </div>
+
+      <aside aria-label="Scroll to Top">
+        <button id="back-to-top" type="button" class="btn btn-lg btn-box-shadow">
+          <i class="fas fa-angle-up"></i>
+        </button>
+      </aside>
+    </div>
+
+    <div id="mask" class="d-none position-fixed w-100 h-100 z-1"></div>
+
+    
+      <aside
+  id="notification"
+  class="toast"
+  role="alert"
+  aria-live="assertive"
+  aria-atomic="true"
+  data-bs-animation="true"
+  data-bs-autohide="false"
+>
+  <div class="toast-header">
+    <button
+      type="button"
+      class="btn-close ms-auto"
+      data-bs-dismiss="toast"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="toast-body text-center pt-0">
+    <p class="px-2 mb-3">A new version of content is available.</p>
+    <button type="button" class="btn btn-primary" aria-label="Update">
+      Update
+    </button>
+  </div>
+</aside>
+
+    
+
+    <!-- Embedded scripts -->
+    
+      
+      <!-- The comments switcher -->
+
+
+    
+
+    <!--
+  Jekyll Simple Search loader
+  See: <https://github.com/christian-fei/Simple-Jekyll-Search>
+-->
+
+
+
+
+
+<script>
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('search-results'),
+      json: '/assets/js/data/search.json',
+      searchResultTemplate: '  <article class="px-1 px-sm-2 px-lg-4 px-xl-0">    <header>      <h2><a href="{url}">{title}</a></h2>      <div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1">        {categories}        {tags}      </div>    </header>    <p>{snippet}</p>  </article>',
+      noResultsText: '<p class="mt-5">Oops! No results found.</p>',
+      templateMiddleware: function(prop, value, template) {
+        if (prop === 'categories') {
+          if (value === '') {
+            return `${value}`;
+          } else {
+            return `<div class="me-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`;
+          }
+        }
+
+        if (prop === 'tags') {
+          if (value === '') {
+            return `${value}`;
+          } else {
+            return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`;
+          }
+        }
+      }
+    });
+  });
+</script>
+
+  </body>
+</html>
+
