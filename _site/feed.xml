@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>INTROVERTED BYTES</title>
   <subtitle>A place for me to share my notes and any technical writing.</subtitle>
-  <updated>2025-02-03T21:47:03+05:30</updated>
+  <updated>2025-02-03T12:28:25+05:30</updated>
   <author>
     <name>Kasyap Girijan</name>
     <uri>http://localhost:4000/</uri>
@@ -24,7 +24,7 @@
     <link href="http://localhost:4000/posts/htb-BoardLight-writeup/" rel="alternate" type="text/html" title="Hack The Box | BoardLight Writeup" />
     <published>2024-09-27T23:00:00+05:30</published>
   
-    <updated>2025-02-03T21:45:11+05:30</updated>
+    <updated>2024-09-27T23:00:00+05:30</updated>
   
     <id>http://localhost:4000/posts/htb-BoardLight-writeup/</id>
     <content type="text/html" src="http://localhost:4000/posts/htb-BoardLight-writeup/" />
@@ -55,7 +55,7 @@ Upon obtaining a reverse shell, I explored the system and found SS...</summary>
     <link href="http://localhost:4000/posts/exploring_tls_securing_tcp_communication/" rel="alternate" type="text/html" title="Exploring TLS: Securing TCP Communication" />
     <published>2024-09-21T23:00:00+05:30</published>
   
-    <updated>2025-02-03T21:45:11+05:30</updated>
+    <updated>2024-09-21T23:00:00+05:30</updated>
   
     <id>http://localhost:4000/posts/exploring_tls_securing_tcp_communication/</id>
     <content type="text/html" src="http://localhost:4000/posts/exploring_tls_securing_tcp_communication/" />
@@ -87,7 +87,7 @@ If you’ve ever made a purchase online using your credit or debit card, the com
     <link href="http://localhost:4000/posts/htb-devvortex-writeup/" rel="alternate" type="text/html" title="Hack The Box | Devvortex Writeup" />
     <published>2024-04-27T21:00:00+05:30</published>
   
-    <updated>2025-02-03T21:45:11+05:30</updated>
+    <updated>2024-05-13T17:23:59+05:30</updated>
   
     <id>http://localhost:4000/posts/htb-devvortex-writeup/</id>
     <content type="text/html" src="http://localhost:4000/posts/htb-devvortex-writeup/" />
@@ -116,7 +116,7 @@ Devvortex, a beginner-friendly Linux machine, is vulnerable thanks to its Joomla
     <link href="http://localhost:4000/posts/htb-codify-writeup/" rel="alternate" type="text/html" title="Hack The Box | Codify Writeup" />
     <published>2024-04-06T23:00:00+05:30</published>
   
-    <updated>2025-02-03T21:45:11+05:30</updated>
+    <updated>2024-09-29T21:10:59+05:30</updated>
   
     <id>http://localhost:4000/posts/htb-codify-writeup/</id>
     <content type="text/html" src="http://localhost:4000/posts/htb-codify-writeup/" />
@@ -147,7 +147,7 @@ However, the application has a weakness in its vm2 library, allowing attackers t
     <link href="http://localhost:4000/posts/Demystifying_Nmap_Scans/" rel="alternate" type="text/html" title="Demystifying Nmap Scans: A Deep Dive into Network Exploration" />
     <published>2024-03-31T23:00:00+05:30</published>
   
-    <updated>2025-02-03T21:45:11+05:30</updated>
+    <updated>2024-09-22T21:16:33+05:30</updated>
   
     <id>http://localhost:4000/posts/Demystifying_Nmap_Scans/</id>
     <content type="text/html" src="http://localhost:4000/posts/Demystifying_Nmap_Scans/" />
