@@ -31,7 +31,7 @@
   <!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
 <meta property="og:title" content="Hack The Box Builder Writeup" />
-<meta name="author" content="7h3h0und" />
+<meta name="author" content="Kasyap Girijan" />
 <meta property="og:locale" content="en" />
 <meta name="description" content="Summary: Builder, is a medium-difficulty Linux machine, runs a Jenkins instance. The attacker finds a vulnerability (CVE-2024-23897) in Jenkins, allowing unauthorized access to read files on the system." />
 <meta property="og:description" content="Summary: Builder, is a medium-difficulty Linux machine, runs a Jenkins instance. The attacker finds a vulnerability (CVE-2024-23897) in Jenkins, allowing unauthorized access to read files on the system." />
@@ -45,9 +45,9 @@
 <meta property="twitter:image" content="http://localhost:4000/assets/img/headers/builder.png" />
 <meta property="twitter:title" content="Hack The Box Builder Writeup" />
 <meta name="twitter:site" content="@kasyapgirijan" />
-<meta name="twitter:creator" content="@7h3h0und" />
+<meta name="twitter:creator" content="@kasyapgirijan" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"7h3h0und"},"dateModified":"2025-02-03T16:21:30+00:00","datePublished":"2024-03-15T17:30:00+00:00","description":"Summary: Builder, is a medium-difficulty Linux machine, runs a Jenkins instance. The attacker finds a vulnerability (CVE-2024-23897) in Jenkins, allowing unauthorized access to read files on the system.","headline":"Hack The Box Builder Writeup","image":{"lqip":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAADKUlEQVR4nJ2VyZLcVBBFz82noVRd1XZ3Gw8LItixIQL+/2sYFzZENe6aJL33MlmobIIFdBktFaHMmzfPTenu3bfB/3iSQQSsO/HiRpQSPJ1FcENjLZKwFKyGI7IgPCACd2eet3htiag0X9rYBDVgdzTaVOlbsTsID0i6obEOM4CGtjtilnFPgOMO4DTpROUOD64XsO7g5XpgO9zx1UPD3VY0tkYSESP7vXjcw2Hcs58mxpIhjJzXmDIoEMKjJzAsAW7PCwigMbgdGm6He+5fvuLNQ+HhJkG8RRIpfaCziscAtKDfqedCDRBACCEWCZd35hjXCAjom2C76tkOL9gOt7x7MfH17YDiG2QCy9j8xP6wIfcBfORUCqcZTIIQYP+c6sKD/UtfuCiNgCbB0DYka1j1mc36xNBNeOqo1tC1M6vuQNvMKESfEq3Bwl18bhoO7uAReIhS/DoGTJBMyJxhDet1y919wypVplzoq9M2BaWZMU+0SQsbDmAEIGmZ3BdHanHElRBGQHWQCm0yVLYMumEzFHLr2PyKD93MZiVMmcAJHBAegSKoWuoEiyPzlEmpeV6ABMVhKoUmH/m47/iZnjRVVuufyAXylPnx/czjYWTMeyzNTMWJACcIr/hlFX9jaETovwXERcBUxNN5IvTIbp85jcb7x0LqRC4iinEaM1MVp2kizDlPvjgeEOHUGkggLRdsvQm8jlc4AJQKx9npuonzbAx9h7WBDKSgRCZ75jhCDhinYM7CjIvhjkeQtFQMgtQIaboSQjMi9RQlqvf0/ZbbbY+xhCso7PYjbhNnL5xPIykVtAQeAlJazjcKiEr1AH9mBbDEyCRkiaeTM5eJHOLpnFE4EUFI7I+Zw+icZggZlrTcfy7wReDB5RwF7kJcGcMAwp1pzpzHifOU+eMpU0olPGiScM+LUwgpMERcyEciSZ8BNCVMI1wjQBLuzuOfH3n75jU/fP8dh+ORYbVit3vk9cuezZDI3vB+d+K3X3+hlkqT0vI9gWgWIV5wO/MpC5DQl/yO3X2ZOhaiPaAxcX8j2gZOU0AzsFmvSCyZ16c1LBUWS2Sf3fgL3a7ZRBi6aE4AAAAASUVORK5CYII=","url":"http://localhost:4000/assets/img/headers/builder.png","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/htb-builder-writeup/"},"url":"http://localhost:4000/posts/htb-builder-writeup/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Kasyap Girijan","url":"https://github.com/kasyapgirijan/"},"dateModified":"2025-02-03T16:21:30+00:00","datePublished":"2024-03-15T17:30:00+00:00","description":"Summary: Builder, is a medium-difficulty Linux machine, runs a Jenkins instance. The attacker finds a vulnerability (CVE-2024-23897) in Jenkins, allowing unauthorized access to read files on the system.","headline":"Hack The Box Builder Writeup","image":{"lqip":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAADKUlEQVR4nJ2VyZLcVBBFz82noVRd1XZ3Gw8LItixIQL+/2sYFzZENe6aJL33MlmobIIFdBktFaHMmzfPTenu3bfB/3iSQQSsO/HiRpQSPJ1FcENjLZKwFKyGI7IgPCACd2eet3htiag0X9rYBDVgdzTaVOlbsTsID0i6obEOM4CGtjtilnFPgOMO4DTpROUOD64XsO7g5XpgO9zx1UPD3VY0tkYSESP7vXjcw2Hcs58mxpIhjJzXmDIoEMKjJzAsAW7PCwigMbgdGm6He+5fvuLNQ+HhJkG8RRIpfaCziscAtKDfqedCDRBACCEWCZd35hjXCAjom2C76tkOL9gOt7x7MfH17YDiG2QCy9j8xP6wIfcBfORUCqcZTIIQYP+c6sKD/UtfuCiNgCbB0DYka1j1mc36xNBNeOqo1tC1M6vuQNvMKESfEq3Bwl18bhoO7uAReIhS/DoGTJBMyJxhDet1y919wypVplzoq9M2BaWZMU+0SQsbDmAEIGmZ3BdHanHElRBGQHWQCm0yVLYMumEzFHLr2PyKD93MZiVMmcAJHBAegSKoWuoEiyPzlEmpeV6ABMVhKoUmH/m47/iZnjRVVuufyAXylPnx/czjYWTMeyzNTMWJACcIr/hlFX9jaETovwXERcBUxNN5IvTIbp85jcb7x0LqRC4iinEaM1MVp2kizDlPvjgeEOHUGkggLRdsvQm8jlc4AJQKx9npuonzbAx9h7WBDKSgRCZ75jhCDhinYM7CjIvhjkeQtFQMgtQIaboSQjMi9RQlqvf0/ZbbbY+xhCso7PYjbhNnL5xPIykVtAQeAlJazjcKiEr1AH9mBbDEyCRkiaeTM5eJHOLpnFE4EUFI7I+Zw+icZggZlrTcfy7wReDB5RwF7kJcGcMAwp1pzpzHifOU+eMpU0olPGiScM+LUwgpMERcyEciSZ8BNCVMI1wjQBLuzuOfH3n75jU/fP8dh+ORYbVit3vk9cuezZDI3vB+d+K3X3+hlkqT0vI9gWgWIV5wO/MpC5DQl/yO3X2ZOhaiPaAxcX8j2gZOU0AzsFmvSCyZ16c1LBUWS2Sf3fgL3a7ZRBi6aE4AAAAASUVORK5CYII=","url":"http://localhost:4000/assets/img/headers/builder.png","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/htb-builder-writeup/"},"url":"http://localhost:4000/posts/htb-builder-writeup/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -393,17 +393,22 @@
 
       
         <a
-          href="javascript:location.href = 'mailto:' + ['karthakasyap18','gmail.com'].join('@')"
-          aria-label="email"
+          href="https://www.linkedin.com/in/kasyapgirijan"
+          aria-label="linkedin"
+          
+
+          
+            target="_blank"
+            
           
 
           
 
           
-
+            rel="noopener noreferrer"
           
         >
-          <i class="fas fa-envelope"></i>
+          <i class="fab fa-linkedin-in"></i>
         </a>
       
     
@@ -1295,7 +1300,7 @@
           <em>
             
               
-                
+                <a href="https://github.com/kasyapgirijan/">Kasyap Girijan</a>
                 
               
             
