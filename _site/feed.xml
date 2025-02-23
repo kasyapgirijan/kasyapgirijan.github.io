@@ -1,17 +1,17 @@
 
 
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <id>https://introvertedbytes.com/</id>
+  <id>http://localhost:4000/</id>
   <title>INTROVERTED BYTES</title>
   <subtitle>A place for me to share my notes and any technical writing.</subtitle>
-  <updated>2025-02-03T21:54:51+05:30</updated>
+  <updated>2025-02-23T14:04:19+00:00</updated>
   <author>
     <name>Kasyap Girijan</name>
-    <uri>https://introvertedbytes.com/</uri>
+    <uri>http://localhost:4000/</uri>
   </author>
-  <link rel="self" type="application/atom+xml" href="https://introvertedbytes.com/feed.xml"/>
+  <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml"/>
   <link rel="alternate" type="text/html" hreflang="en"
-    href="https://introvertedbytes.com/"/>
+    href="http://localhost:4000/"/>
   <generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator>
   <rights> © 2025 Kasyap Girijan </rights>
   <icon>/assets/img/favicons/favicon.ico</icon>
@@ -21,13 +21,13 @@
   
   <entry>
     <title>Hack The Box | BoardLight Writeup</title>
-    <link href="https://introvertedbytes.com/posts/htb-BoardLight-writeup/" rel="alternate" type="text/html" title="Hack The Box | BoardLight Writeup" />
-    <published>2024-09-27T23:00:00+05:30</published>
+    <link href="http://localhost:4000/posts/htb-BoardLight-writeup/" rel="alternate" type="text/html" title="Hack The Box | BoardLight Writeup" />
+    <published>2024-09-27T17:30:00+00:00</published>
   
-    <updated>2025-02-03T21:51:30+05:30</updated>
+    <updated>2025-02-03T16:21:30+00:00</updated>
   
-    <id>https://introvertedbytes.com/posts/htb-BoardLight-writeup/</id>
-    <content type="text/html" src="https://introvertedbytes.com/posts/htb-BoardLight-writeup/" />
+    <id>http://localhost:4000/posts/htb-BoardLight-writeup/</id>
+    <content type="text/html" src="http://localhost:4000/posts/htb-BoardLight-writeup/" />
     <author>
       <name>7h3h0und</name>
     </author>
@@ -52,13 +52,13 @@ Upon obtaining a reverse shell, I explored the system and found SS...</summary>
   
   <entry>
     <title>Exploring TLS: Securing TCP Communication</title>
-    <link href="https://introvertedbytes.com/posts/exploring_tls_securing_tcp_communication/" rel="alternate" type="text/html" title="Exploring TLS: Securing TCP Communication" />
-    <published>2024-09-21T23:00:00+05:30</published>
+    <link href="http://localhost:4000/posts/exploring_tls_securing_tcp_communication/" rel="alternate" type="text/html" title="Exploring TLS: Securing TCP Communication" />
+    <published>2024-09-21T17:30:00+00:00</published>
   
-    <updated>2025-02-03T21:51:30+05:30</updated>
+    <updated>2025-02-03T16:21:30+00:00</updated>
   
-    <id>https://introvertedbytes.com/posts/exploring_tls_securing_tcp_communication/</id>
-    <content type="text/html" src="https://introvertedbytes.com/posts/exploring_tls_securing_tcp_communication/" />
+    <id>http://localhost:4000/posts/exploring_tls_securing_tcp_communication/</id>
+    <content type="text/html" src="http://localhost:4000/posts/exploring_tls_securing_tcp_communication/" />
     <author>
       <name>7h3h0und</name>
     </author>
@@ -84,13 +84,13 @@ If you’ve ever made a purchase online using your credit or debit card, the com
   
   <entry>
     <title>Hack The Box | Devvortex Writeup</title>
-    <link href="https://introvertedbytes.com/posts/htb-devvortex-writeup/" rel="alternate" type="text/html" title="Hack The Box | Devvortex Writeup" />
-    <published>2024-04-27T21:00:00+05:30</published>
+    <link href="http://localhost:4000/posts/htb-devvortex-writeup/" rel="alternate" type="text/html" title="Hack The Box | Devvortex Writeup" />
+    <published>2024-04-27T15:30:00+00:00</published>
   
-    <updated>2025-02-03T21:51:30+05:30</updated>
+    <updated>2025-02-03T16:21:30+00:00</updated>
   
-    <id>https://introvertedbytes.com/posts/htb-devvortex-writeup/</id>
-    <content type="text/html" src="https://introvertedbytes.com/posts/htb-devvortex-writeup/" />
+    <id>http://localhost:4000/posts/htb-devvortex-writeup/</id>
+    <content type="text/html" src="http://localhost:4000/posts/htb-devvortex-writeup/" />
     <author>
       <name>7h3h0und</name>
     </author>
@@ -113,13 +113,13 @@ Devvortex, a beginner-friendly Linux machine, is vulnerable thanks to its Joomla
   
   <entry>
     <title>Hack The Box | Codify Writeup</title>
-    <link href="https://introvertedbytes.com/posts/htb-codify-writeup/" rel="alternate" type="text/html" title="Hack The Box | Codify Writeup" />
-    <published>2024-04-06T23:00:00+05:30</published>
+    <link href="http://localhost:4000/posts/htb-codify-writeup/" rel="alternate" type="text/html" title="Hack The Box | Codify Writeup" />
+    <published>2024-04-06T17:30:00+00:00</published>
   
-    <updated>2025-02-03T21:51:30+05:30</updated>
+    <updated>2025-02-03T16:21:30+00:00</updated>
   
-    <id>https://introvertedbytes.com/posts/htb-codify-writeup/</id>
-    <content type="text/html" src="https://introvertedbytes.com/posts/htb-codify-writeup/" />
+    <id>http://localhost:4000/posts/htb-codify-writeup/</id>
+    <content type="text/html" src="http://localhost:4000/posts/htb-codify-writeup/" />
     <author>
       <name>7h3h0und</name>
     </author>
@@ -144,13 +144,13 @@ However, the application has a weakness in its vm2 library, allowing attackers t
   
   <entry>
     <title>Demystifying Nmap Scans: A Deep Dive into Network Exploration</title>
-    <link href="https://introvertedbytes.com/posts/Demystifying_Nmap_Scans/" rel="alternate" type="text/html" title="Demystifying Nmap Scans: A Deep Dive into Network Exploration" />
-    <published>2024-03-31T23:00:00+05:30</published>
+    <link href="http://localhost:4000/posts/Demystifying_Nmap_Scans/" rel="alternate" type="text/html" title="Demystifying Nmap Scans: A Deep Dive into Network Exploration" />
+    <published>2024-03-31T17:30:00+00:00</published>
   
-    <updated>2025-02-03T21:51:30+05:30</updated>
+    <updated>2025-02-03T16:21:30+00:00</updated>
   
-    <id>https://introvertedbytes.com/posts/Demystifying_Nmap_Scans/</id>
-    <content type="text/html" src="https://introvertedbytes.com/posts/Demystifying_Nmap_Scans/" />
+    <id>http://localhost:4000/posts/Demystifying_Nmap_Scans/</id>
+    <content type="text/html" src="http://localhost:4000/posts/Demystifying_Nmap_Scans/" />
     <author>
       <name>7h3h0und</name>
     </author>

@@ -31,23 +31,23 @@
   <!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
 <meta property="og:title" content="Hack The Box Broker Writeup" />
-<meta name="author" content="Kasyap Girijan" />
+<meta name="author" content="7h3h0und" />
 <meta property="og:locale" content="en" />
 <meta name="description" content="The Machine IP address (victim): 10.129.27.9" />
 <meta property="og:description" content="The Machine IP address (victim): 10.129.27.9" />
-<link rel="canonical" href="https://introvertedbytes.com/posts/htb-broker-writeup/" />
-<meta property="og:url" content="https://introvertedbytes.com/posts/htb-broker-writeup/" />
+<link rel="canonical" href="http://localhost:4000/posts/htb-broker-writeup/" />
+<meta property="og:url" content="http://localhost:4000/posts/htb-broker-writeup/" />
 <meta property="og:site_name" content="INTROVERTED BYTES" />
-<meta property="og:image" content="https://introvertedbytes.com/assets/img/headers/broker.png" />
+<meta property="og:image" content="http://localhost:4000/assets/img/headers/broker.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2024-02-02T23:00:00+05:30" />
+<meta property="article:published_time" content="2024-02-02T17:30:00+00:00" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="https://introvertedbytes.com/assets/img/headers/broker.png" />
+<meta property="twitter:image" content="http://localhost:4000/assets/img/headers/broker.png" />
 <meta property="twitter:title" content="Hack The Box Broker Writeup" />
 <meta name="twitter:site" content="@kasyapgirijan" />
-<meta name="twitter:creator" content="@kasyapgirijan" />
+<meta name="twitter:creator" content="@7h3h0und" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Kasyap Girijan","url":"https://github.com/kasyapgirijan/"},"dateModified":"2025-02-03T21:51:30+05:30","datePublished":"2024-02-02T23:00:00+05:30","description":"The Machine IP address (victim): 10.129.27.9","headline":"Hack The Box Broker Writeup","image":{"lqip":"data:image/png;base64,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","url":"https://introvertedbytes.com/assets/img/headers/broker.png","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://introvertedbytes.com/posts/htb-broker-writeup/"},"url":"https://introvertedbytes.com/posts/htb-broker-writeup/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"7h3h0und"},"dateModified":"2025-02-03T16:21:30+00:00","datePublished":"2024-02-02T17:30:00+00:00","description":"The Machine IP address (victim): 10.129.27.9","headline":"Hack The Box Broker Writeup","image":{"lqip":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAKMWlDQ1BJQ0MgUHJvZmlsZQAAeJydlndUU9kWh8+9N71QkhCKlNBraFICSA29SJEuKjEJEErAkAAiNkRUcERRkaYIMijggKNDkbEiioUBUbHrBBlE1HFwFBuWSWStGd+8ee/Nm98f935rn73P3Wfvfda6AJD8gwXCTFgJgAyhWBTh58WIjYtnYAcBDPAAA2wA4HCzs0IW+EYCmQJ82IxsmRP4F726DiD5+yrTP4zBAP+flLlZIjEAUJiM5/L42VwZF8k4PVecJbdPyZi2NE3OMErOIlmCMlaTc/IsW3z2mWUPOfMyhDwZy3PO4mXw5Nwn4405Er6MkWAZF+cI+LkyviZjg3RJhkDGb+SxGXxONgAoktwu5nNTZGwtY5IoMoIt43kA4EjJX/DSL1jMzxPLD8XOzFouEiSniBkmXFOGjZMTi+HPz03ni8XMMA43jSPiMdiZGVkc4XIAZs/8WRR5bRmyIjvYODk4MG0tbb4o1H9d/JuS93aWXoR/7hlEH/jD9ld+mQ0AsKZltdn6h21pFQBd6wFQu/2HzWAvAIqyvnUOfXEeunxeUsTiLGcrq9zcXEsBn2spL+jv+p8Of0NffM9Svt3v5WF485M4knQxQ143bmZ6pkTEyM7icPkM5p+H+B8H/nUeFhH8JL6IL5RFRMumTCBMlrVbyBOIBZlChkD4n5r4D8P+pNm5lona+BHQllgCpSEaQH4eACgqESAJe2Qr0O99C8ZHA/nNi9GZmJ37z4L+fVe4TP7IFiR/jmNHRDK4ElHO7Jr8WgI0IABFQAPqQBvoAxPABLbAEbgAD+ADAkEoiARxYDHgghSQAUQgFxSAtaAYlIKtYCeoBnWgETSDNnAYdIFj4DQ4By6By2AE3AFSMA6egCnwCsxAEISFyBAVUod0IEPIHLKFWJAb5AMFQxFQHJQIJUNCSAIVQOugUqgcqobqoWboW+godBq6AA1Dt6BRaBL6FXoHIzAJpsFasBFsBbNgTzgIjoQXwcnwMjgfLoK3wJVwA3wQ7oRPw5fgEVgKP4GnEYAQETqiizARFsJGQpF4JAkRIauQEqQCaUDakB6kH7mKSJGnyFsUBkVFMVBMlAvKHxWF4qKWoVahNqOqUQdQnag+1FXUKGoK9RFNRmuizdHO6AB0LDoZnYsuRlegm9Ad6LPoEfQ4+hUGg6FjjDGOGH9MHCYVswKzGbMb0445hRnGjGGmsVisOtYc64oNxXKwYmwxtgp7EHsSewU7jn2DI+J0cLY4X1w8TogrxFXgWnAncFdwE7gZvBLeEO+MD8Xz8MvxZfhGfA9+CD+OnyEoE4wJroRIQiphLaGS0EY4S7hLeEEkEvWITsRwooC4hlhJPEQ8TxwlviVRSGYkNimBJCFtIe0nnSLdIr0gk8lGZA9yPFlM3kJuJp8h3ye/UaAqWCoEKPAUVivUKHQqXFF4pohXNFT0VFysmK9YoXhEcUjxqRJeyUiJrcRRWqVUo3RU6YbStDJV2UY5VDlDebNyi/IF5UcULMWI4kPhUYoo+yhnKGNUhKpPZVO51HXURupZ6jgNQzOmBdBSaaW0b2iDtCkVioqdSrRKnkqNynEVKR2hG9ED6On0Mvph+nX6O1UtVU9Vvuom1TbVK6qv1eaoeajx1UrU2tVG1N6pM9R91NPUt6l3qd/TQGmYaYRr5Grs0Tir8XQObY7LHO6ckjmH59zWhDXNNCM0V2ju0xzQnNbS1vLTytKq0jqj9VSbru2hnaq9Q/uE9qQOVcdNR6CzQ+ekzmOGCsOTkc6oZPQxpnQ1df11Jbr1uoO6M3rGelF6hXrtevf0Cfos/ST9Hfq9+lMGOgYhBgUGrQa3DfGGLMMUw12G/YavjYyNYow2GHUZPTJWMw4wzjduNb5rQjZxN1lm0mByzRRjyjJNM91tetkMNrM3SzGrMRsyh80dzAXmu82HLdAWThZCiwaLG0wS05OZw2xljlrSLYMtCy27LJ9ZGVjFW22z6rf6aG1vnW7daH3HhmITaFNo02Pzq62ZLde2xvbaXPJc37mr53bPfW5nbse322N3055qH2K/wb7X/oODo4PIoc1h0tHAMdGx1vEGi8YKY21mnXdCO3k5rXY65vTW2cFZ7HzY+RcXpkuaS4vLo3nG8/jzGueNueq5clzrXaVuDLdEt71uUnddd457g/sDD30PnkeTx4SnqWeq50HPZ17WXiKvDq/XbGf2SvYpb8Tbz7vEe9CH4hPlU+1z31fPN9m31XfKz95vhd8pf7R/kP82/xsBWgHcgOaAqUDHwJWBfUGkoAVB1UEPgs2CRcE9IXBIYMj2kLvzDecL53eFgtCA0O2h98KMw5aFfR+OCQ8Lrwl/GGETURDRv4C6YMmClgWvIr0iyyLvRJlESaJ6oxWjE6Kbo1/HeMeUx0hjrWJXxl6K04gTxHXHY+Oj45vipxf6LNy5cDzBPqE44foi40V5iy4s1licvvj4EsUlnCVHEtGJMYktie85oZwGzvTSgKW1S6e4bO4u7hOeB28Hb5Lvyi/nTyS5JpUnPUp2Td6ePJninlKR8lTAFlQLnqf6p9alvk4LTduf9ik9Jr09A5eRmHFUSBGmCfsytTPzMoezzLOKs6TLnJftXDYlChI1ZUPZi7K7xTTZz9SAxESyXjKa45ZTk/MmNzr3SJ5ynjBvYLnZ8k3LJ/J9879egVrBXdFboFuwtmB0pefK+lXQqqWrelfrry5aPb7Gb82BtYS1aWt/KLQuLC98uS5mXU+RVtGaorH1futbixWKRcU3NrhsqNuI2ijYOLhp7qaqTR9LeCUXS61LK0rfb+ZuvviVzVeVX33akrRlsMyhbM9WzFbh1uvb3LcdKFcuzy8f2x6yvXMHY0fJjpc7l+y8UGFXUbeLsEuyS1oZXNldZVC1tep9dUr1SI1XTXutZu2m2te7ebuv7PHY01anVVda926vYO/Ner/6zgajhop9mH05+x42Rjf2f836urlJo6m06cN+4X7pgYgDfc2Ozc0tmi1lrXCrpHXyYMLBy994f9Pdxmyrb6e3lx4ChySHHn+b+O31w0GHe4+wjrR9Z/hdbQe1o6QT6lzeOdWV0iXtjusePhp4tLfHpafje8vv9x/TPVZzXOV42QnCiaITn07mn5w+lXXq6enk02O9S3rvnIk9c60vvG/wbNDZ8+d8z53p9+w/ed71/LELzheOXmRd7LrkcKlzwH6g4wf7HzoGHQY7hxyHui87Xe4Znjd84or7ldNXva+euxZw7dLI/JHh61HXb95IuCG9ybv56Fb6ree3c27P3FlzF3235J7SvYr7mvcbfjT9sV3qID0+6j068GDBgztj3LEnP2X/9H686CH5YcWEzkTzI9tHxyZ9Jy8/Xvh4/EnWk5mnxT8r/1z7zOTZd794/DIwFTs1/lz0/NOvm1+ov9j/0u5l73TY9P1XGa9mXpe8UX9z4C3rbf+7mHcTM7nvse8rP5h+6PkY9PHup4xPn34D94Tz+6TMXDkAAAMbSURBVHicnZU7r+REEIW/Kj9mru25j2WRgOURkvALCBD/P9qAjASxgNCugLkz47HdjyoC953LJstAB1Zb6u46darOKXn49GvnPy5RwCFFqBtheBBEYTkJcQFXWQ+pgCoIlM960UHcwZz6/wSfR0cr4fYj5WZQppMxH52qVvphiwPJnORORjC53EYKANwBuw6ACGwH5e6upxt2bPod29uedtOSkzGHhXCeSNNInCbmKbFMQgv4GrLk/hx8NgOVfwfgvtK82VbshoG7+weG+4GHFx0v7+5R4HE68sdfE6d9x+lxz0GOeDZSkktgLwzgjiO82LQAVzDgUDXQNMpuGHi437H7WLh/GXn1yQZxx94tBDOIHcTIEkZSFGR0EMfccfcLEOe5Iz4MoJyqaqFplWHo6PuOfidsuztutt8gDtttpNvt8VmxGNifhKpe0Yv42nBSiiGXhsD9iib0UkBRwcxISyTNThgD42PGHcZTIIUI1lKpIkJpNsPcsLJfiyFrZmZwDQARcHNycuZpJnQzRKfXI7ftr7jDox5IFogoOSdScswK5V6Cu6EYGQWRCxsfBlCKlROkaBxPI6oV61ML2X/EHd6++5PjHpZx4XgeSdHIqTzga9XFDSEjgKOIGE51HQMpOsuSOByPmDkp93juOO8nVJUpNIyHhWk+MYeZnCHHwp4XKYriLphoAVHhXGlEloUclKVaCCGwf9zz2+8VbtA2DVUjuDluBqKERcjJLwQ8SfDZcgURAb9Chu5OXVdsmo6bTUN/27LbtfT9hmmeEBEqrUjJOR4WptGwmEgpYp6L7p/Et8IQUVzX/6sYUFXqqmYaE2ExPCubtielGlXFsjCfI+djJgbDzTDLmDlIUXNJ30VWTyi9cfUsyGZM80yKiWUOhNkZx3E1qlpXieZMJYoZ5GyY2Ur1+5wCMC/LKtlrpqGIEELg81ef8f133/Lzm184nye++vILpnCgv23BKt789JbXr38gZ0O1ejad98yngPDiCNeOYxEhpcQ0zWilqCo5GwJ0t0rdQE6KB8V9nXtr9k81+Mc4Lkjcnb8BAoz641uDSgcAAAAASUVORK5CYII=","url":"http://localhost:4000/assets/img/headers/broker.png","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/htb-broker-writeup/"},"url":"http://localhost:4000/posts/htb-broker-writeup/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -100,7 +100,7 @@
 
   <!-- Bootstrap -->
   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
   
 
   <!-- Theme style -->
@@ -110,12 +110,12 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Source+Sans+Pro:wght@400;600;700;900&display=swap">
 
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.1/css/all.min.css">
 
   <!-- 3rd-party Dependencies -->
 
   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.29.0/dist/tocbot.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.32.2/dist/tocbot.min.css">
   
 
   
@@ -127,114 +127,136 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css">
   
 
-  <!-- JavaScript -->
+  <!-- Scripts -->
+
+  <script src="/assets/js/dist/theme.min.js"></script>
+
+  <!-- JS selector for site. -->
+
+<!-- commons -->
+
+
+
+<!-- layout specified -->
+
 
   
-    <!-- Switch the mode between dark and light. -->
 
-<script type="text/javascript">
-  class ModeToggle {
-    static get MODE_KEY() {
-      return 'mode';
-    }
-    static get MODE_ATTR() {
-      return 'data-mode';
-    }
-    static get DARK_MODE() {
-      return 'dark';
-    }
-    static get LIGHT_MODE() {
-      return 'light';
-    }
-    static get ID() {
-      return 'mode-toggle';
-    }
+  
+    <!-- image lazy-loading & popup & clipboard -->
+    
+  
 
-    constructor() {
-      let self = this;this.sysDarkPrefers.addEventListener('change', () => {
-        if (self.hasMode) {
-          self.clearMode();
-        }
-        self.notify();
-      });
 
-      if (!this.hasMode) {
-        return;
-      }
 
-      if (this.isDarkMode) {
-        this.setDark();
-      } else {
-        this.setLight();
-      }
-    }
 
-    get sysDarkPrefers() {
-      return window.matchMedia('(prefers-color-scheme: dark)');
-    }
 
-    get isPreferDark() {
-      return this.sysDarkPrefers.matches;
-    }
 
-    get isDarkMode() {
-      return this.mode === ModeToggle.DARK_MODE;
-    }
 
-    get hasMode() {
-      return this.mode != null;
-    }
 
-    get mode() {
-      return sessionStorage.getItem(ModeToggle.MODE_KEY);
-    }get modeStatus() {
-      if (this.hasMode) {
-        return this.mode;
-      } else {
-        return this.isPreferDark ? ModeToggle.DARK_MODE : ModeToggle.LIGHT_MODE;
-      }
-    }
 
-    setDark() {
-      document.documentElement.setAttribute(ModeToggle.MODE_ATTR, ModeToggle.DARK_MODE);
-      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
-    }
 
-    setLight() {
-      document.documentElement.setAttribute(ModeToggle.MODE_ATTR, ModeToggle.LIGHT_MODE);
-      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
-    }
 
-    clearMode() {
-      document.documentElement.removeAttribute(ModeToggle.MODE_ATTR);
-      sessionStorage.removeItem(ModeToggle.MODE_KEY);
-    }notify() {
-      window.postMessage(
-        {
-          direction: ModeToggle.ID,
-          message: this.modeStatus
-        },
-        '*'
-      );
-    }
 
-    flipMode() {
-      if (this.hasMode) {
-        this.clearMode();
-      } else {
-        if (this.isPreferDark) {
-          this.setLight();
-        } else {
-          this.setDark();
-        }
-      }
 
-      this.notify();
-    }
-  }
 
-  const modeToggle = new ModeToggle();
-</script>
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/combine/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.umd.min.js,npm/glightbox@3.3.0/dist/js/glightbox.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js,npm/dayjs@1.11.13/dayjs.min.js,npm/dayjs@1.11.13/locale/en.js,npm/dayjs@1.11.13/plugin/relativeTime.js,npm/dayjs@1.11.13/plugin/localizedFormat.js,npm/tocbot@4.32.2/dist/tocbot.min.js,npm/mermaid@11.4.0/dist/mermaid.min.js"></script>
+
+
+
+
+
+
+
+<script defer src="/assets/js/dist/post.min.js"></script>
+
+
+  <!-- MathJax -->
+  <script async src="/assets/js/data/mathjax.js"></script>
+  <script async src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+
+
+<!-- Pageviews -->
+
+  
+
+  
+
+
 
   
 
@@ -250,9 +272,7 @@
   <header class="profile-wrapper">
     <a href="/" id="avatar" class="rounded-circle"><img src="/assets/img/avatar.jpg" width="112" height="112" alt="avatar" onerror="this.style.display='none'"></a>
 
-    <h1 class="site-title">
-      <a href="/">INTROVERTED BYTES</a>
-    </h1>
+    <a class="site-title d-block" href="/">INTROVERTED BYTES</a>
     <p class="site-subtitle fst-italic mb-0">Cyber Security Enthusiast | Pentester | CTF Player</p>
   </header>
   <!-- .profile-wrapper -->
@@ -373,22 +393,17 @@
 
       
         <a
-          href="https://www.linkedin.com/in/kasyapgirijan"
-          aria-label="linkedin"
-          
-
-          
-            target="_blank"
-            
+          href="javascript:location.href = 'mailto:' + ['karthakasyap18','gmail.com'].join('@')"
+          aria-label="email"
           
 
           
 
           
-            rel="noopener noreferrer"
+
           
         >
-          <i class="fab fa-linkedin-in"></i>
+          <i class="fas fa-envelope"></i>
         </a>
       
     
@@ -1219,9 +1234,16 @@
 
 
 
-<article class="px-1">
+
+
+
+
+
+
+<article class="px-1" data-toc="true">
   <header>
     <h1 data-toc-skip>Hack The Box | Broker Writeup</h1>
+    
 
     <div class="post-meta text-muted">
       <!-- published date -->
@@ -1295,15 +1317,19 @@
           <em>
             
               
-                <a href="https://github.com/kasyapgirijan/">Kasyap Girijan</a>
+                
                 
               
             
           </em>
         </span>
 
-        <!-- read time -->
-        <!-- Calculate the post's reading time, and display the word count in tooltip -->
+        <div>
+          <!-- pageviews -->
+          
+
+          <!-- read time -->
+          <!-- Calculate the post's reading time, and display the word count in tooltip -->
 
 
 
@@ -1327,11 +1353,34 @@
 >
   <em>4 min</em> read</span>
 
+        </div>
       </div>
-      <!-- .d-flex -->
     </div>
-    <!-- .post-meta -->
   </header>
+
+  
+    <div id="toc-bar" class="d-flex align-items-center justify-content-between invisible">
+      <span class="label text-truncate">Hack The Box | Broker Writeup</span>
+      <button type="button" class="toc-trigger btn me-1">
+        <i class="fa-solid fa-list-ul fa-fw"></i>
+      </button>
+    </div>
+
+    <button id="toc-solo-trigger" type="button" class="toc-trigger btn btn-outline-secondary btn-sm">
+      <span class="label ps-2 pe-1">Contents</span>
+      <i class="fa-solid fa-angle-right fa-fw"></i>
+    </button>
+
+    <dialog id="toc-popup" class="p-0">
+      <div class="header d-flex flex-row align-items-center justify-content-between">
+        <div class="label text-truncate py-2 ms-4">Hack The Box | Broker Writeup</div>
+        <button id="toc-popup-close" type="button" class="btn mx-1 my-1 opacity-75">
+          <i class="fas fa-close"></i>
+        </button>
+      </div>
+      <div id="toc-popup-content" class="px-4 py-3 pb-4"></div>
+    </dialog>
+  
 
   <div class="content">
     <p>The Machine IP address (victim): 10.129.27.9</p>
@@ -1659,21 +1708,21 @@ http <span class="o">{</span>
 
       
 
-      <a href="https://twitter.com/intent/tweet?text=Hack%20The%20Box%20%7C%20Broker%20Writeup%20-%20INTROVERTED%20BYTES&url=https%3A%2F%2Fintrovertedbytes.com%2Fposts%2Fhtb-broker-writeup%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter">
+      <a href="https://twitter.com/intent/tweet?text=Hack%20The%20Box%20%7C%20Broker%20Writeup%20-%20INTROVERTED%20BYTES&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fhtb-broker-writeup%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter">
         <i class="fa-fw fa-brands fa-square-x-twitter"></i>
       </a>
     
 
       
 
-      <a href="https://www.facebook.com/sharer/sharer.php?title=Hack%20The%20Box%20%7C%20Broker%20Writeup%20-%20INTROVERTED%20BYTES&u=https%3A%2F%2Fintrovertedbytes.com%2Fposts%2Fhtb-broker-writeup%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook">
+      <a href="https://www.facebook.com/sharer/sharer.php?title=Hack%20The%20Box%20%7C%20Broker%20Writeup%20-%20INTROVERTED%20BYTES&u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fhtb-broker-writeup%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook">
         <i class="fa-fw fab fa-facebook-square"></i>
       </a>
     
 
       
 
-      <a href="https://t.me/share/url?url=https%3A%2F%2Fintrovertedbytes.com%2Fposts%2Fhtb-broker-writeup%2F&text=Hack%20The%20Box%20%7C%20Broker%20Writeup%20-%20INTROVERTED%20BYTES" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram" aria-label="Telegram">
+      <a href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fhtb-broker-writeup%2F&text=Hack%20The%20Box%20%7C%20Broker%20Writeup%20-%20INTROVERTED%20BYTES" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram" aria-label="Telegram">
         <i class="fa-fw fab fa-telegram"></i>
       </a>
     
@@ -1703,7 +1752,7 @@ http <span class="o">{</span>
           </main>
 
           <!-- panel -->
-          <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 mb-5 text-muted">
+          <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 text-muted">
             <div class="access">
               <!-- Get 5 last posted/updated posts -->
 
@@ -2366,8 +2415,12 @@ http <span class="o">{</span>
 
 
 
-  <section id="toc-wrapper" class="d-none ps-0 pe-4">
-    <h2 class="panel-heading ps-3 mb-2">Contents</h2>
+
+
+
+  <div class="toc-border-cover z-3"></div>
+  <section id="toc-wrapper" class="invisible position-sticky ps-0 pe-4 pb-4">
+    <h2 class="panel-heading ps-3 pb-2 mb-0">Contents</h2>
     <nav id="toc"></nav>
   </section>
 
@@ -2694,81 +2747,6 @@ The attack starts by exploiti...</p>
     </a>
   
 </nav>
-
-            
-              
-              <!-- The comments switcher -->
-
-  
-  <!-- https://giscus.app/ -->
-<script type="text/javascript">
-  (function () {
-    const origin = 'https://giscus.app';
-    const lightTheme = 'light';
-    const darkTheme = 'dark_dimmed';
-
-    let initTheme = lightTheme;
-    const html = document.documentElement;
-
-    if (
-      (html.hasAttribute('data-mode') &&
-        html.getAttribute('data-mode') === 'dark') ||
-      (!html.hasAttribute('data-mode') &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      initTheme = darkTheme;
-    }
-
-    let lang = 'en';if (lang.length > 2 && !lang.startsWith('zh')) {
-      lang = lang.slice(0, 2);
-    }
-
-    let giscusAttributes = {
-      src: 'https://giscus.app/client.js',
-      'data-repo': 'kasyapgirijan/kasyapgirijan.github.io',
-      'data-repo-id': 'R_kgDOK7HYAg',
-      'data-category': 'General',
-      'data-category-id': 'DIC_kwDOK7HYAs4Cb14C',
-      'data-mapping': 'pathname',
-      'data-strict' : '0',
-      'data-reactions-enabled': '1',
-      'data-emit-metadata': '0',
-      'data-theme': initTheme,
-      'data-input-position': 'bottom',
-      'data-lang': lang,
-      'data-loading': 'lazy',
-      crossorigin: 'anonymous',
-      async: ''
-    };
-
-    let giscusScript = document.createElement('script');
-    Object.entries(giscusAttributes).forEach(([key, value]) =>
-      giscusScript.setAttribute(key, value)
-    );
-    document.getElementById('tail-wrapper').appendChild(giscusScript);
-
-    addEventListener('message', (event) => {
-      if (
-        event.source === window &&
-        event.data &&
-        event.data.direction === ModeToggle.ID
-      ) {const mode = event.data.message;
-        const theme = mode === ModeToggle.DARK_MODE ? darkTheme : lightTheme;
-
-        const message = {
-          setConfig: {
-            theme: theme
-          }
-        };
-
-        const giscus = document.getElementsByClassName('giscus-frame')[0].contentWindow;
-        giscus.postMessage({ giscus: message }, origin);
-      }
-    });
-  })();
-</script>
-
-
 
             
 
@@ -3424,7 +3402,7 @@ The attack starts by exploiti...</p>
       </aside>
     </div>
 
-    <div id="mask"></div>
+    <div id="mask" class="d-none position-fixed w-100 h-100 z-1"></div>
 
     
       <aside
@@ -3454,190 +3432,70 @@ The attack starts by exploiti...</p>
 
     
 
-    <!-- JavaScripts -->
-    <!-- JS selector for site. -->
-
-<!-- commons -->
-
-
-
-<!-- layout specified -->
-
-
-  
-
-  
-    <!-- image lazy-loading & popup & clipboard -->
-    
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
+    <!-- Embedded scripts -->
 
     
+      
+      <!-- The comments switcher -->
 
   
-
-  
-    
-
-    
-
-  
-
-  
-    
-
-    
-
-  
-
-  
-    
-
-    
-
-  
-
-  
-    
-
-    
-
-  
-
-  
-    
-
-    
-
-  
-
-  
-    
-
-    
-
-  
-
-  
-    
-
-    
-
-  
-
-  
-    
-
-    
-
-  
-
-  
-    
-
-    
-
-  
-
-
-
-  <script src="https://cdn.jsdelivr.net/combine/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.umd.min.js,npm/glightbox@3.3.0/dist/js/glightbox.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js,npm/dayjs@1.11.13/dayjs.min.js,npm/dayjs@1.11.13/locale/en.js,npm/dayjs@1.11.13/plugin/relativeTime.js,npm/dayjs@1.11.13/plugin/localizedFormat.js,npm/tocbot@4.29.0/dist/tocbot.min.js,npm/mermaid@11.0.2/dist/mermaid.min.js"></script>
-
-
-
-
-
-
-
-<script src="/assets/js/dist/post.min.js"></script>
-
-
-  <!-- MathJax -->
-  <script src="/assets/js/data/mathjax.js"></script>
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
-
-
-<!-- Pageviews -->
-
-  
-
-  
-
-
-
-  <!-- mermaid-js loader -->
-<script type="text/javascript">
-  function updateMermaid(event) {
-    if (event.source === window && event.data && event.data.direction === ModeToggle.ID) {
-      const mode = event.data.message;
-
-      if (typeof mermaid === 'undefined') {
-        return;
-      }
-
-      let expectedTheme = mode === ModeToggle.DARK_MODE ? 'dark' : 'default';
-      let config = { theme: expectedTheme };const mermaidList = document.getElementsByClassName('mermaid');
-
-      [...mermaidList].forEach((elem) => {
-        const svgCode = elem.previousSibling.children.item(0).innerHTML;
-        elem.innerHTML = svgCode;
-        elem.removeAttribute('data-processed');
-      });
-
-      mermaid.initialize(config);
-      mermaid.init(undefined, '.mermaid');
-    }
-  }
-
+  <!-- https://giscus.app/ -->
+<script>
   (function () {
-    let initTheme = 'default';
-    const html = document.documentElement;
+    const themeMapper = Theme.getThemeMapper('light', 'dark_dimmed');
+    const initTheme = themeMapper[Theme.visualState];
 
-    if (
-      (html.hasAttribute('data-mode') && html.getAttribute('data-mode') === 'dark') ||
-      (!html.hasAttribute('data-mode') && window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      initTheme = 'dark';
+    let lang = 'en';if (lang.length > 2 && !lang.startsWith('zh')) {
+      lang = lang.slice(0, 2);
     }
 
-    let mermaidConf = {
-      theme: initTheme};const basicList = document.getElementsByClassName('language-mermaid');
-    [...basicList].forEach((elem) => {
-      const svgCode = elem.textContent;
-      const backup = elem.parentElement;
-      backup.classList.add('d-none');let mermaid = document.createElement('pre');
-      mermaid.classList.add('mermaid');
-      const text = document.createTextNode(svgCode);
-      mermaid.appendChild(text);
-      backup.after(mermaid);
-    });
+    let giscusAttributes = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'kasyapgirijan/kasyapgirijan.github.io',
+      'data-repo-id': 'R_kgDOK7HYAg',
+      'data-category': 'General',
+      'data-category-id': 'DIC_kwDOK7HYAs4Cb14C',
+      'data-mapping': 'pathname',
+      'data-strict' : '0',
+      'data-reactions-enabled': '1',
+      'data-emit-metadata': '0',
+      'data-theme': initTheme,
+      'data-input-position': 'bottom',
+      'data-lang': lang,
+      'data-loading': 'lazy',
+      crossorigin: 'anonymous',
+      async: ''
+    };
 
-    mermaid.initialize(mermaidConf);
-    window.addEventListener('message', updateMermaid);
+    let giscusNode = document.createElement('script');
+    Object.entries(giscusAttributes).forEach(([key, value]) =>
+      giscusNode.setAttribute(key, value)
+    );
+
+    const $footer = document.querySelector('footer');
+    $footer.insertAdjacentElement("beforebegin", giscusNode);
+
+    addEventListener('message', (event) => {
+      if (event.source === window && event.data && event.data.id === Theme.ID) {
+        const newTheme = themeMapper[Theme.visualState];
+
+        const message = {
+          setConfig: {
+            theme: newTheme
+          }
+        };
+
+        const giscus =
+          document.getElementsByClassName('giscus-frame')[0].contentWindow;
+        giscus.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+    });
   })();
 </script>
 
 
 
-
-
+    
 
     <!--
   Jekyll Simple Search loader
@@ -3648,29 +3506,33 @@ The attack starts by exploiti...</p>
 
 
 
-<script>SimpleJekyllSearch({
-    searchInput: document.getElementById('search-input'),
-    resultsContainer: document.getElementById('search-results'),
-    json: '/assets/js/data/search.json',
-    searchResultTemplate: '  <article class="px-1 px-sm-2 px-lg-4 px-xl-0">    <header>      <h2><a href="{url}">{title}</a></h2>      <div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1">        {categories}        {tags}      </div>    </header>    <p>{snippet}</p>  </article>',
-    noResultsText: '<p class="mt-5">Oops! No results found.</p>',
-    templateMiddleware: function(prop, value, template) {
-      if (prop === 'categories') {
-        if (value === '') {
-          return `${value}`;
-        } else {
-          return `<div class="me-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`;
+<script>
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('search-results'),
+      json: '/assets/js/data/search.json',
+      searchResultTemplate: '  <article class="px-1 px-sm-2 px-lg-4 px-xl-0">    <header>      <h2><a href="{url}">{title}</a></h2>      <div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1">        {categories}        {tags}      </div>    </header>    <p>{snippet}</p>  </article>',
+      noResultsText: '<p class="mt-5">Oops! No results found.</p>',
+      templateMiddleware: function(prop, value, template) {
+        if (prop === 'categories') {
+          if (value === '') {
+            return `${value}`;
+          } else {
+            return `<div class="me-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`;
+          }
         }
-      }
 
-      if (prop === 'tags') {
-        if (value === '') {
-          return `${value}`;
-        } else {
-          return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`;
+        if (prop === 'tags') {
+          if (value === '') {
+            return `${value}`;
+          } else {
+            return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`;
+          }
         }
       }
-    }
+    });
   });
 </script>
 

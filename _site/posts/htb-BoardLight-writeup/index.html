@@ -31,23 +31,23 @@
   <!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
 <meta property="og:title" content="Hack The Box BoardLight Writeup" />
-<meta name="author" content="Kasyap Girijan" />
+<meta name="author" content="7h3h0und" />
 <meta property="og:locale" content="en" />
 <meta name="description" content="Summary: In this challenge, I explored and exploited a subdomain hosting Dolibarr CRM. After conducting some research, I was able to gain access using default credentials. Through further enumeration, I identified a vulnerability within the version of Dolibarr that allowed remote code execution, granting me an initial foothold." />
 <meta property="og:description" content="Summary: In this challenge, I explored and exploited a subdomain hosting Dolibarr CRM. After conducting some research, I was able to gain access using default credentials. Through further enumeration, I identified a vulnerability within the version of Dolibarr that allowed remote code execution, granting me an initial foothold." />
-<link rel="canonical" href="https://introvertedbytes.com/posts/htb-BoardLight-writeup/" />
-<meta property="og:url" content="https://introvertedbytes.com/posts/htb-BoardLight-writeup/" />
+<link rel="canonical" href="http://localhost:4000/posts/htb-BoardLight-writeup/" />
+<meta property="og:url" content="http://localhost:4000/posts/htb-BoardLight-writeup/" />
 <meta property="og:site_name" content="INTROVERTED BYTES" />
-<meta property="og:image" content="https://introvertedbytes.com/assets/img/headers/boardlight.png" />
+<meta property="og:image" content="http://localhost:4000/assets/img/headers/boardlight.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2024-09-27T23:00:00+05:30" />
+<meta property="article:published_time" content="2024-09-27T17:30:00+00:00" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="https://introvertedbytes.com/assets/img/headers/boardlight.png" />
+<meta property="twitter:image" content="http://localhost:4000/assets/img/headers/boardlight.png" />
 <meta property="twitter:title" content="Hack The Box BoardLight Writeup" />
 <meta name="twitter:site" content="@kasyapgirijan" />
-<meta name="twitter:creator" content="@kasyapgirijan" />
+<meta name="twitter:creator" content="@7h3h0und" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Kasyap Girijan","url":"https://github.com/kasyapgirijan/"},"dateModified":"2025-02-03T21:51:30+05:30","datePublished":"2024-09-27T23:00:00+05:30","description":"Summary: In this challenge, I explored and exploited a subdomain hosting Dolibarr CRM. After conducting some research, I was able to gain access using default credentials. Through further enumeration, I identified a vulnerability within the version of Dolibarr that allowed remote code execution, granting me an initial foothold.","headline":"Hack The Box BoardLight Writeup","image":{"lqip":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAABg2lDQ1BJQ0MgUHJvZmlsZQAAeJx9kT1Iw0AcxV9TpSotDmYQdchQnexSRRxrFYpQIdQKrTqYj35Bk4YkxcVRcC04+LFYdXBx1tXBVRAEP0CcHZwUXaTE/yWFFjEeHPfj3b3H3TuAa1YVzepJAJpum5lUUsjlV4XQK/oxigh4xCXFMuZEMQ3f8XWPAFvvYizL/9yfI6IWLAUICMQJxTBt4g3imU3bYLxPzCtlSSU+J5406YLEj0yXPX5jXHKZY5m8mc3ME/PEQqmL5S5WyqZGPE0cVTWd8rmcxyrjLcZata6078leGC7oK8tMpzmGFBaxBBECZNRRQRU2YrTqpFjI0H7Sxz/i+kVyyeSqQCHHAmrQILl+sD/43a1VnIp7SeEk0PviOB/jQGgXaDUc5/vYcVonQPAZuNI7/loTmP0kvdHRokfA4DZwcd3R5D3gcgcYfjIkU3KlIE2uWATez+ib8sDQLTCw5vXW3sfpA5ClrtI3wMEhMFGi7HWfd/d19/bvmXZ/P8cMcsjGb8DqAAADIUlEQVR4nJ2Vz2/kRBCFv1fd7bEnJLtZhUNuSAhxRKAV//91L0hIcAWBFGARBCXD/LDdXbUHOwsXyEBfbKml7u+9elWt69tPg/+xLEE4pGwMV0DAaQ/VRUkiEAAVgUABTxflp78I8n+9WAJ32D84KYntVXD6c9mYmhiKeKFKBDTEIxkBEUEEILiyRoogxJkAAWUj+svEsElYNnIxth0IOLYFyrxxOAW7HdQxyAQlGgCOFk8iOLjYKCjy8wBk0A2GbQo5i6zEi2R8ICHBQWI3B26GFWc7OOMcyN/zYwFa6yDBrkLflecBIiAlkXuDrqPPcLPdcHuz4WJbQOI4Vn75beL+cGIP5FapKWh1uVTxpF4rjkiIpjMAYAlc7oR3hT43rraZ4SKzi44IcdEHl9vEfk5ghjXDklNX5SahCGItRUhkFifsHACAlAUmunAuqXRRmQ4z02Gm85krKhtvyIycRZIwIElkiSwjmWESxrIvzg0h4C0gghF4mCFPEM0JGadZ7FpiRBCBO4DW2C0N+aTUY60EQJwJ4A51CsiNKcHRDbfMh9cZmTiNwd6DUwOPRp2hOUuLaLE8iOWrpRStNVqdnweQFvV1dFKeOGXxdjcytsZgIIlDiIdTMNUGrdEmp9YFoEX8pZzAF+E0FpCzHIiA6ehs0sSYoXWNqsSQWBwIo7bApxmfnXp0vAW2Bq8F6zACjyWK7W9h/MeVktGVDplIydiWQhkECazLHBXvbSpZBAkDxtxgG0SdqNVxX+xndUOAm+jtX0ZxRJAs0XUFSeSc6cuWoStYcfoLw1lGbpBQGIdpJBRYnnA1CMdbZfYKtgTx6T24zNBFfaYEEu7BXCc4jdTW2O8TzRulGLU1QGz6DSkb8zjiLRjnhjfHwmksOYhYAVYXLtMzGZBErZXHxx1fvv6c1198xu/3f1C6wqvrl3z3/Q8Mfc9wkbj79Ueur254dX3L3d0dmyR++vktX339LbkfcNNq/HJuxrmvix967jmOCLpSsJSIcCSDCI6nE8MwIODlTU+o8vFHn/DmzTdM00zpCrU59tTz60wI1ijEMlfeAU13texQy3o3AAAAAElFTkSuQmCC","url":"https://introvertedbytes.com/assets/img/headers/boardlight.png","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://introvertedbytes.com/posts/htb-BoardLight-writeup/"},"url":"https://introvertedbytes.com/posts/htb-BoardLight-writeup/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"7h3h0und"},"dateModified":"2025-02-03T16:21:30+00:00","datePublished":"2024-09-27T17:30:00+00:00","description":"Summary: In this challenge, I explored and exploited a subdomain hosting Dolibarr CRM. After conducting some research, I was able to gain access using default credentials. Through further enumeration, I identified a vulnerability within the version of Dolibarr that allowed remote code execution, granting me an initial foothold.","headline":"Hack The Box BoardLight Writeup","image":{"lqip":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAABg2lDQ1BJQ0MgUHJvZmlsZQAAeJx9kT1Iw0AcxV9TpSotDmYQdchQnexSRRxrFYpQIdQKrTqYj35Bk4YkxcVRcC04+LFYdXBx1tXBVRAEP0CcHZwUXaTE/yWFFjEeHPfj3b3H3TuAa1YVzepJAJpum5lUUsjlV4XQK/oxigh4xCXFMuZEMQ3f8XWPAFvvYizL/9yfI6IWLAUICMQJxTBt4g3imU3bYLxPzCtlSSU+J5406YLEj0yXPX5jXHKZY5m8mc3ME/PEQqmL5S5WyqZGPE0cVTWd8rmcxyrjLcZata6078leGC7oK8tMpzmGFBaxBBECZNRRQRU2YrTqpFjI0H7Sxz/i+kVyyeSqQCHHAmrQILl+sD/43a1VnIp7SeEk0PviOB/jQGgXaDUc5/vYcVonQPAZuNI7/loTmP0kvdHRokfA4DZwcd3R5D3gcgcYfjIkU3KlIE2uWATez+ib8sDQLTCw5vXW3sfpA5ClrtI3wMEhMFGi7HWfd/d19/bvmXZ/P8cMcsjGb8DqAAADIUlEQVR4nJ2Vz2/kRBCFv1fd7bEnJLtZhUNuSAhxRKAV//91L0hIcAWBFGARBCXD/LDdXbUHOwsXyEBfbKml7u+9elWt69tPg/+xLEE4pGwMV0DAaQ/VRUkiEAAVgUABTxflp78I8n+9WAJ32D84KYntVXD6c9mYmhiKeKFKBDTEIxkBEUEEILiyRoogxJkAAWUj+svEsElYNnIxth0IOLYFyrxxOAW7HdQxyAQlGgCOFk8iOLjYKCjy8wBk0A2GbQo5i6zEi2R8ICHBQWI3B26GFWc7OOMcyN/zYwFa6yDBrkLflecBIiAlkXuDrqPPcLPdcHuz4WJbQOI4Vn75beL+cGIP5FapKWh1uVTxpF4rjkiIpjMAYAlc7oR3hT43rraZ4SKzi44IcdEHl9vEfk5ghjXDklNX5SahCGItRUhkFifsHACAlAUmunAuqXRRmQ4z02Gm85krKhtvyIycRZIwIElkiSwjmWESxrIvzg0h4C0gghF4mCFPEM0JGadZ7FpiRBCBO4DW2C0N+aTUY60EQJwJ4A51CsiNKcHRDbfMh9cZmTiNwd6DUwOPRp2hOUuLaLE8iOWrpRStNVqdnweQFvV1dFKeOGXxdjcytsZgIIlDiIdTMNUGrdEmp9YFoEX8pZzAF+E0FpCzHIiA6ehs0sSYoXWNqsSQWBwIo7bApxmfnXp0vAW2Bq8F6zACjyWK7W9h/MeVktGVDplIydiWQhkECazLHBXvbSpZBAkDxtxgG0SdqNVxX+xndUOAm+jtX0ZxRJAs0XUFSeSc6cuWoStYcfoLw1lGbpBQGIdpJBRYnnA1CMdbZfYKtgTx6T24zNBFfaYEEu7BXCc4jdTW2O8TzRulGLU1QGz6DSkb8zjiLRjnhjfHwmksOYhYAVYXLtMzGZBErZXHxx1fvv6c1198xu/3f1C6wqvrl3z3/Q8Mfc9wkbj79Ueur254dX3L3d0dmyR++vktX339LbkfcNNq/HJuxrmvix967jmOCLpSsJSIcCSDCI6nE8MwIODlTU+o8vFHn/DmzTdM00zpCrU59tTz60wI1ijEMlfeAU13texQy3o3AAAAAElFTkSuQmCC","url":"http://localhost:4000/assets/img/headers/boardlight.png","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/htb-BoardLight-writeup/"},"url":"http://localhost:4000/posts/htb-BoardLight-writeup/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -100,7 +100,7 @@
 
   <!-- Bootstrap -->
   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
   
 
   <!-- Theme style -->
@@ -110,12 +110,12 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Source+Sans+Pro:wght@400;600;700;900&display=swap">
 
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.1/css/all.min.css">
 
   <!-- 3rd-party Dependencies -->
 
   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.29.0/dist/tocbot.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.32.2/dist/tocbot.min.css">
   
 
   
@@ -127,114 +127,136 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css">
   
 
-  <!-- JavaScript -->
+  <!-- Scripts -->
+
+  <script src="/assets/js/dist/theme.min.js"></script>
+
+  <!-- JS selector for site. -->
+
+<!-- commons -->
+
+
+
+<!-- layout specified -->
+
 
   
-    <!-- Switch the mode between dark and light. -->
 
-<script type="text/javascript">
-  class ModeToggle {
-    static get MODE_KEY() {
-      return 'mode';
-    }
-    static get MODE_ATTR() {
-      return 'data-mode';
-    }
-    static get DARK_MODE() {
-      return 'dark';
-    }
-    static get LIGHT_MODE() {
-      return 'light';
-    }
-    static get ID() {
-      return 'mode-toggle';
-    }
+  
+    <!-- image lazy-loading & popup & clipboard -->
+    
+  
 
-    constructor() {
-      let self = this;this.sysDarkPrefers.addEventListener('change', () => {
-        if (self.hasMode) {
-          self.clearMode();
-        }
-        self.notify();
-      });
 
-      if (!this.hasMode) {
-        return;
-      }
 
-      if (this.isDarkMode) {
-        this.setDark();
-      } else {
-        this.setLight();
-      }
-    }
 
-    get sysDarkPrefers() {
-      return window.matchMedia('(prefers-color-scheme: dark)');
-    }
 
-    get isPreferDark() {
-      return this.sysDarkPrefers.matches;
-    }
 
-    get isDarkMode() {
-      return this.mode === ModeToggle.DARK_MODE;
-    }
 
-    get hasMode() {
-      return this.mode != null;
-    }
 
-    get mode() {
-      return sessionStorage.getItem(ModeToggle.MODE_KEY);
-    }get modeStatus() {
-      if (this.hasMode) {
-        return this.mode;
-      } else {
-        return this.isPreferDark ? ModeToggle.DARK_MODE : ModeToggle.LIGHT_MODE;
-      }
-    }
 
-    setDark() {
-      document.documentElement.setAttribute(ModeToggle.MODE_ATTR, ModeToggle.DARK_MODE);
-      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
-    }
 
-    setLight() {
-      document.documentElement.setAttribute(ModeToggle.MODE_ATTR, ModeToggle.LIGHT_MODE);
-      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
-    }
 
-    clearMode() {
-      document.documentElement.removeAttribute(ModeToggle.MODE_ATTR);
-      sessionStorage.removeItem(ModeToggle.MODE_KEY);
-    }notify() {
-      window.postMessage(
-        {
-          direction: ModeToggle.ID,
-          message: this.modeStatus
-        },
-        '*'
-      );
-    }
 
-    flipMode() {
-      if (this.hasMode) {
-        this.clearMode();
-      } else {
-        if (this.isPreferDark) {
-          this.setLight();
-        } else {
-          this.setDark();
-        }
-      }
 
-      this.notify();
-    }
-  }
 
-  const modeToggle = new ModeToggle();
-</script>
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/combine/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.umd.min.js,npm/glightbox@3.3.0/dist/js/glightbox.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js,npm/dayjs@1.11.13/dayjs.min.js,npm/dayjs@1.11.13/locale/en.js,npm/dayjs@1.11.13/plugin/relativeTime.js,npm/dayjs@1.11.13/plugin/localizedFormat.js,npm/tocbot@4.32.2/dist/tocbot.min.js,npm/mermaid@11.4.0/dist/mermaid.min.js"></script>
+
+
+
+
+
+
+
+<script defer src="/assets/js/dist/post.min.js"></script>
+
+
+  <!-- MathJax -->
+  <script async src="/assets/js/data/mathjax.js"></script>
+  <script async src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+
+
+<!-- Pageviews -->
+
+  
+
+  
+
+
 
   
 
@@ -250,9 +272,7 @@
   <header class="profile-wrapper">
     <a href="/" id="avatar" class="rounded-circle"><img src="/assets/img/avatar.jpg" width="112" height="112" alt="avatar" onerror="this.style.display='none'"></a>
 
-    <h1 class="site-title">
-      <a href="/">INTROVERTED BYTES</a>
-    </h1>
+    <a class="site-title d-block" href="/">INTROVERTED BYTES</a>
     <p class="site-subtitle fst-italic mb-0">Cyber Security Enthusiast | Pentester | CTF Player</p>
   </header>
   <!-- .profile-wrapper -->
@@ -373,22 +393,17 @@
 
       
         <a
-          href="https://www.linkedin.com/in/kasyapgirijan"
-          aria-label="linkedin"
-          
-
-          
-            target="_blank"
-            
+          href="javascript:location.href = 'mailto:' + ['karthakasyap18','gmail.com'].join('@')"
+          aria-label="email"
           
 
           
 
           
-            rel="noopener noreferrer"
+
           
         >
-          <i class="fab fa-linkedin-in"></i>
+          <i class="fas fa-envelope"></i>
         </a>
       
     
@@ -894,9 +909,16 @@
 
 
 
-<article class="px-1">
+
+
+
+
+
+
+<article class="px-1" data-toc="true">
   <header>
     <h1 data-toc-skip>Hack The Box | BoardLight Writeup</h1>
+    
 
     <div class="post-meta text-muted">
       <!-- published date -->
@@ -970,15 +992,19 @@
           <em>
             
               
-                <a href="https://github.com/kasyapgirijan/">Kasyap Girijan</a>
+                
                 
               
             
           </em>
         </span>
 
-        <!-- read time -->
-        <!-- Calculate the post's reading time, and display the word count in tooltip -->
+        <div>
+          <!-- pageviews -->
+          
+
+          <!-- read time -->
+          <!-- Calculate the post's reading time, and display the word count in tooltip -->
 
 
 
@@ -1002,11 +1028,34 @@
 >
   <em>7 min</em> read</span>
 
+        </div>
       </div>
-      <!-- .d-flex -->
     </div>
-    <!-- .post-meta -->
   </header>
+
+  
+    <div id="toc-bar" class="d-flex align-items-center justify-content-between invisible">
+      <span class="label text-truncate">Hack The Box | BoardLight Writeup</span>
+      <button type="button" class="toc-trigger btn me-1">
+        <i class="fa-solid fa-list-ul fa-fw"></i>
+      </button>
+    </div>
+
+    <button id="toc-solo-trigger" type="button" class="toc-trigger btn btn-outline-secondary btn-sm">
+      <span class="label ps-2 pe-1">Contents</span>
+      <i class="fa-solid fa-angle-right fa-fw"></i>
+    </button>
+
+    <dialog id="toc-popup" class="p-0">
+      <div class="header d-flex flex-row align-items-center justify-content-between">
+        <div class="label text-truncate py-2 ms-4">Hack The Box | BoardLight Writeup</div>
+        <button id="toc-popup-close" type="button" class="btn mx-1 my-1 opacity-75">
+          <i class="fas fa-close"></i>
+        </button>
+      </div>
+      <div id="toc-popup-content" class="px-4 py-3 pb-4"></div>
+    </dialog>
+  
 
   <div class="content">
     <h2 id="summary"><span class="me-2">Summary:</span><a href="#summary" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
@@ -1479,21 +1528,21 @@ uid=0(root) gid=0(root) groups=0(root),4(adm),1000(larissa)
 
       
 
-      <a href="https://twitter.com/intent/tweet?text=Hack%20The%20Box%20%7C%20BoardLight%20Writeup%20-%20INTROVERTED%20BYTES&url=https%3A%2F%2Fintrovertedbytes.com%2Fposts%2Fhtb-BoardLight-writeup%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter">
+      <a href="https://twitter.com/intent/tweet?text=Hack%20The%20Box%20%7C%20BoardLight%20Writeup%20-%20INTROVERTED%20BYTES&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fhtb-BoardLight-writeup%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter">
         <i class="fa-fw fa-brands fa-square-x-twitter"></i>
       </a>
     
 
       
 
-      <a href="https://www.facebook.com/sharer/sharer.php?title=Hack%20The%20Box%20%7C%20BoardLight%20Writeup%20-%20INTROVERTED%20BYTES&u=https%3A%2F%2Fintrovertedbytes.com%2Fposts%2Fhtb-BoardLight-writeup%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook">
+      <a href="https://www.facebook.com/sharer/sharer.php?title=Hack%20The%20Box%20%7C%20BoardLight%20Writeup%20-%20INTROVERTED%20BYTES&u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fhtb-BoardLight-writeup%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook">
         <i class="fa-fw fab fa-facebook-square"></i>
       </a>
     
 
       
 
-      <a href="https://t.me/share/url?url=https%3A%2F%2Fintrovertedbytes.com%2Fposts%2Fhtb-BoardLight-writeup%2F&text=Hack%20The%20Box%20%7C%20BoardLight%20Writeup%20-%20INTROVERTED%20BYTES" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram" aria-label="Telegram">
+      <a href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fhtb-BoardLight-writeup%2F&text=Hack%20The%20Box%20%7C%20BoardLight%20Writeup%20-%20INTROVERTED%20BYTES" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram" aria-label="Telegram">
         <i class="fa-fw fab fa-telegram"></i>
       </a>
     
@@ -1523,7 +1572,7 @@ uid=0(root) gid=0(root) groups=0(root),4(adm),1000(larissa)
           </main>
 
           <!-- panel -->
-          <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 mb-5 text-muted">
+          <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 text-muted">
             <div class="access">
               <!-- Get 5 last posted/updated posts -->
 
@@ -2186,8 +2235,12 @@ uid=0(root) gid=0(root) groups=0(root),4(adm),1000(larissa)
 
 
 
-  <section id="toc-wrapper" class="d-none ps-0 pe-4">
-    <h2 class="panel-heading ps-3 mb-2">Contents</h2>
+
+
+
+  <div class="toc-border-cover z-3"></div>
+  <section id="toc-wrapper" class="invisible position-sticky ps-0 pe-4 pb-4">
+    <h2 class="panel-heading ps-3 pb-2 mb-0">Contents</h2>
     <nav id="toc"></nav>
   </section>
 
@@ -2510,81 +2563,6 @@ The attack starts by exploiti...</p>
     </div>
   
 </nav>
-
-            
-              
-              <!-- The comments switcher -->
-
-  
-  <!-- https://giscus.app/ -->
-<script type="text/javascript">
-  (function () {
-    const origin = 'https://giscus.app';
-    const lightTheme = 'light';
-    const darkTheme = 'dark_dimmed';
-
-    let initTheme = lightTheme;
-    const html = document.documentElement;
-
-    if (
-      (html.hasAttribute('data-mode') &&
-        html.getAttribute('data-mode') === 'dark') ||
-      (!html.hasAttribute('data-mode') &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      initTheme = darkTheme;
-    }
-
-    let lang = 'en';if (lang.length > 2 && !lang.startsWith('zh')) {
-      lang = lang.slice(0, 2);
-    }
-
-    let giscusAttributes = {
-      src: 'https://giscus.app/client.js',
-      'data-repo': 'kasyapgirijan/kasyapgirijan.github.io',
-      'data-repo-id': 'R_kgDOK7HYAg',
-      'data-category': 'General',
-      'data-category-id': 'DIC_kwDOK7HYAs4Cb14C',
-      'data-mapping': 'pathname',
-      'data-strict' : '0',
-      'data-reactions-enabled': '1',
-      'data-emit-metadata': '0',
-      'data-theme': initTheme,
-      'data-input-position': 'bottom',
-      'data-lang': lang,
-      'data-loading': 'lazy',
-      crossorigin: 'anonymous',
-      async: ''
-    };
-
-    let giscusScript = document.createElement('script');
-    Object.entries(giscusAttributes).forEach(([key, value]) =>
-      giscusScript.setAttribute(key, value)
-    );
-    document.getElementById('tail-wrapper').appendChild(giscusScript);
-
-    addEventListener('message', (event) => {
-      if (
-        event.source === window &&
-        event.data &&
-        event.data.direction === ModeToggle.ID
-      ) {const mode = event.data.message;
-        const theme = mode === ModeToggle.DARK_MODE ? darkTheme : lightTheme;
-
-        const message = {
-          setConfig: {
-            theme: theme
-          }
-        };
-
-        const giscus = document.getElementsByClassName('giscus-frame')[0].contentWindow;
-        giscus.postMessage({ giscus: message }, origin);
-      }
-    });
-  })();
-</script>
-
-
 
             
 
@@ -3240,7 +3218,7 @@ The attack starts by exploiti...</p>
       </aside>
     </div>
 
-    <div id="mask"></div>
+    <div id="mask" class="d-none position-fixed w-100 h-100 z-1"></div>
 
     
       <aside
@@ -3270,190 +3248,70 @@ The attack starts by exploiti...</p>
 
     
 
-    <!-- JavaScripts -->
-    <!-- JS selector for site. -->
-
-<!-- commons -->
-
-
-
-<!-- layout specified -->
-
-
-  
-
-  
-    <!-- image lazy-loading & popup & clipboard -->
-    
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
+    <!-- Embedded scripts -->
 
     
+      
+      <!-- The comments switcher -->
 
   
-
-  
-    
-
-    
-
-  
-
-  
-    
-
-    
-
-  
-
-  
-    
-
-    
-
-  
-
-  
-    
-
-    
-
-  
-
-  
-    
-
-    
-
-  
-
-  
-    
-
-    
-
-  
-
-  
-    
-
-    
-
-  
-
-  
-    
-
-    
-
-  
-
-  
-    
-
-    
-
-  
-
-
-
-  <script src="https://cdn.jsdelivr.net/combine/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.umd.min.js,npm/glightbox@3.3.0/dist/js/glightbox.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js,npm/dayjs@1.11.13/dayjs.min.js,npm/dayjs@1.11.13/locale/en.js,npm/dayjs@1.11.13/plugin/relativeTime.js,npm/dayjs@1.11.13/plugin/localizedFormat.js,npm/tocbot@4.29.0/dist/tocbot.min.js,npm/mermaid@11.0.2/dist/mermaid.min.js"></script>
-
-
-
-
-
-
-
-<script src="/assets/js/dist/post.min.js"></script>
-
-
-  <!-- MathJax -->
-  <script src="/assets/js/data/mathjax.js"></script>
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
-
-
-<!-- Pageviews -->
-
-  
-
-  
-
-
-
-  <!-- mermaid-js loader -->
-<script type="text/javascript">
-  function updateMermaid(event) {
-    if (event.source === window && event.data && event.data.direction === ModeToggle.ID) {
-      const mode = event.data.message;
-
-      if (typeof mermaid === 'undefined') {
-        return;
-      }
-
-      let expectedTheme = mode === ModeToggle.DARK_MODE ? 'dark' : 'default';
-      let config = { theme: expectedTheme };const mermaidList = document.getElementsByClassName('mermaid');
-
-      [...mermaidList].forEach((elem) => {
-        const svgCode = elem.previousSibling.children.item(0).innerHTML;
-        elem.innerHTML = svgCode;
-        elem.removeAttribute('data-processed');
-      });
-
-      mermaid.initialize(config);
-      mermaid.init(undefined, '.mermaid');
-    }
-  }
-
+  <!-- https://giscus.app/ -->
+<script>
   (function () {
-    let initTheme = 'default';
-    const html = document.documentElement;
+    const themeMapper = Theme.getThemeMapper('light', 'dark_dimmed');
+    const initTheme = themeMapper[Theme.visualState];
 
-    if (
-      (html.hasAttribute('data-mode') && html.getAttribute('data-mode') === 'dark') ||
-      (!html.hasAttribute('data-mode') && window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      initTheme = 'dark';
+    let lang = 'en';if (lang.length > 2 && !lang.startsWith('zh')) {
+      lang = lang.slice(0, 2);
     }
 
-    let mermaidConf = {
-      theme: initTheme};const basicList = document.getElementsByClassName('language-mermaid');
-    [...basicList].forEach((elem) => {
-      const svgCode = elem.textContent;
-      const backup = elem.parentElement;
-      backup.classList.add('d-none');let mermaid = document.createElement('pre');
-      mermaid.classList.add('mermaid');
-      const text = document.createTextNode(svgCode);
-      mermaid.appendChild(text);
-      backup.after(mermaid);
-    });
+    let giscusAttributes = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'kasyapgirijan/kasyapgirijan.github.io',
+      'data-repo-id': 'R_kgDOK7HYAg',
+      'data-category': 'General',
+      'data-category-id': 'DIC_kwDOK7HYAs4Cb14C',
+      'data-mapping': 'pathname',
+      'data-strict' : '0',
+      'data-reactions-enabled': '1',
+      'data-emit-metadata': '0',
+      'data-theme': initTheme,
+      'data-input-position': 'bottom',
+      'data-lang': lang,
+      'data-loading': 'lazy',
+      crossorigin: 'anonymous',
+      async: ''
+    };
 
-    mermaid.initialize(mermaidConf);
-    window.addEventListener('message', updateMermaid);
+    let giscusNode = document.createElement('script');
+    Object.entries(giscusAttributes).forEach(([key, value]) =>
+      giscusNode.setAttribute(key, value)
+    );
+
+    const $footer = document.querySelector('footer');
+    $footer.insertAdjacentElement("beforebegin", giscusNode);
+
+    addEventListener('message', (event) => {
+      if (event.source === window && event.data && event.data.id === Theme.ID) {
+        const newTheme = themeMapper[Theme.visualState];
+
+        const message = {
+          setConfig: {
+            theme: newTheme
+          }
+        };
+
+        const giscus =
+          document.getElementsByClassName('giscus-frame')[0].contentWindow;
+        giscus.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+    });
   })();
 </script>
 
 
 
-
-
+    
 
     <!--
   Jekyll Simple Search loader
@@ -3464,29 +3322,33 @@ The attack starts by exploiti...</p>
 
 
 
-<script>SimpleJekyllSearch({
-    searchInput: document.getElementById('search-input'),
-    resultsContainer: document.getElementById('search-results'),
-    json: '/assets/js/data/search.json',
-    searchResultTemplate: '  <article class="px-1 px-sm-2 px-lg-4 px-xl-0">    <header>      <h2><a href="{url}">{title}</a></h2>      <div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1">        {categories}        {tags}      </div>    </header>    <p>{snippet}</p>  </article>',
-    noResultsText: '<p class="mt-5">Oops! No results found.</p>',
-    templateMiddleware: function(prop, value, template) {
-      if (prop === 'categories') {
-        if (value === '') {
-          return `${value}`;
-        } else {
-          return `<div class="me-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`;
+<script>
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('search-results'),
+      json: '/assets/js/data/search.json',
+      searchResultTemplate: '  <article class="px-1 px-sm-2 px-lg-4 px-xl-0">    <header>      <h2><a href="{url}">{title}</a></h2>      <div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1">        {categories}        {tags}      </div>    </header>    <p>{snippet}</p>  </article>',
+      noResultsText: '<p class="mt-5">Oops! No results found.</p>',
+      templateMiddleware: function(prop, value, template) {
+        if (prop === 'categories') {
+          if (value === '') {
+            return `${value}`;
+          } else {
+            return `<div class="me-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`;
+          }
         }
-      }
 
-      if (prop === 'tags') {
-        if (value === '') {
-          return `${value}`;
-        } else {
-          return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`;
+        if (prop === 'tags') {
+          if (value === '') {
+            return `${value}`;
+          } else {
+            return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`;
+          }
         }
       }
-    }
+    });
   });
 </script>
 
