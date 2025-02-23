@@ -8,7 +8,7 @@ math: true
 mermaid: true
 author: 7h3h0und
 image:
-  path: /assets/img/headers/builder.png
+  path: /assets/img/headers/builder.webp
   lqip: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAADKUlEQVR4nJ2VyZLcVBBFz82noVRd1XZ3Gw8LItixIQL+/2sYFzZENe6aJL33MlmobIIFdBktFaHMmzfPTenu3bfB/3iSQQSsO/HiRpQSPJ1FcENjLZKwFKyGI7IgPCACd2eet3htiag0X9rYBDVgdzTaVOlbsTsID0i6obEOM4CGtjtilnFPgOMO4DTpROUOD64XsO7g5XpgO9zx1UPD3VY0tkYSESP7vXjcw2Hcs58mxpIhjJzXmDIoEMKjJzAsAW7PCwigMbgdGm6He+5fvuLNQ+HhJkG8RRIpfaCziscAtKDfqedCDRBACCEWCZd35hjXCAjom2C76tkOL9gOt7x7MfH17YDiG2QCy9j8xP6wIfcBfORUCqcZTIIQYP+c6sKD/UtfuCiNgCbB0DYka1j1mc36xNBNeOqo1tC1M6vuQNvMKESfEq3Bwl18bhoO7uAReIhS/DoGTJBMyJxhDet1y919wypVplzoq9M2BaWZMU+0SQsbDmAEIGmZ3BdHanHElRBGQHWQCm0yVLYMumEzFHLr2PyKD93MZiVMmcAJHBAegSKoWuoEiyPzlEmpeV6ABMVhKoUmH/m47/iZnjRVVuufyAXylPnx/czjYWTMeyzNTMWJACcIr/hlFX9jaETovwXERcBUxNN5IvTIbp85jcb7x0LqRC4iinEaM1MVp2kizDlPvjgeEOHUGkggLRdsvQm8jlc4AJQKx9npuonzbAx9h7WBDKSgRCZ75jhCDhinYM7CjIvhjkeQtFQMgtQIaboSQjMi9RQlqvf0/ZbbbY+xhCso7PYjbhNnL5xPIykVtAQeAlJazjcKiEr1AH9mBbDEyCRkiaeTM5eJHOLpnFE4EUFI7I+Zw+icZggZlrTcfy7wReDB5RwF7kJcGcMAwp1pzpzHifOU+eMpU0olPGiScM+LUwgpMERcyEciSZ8BNCVMI1wjQBLuzuOfH3n75jU/fP8dh+ORYbVit3vk9cuezZDI3vB+d+K3X3+hlkqT0vI9gWgWIV5wO/MpC5DQl/yO3X2ZOhaiPaAxcX8j2gZOU0AzsFmvSCyZ16c1LBUWS2Sf3fgL3a7ZRBi6aE4AAAAASUVORK5CYII=
 ---
 ## Summary:
@@ -50,7 +50,7 @@ The Nmap scan revealed SSH and Jenkins on their default ports i.e., 22 and 8080,
 
 While visiting the http:// 10.129.230.220:8080, we land on default Jenkins page.
 
-![img-description](/assets/img/htb/builder/1.png) _jenkins_
+![img-description](/assets/img/htb/builder/1.webp) _jenkins_
 
 As we see at the bottom right of the page we can see the installed version of Jenkins. With some Online research reveals a critical vulnerability [CVE-2024-23897](https://github.com/vulhub/vulhub/tree/master/jenkins/CVE-2024-23897) affecting this version. Which allows unauthenticated attackers to read files on Jenkins controller file system.  
 
@@ -91,7 +91,7 @@ Based on the article there should be a `users.xml` file that should be giving us
 java -jar jenkins-cli.jar -s http://10.129.230.220:8080/ -http connect-node "@/var/jenkins_home/users/users.xml
 ```
 
-![img-description](/assets/img/htb/builder/2.png) _users.xml_
+![img-description](/assets/img/htb/builder/2.webp) _users.xml_
 
 Awesome we now have the username  `jennifer_12108429903186576833` 
 Now for the password we need to look into config.xml file under username folder.
@@ -125,25 +125,25 @@ I was able to crack the password using hashcat.
 sudo hashcat -m 3200 hash /usr/share/wordlists/rockyou.txt
 ```
 
-![img-description](/assets/img/htb/builder/3.png) _hashcat_
+![img-description](/assets/img/htb/builder/3.webp) _hashcat_
 
 Using the credentials `jennifer:princess`, we can log into the remote Jenkins instance. 
 
 Enumerating further, I saw SSH keys stored in `Global credentials`.  Going into the confiuration  I saw the SSH key belongs to root.  However, trying to view the key it says `Concealed for confidentiality`. 
 
-![img-description](/assets/img/htb/builder/4.png) _users.xml_
+![img-description](/assets/img/htb/builder/4.webp) _users.xml_
 
 Inspecting the page elements, I saw there is a hidden form filed which reaved encrypted private key.  
 
-![img-description](/assets/img/htb/builder/5.png) _Concealed for confidentiality_
+![img-description](/assets/img/htb/builder/5.webp) _Concealed for confidentiality_
 
 Back to online research, I learned we can decrypt the encrypted key from console itself using [hudson.util.Secret.decrypt()](https://www.shellhacks.com/jenkins-credentials-plugin-decrypt-password/) function.
 
-![img-description](/assets/img/htb/builder/6.png) _jenkins: Decrypting SSH key_
+![img-description](/assets/img/htb/builder/6.webp) _jenkins: Decrypting SSH key_
 
 We can save the decrypted key and login root with the key through SSH.
 
-![img-description](/assets/img/htb/builder/7.png) _SSH: Login as Root_
+![img-description](/assets/img/htb/builder/7.webp) _SSH: Login as Root_
 
 >`nano root_idsa:` This command opens the file named id_rsa using the nano text editor. You can paste your SSH private key content into this editor and save the file.
 {: .prompt-info}

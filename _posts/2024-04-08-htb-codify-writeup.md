@@ -8,7 +8,7 @@ math: true
 mermaid: true
 author: 7h3h0und
 image:
-  path: /assets/img/headers/codify.png
+  path: /assets/img/headers/codify.webp
   lqip: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAABhWlDQ1BJQ0MgUHJvZmlsZQAAeJx9kTtIw1AUhv+mlYpWHOwg4pChOlkQH8VRq1CECqFWaNXB5KYvaNKQpLg4Cq4FBx+LVQcXZ10dXAVB8AHi7OCk6CIlntsUWsR44XA//nv/n3PPBYR6mWlWYBzQdNtMJeJiJrsqBl8RQC9VDNMys4w5SUrCc33dw8f3uyjP8r735+pTcxYDfCLxLDNMm3iDOLZpG5z3icOsKKvE58RjJjVI/Mh1xeU3zoUmCzwzbKZT88RhYrHQwUoHs6KpEU8RR1RNp3wh47LKeYuzVq6yVp/8haGcvrLMdaphJLCIJUgQoaCKEsqwEaVdJ8VCis7jHv6hpl8il0KuEhg5FlCBBrnpB/+D37O18pMTblIoDnS9OM7HCBDcBRo1x/k+dpzGCeB/Bq70tr9SB2Y+Sa+1tcgR0L8NXFy3NWUPuNwBBp8M2ZSbkp9KyOeB9zP6piwwcAv0rLlza53j9AFI06ySN8DBITBaoOx1j3d3d87t3zut+f0Arp9yv9nX58IAAAMjSURBVHicnZXNjxtFEMV/1d0zY8delt0kG1ZIkRIRolwiwd+P4MwdJCQQiEAggc1+GK9nerqrisN4DTlhM9Ko1Yeq96re6yo5OX/uHPiJAAL5FrTAfCE0cyF1QEnUmiAIiGDAvS6y7AKmdYpX3eVK/wdcFUqGJy8jHz2NtMtIHZTvv4ari8jsWHAXPEwEJMg22hEEAXx735tACLD8MNHOlqTZMef3j3hw3KC1pVwlTlNh+WLDb48yq03G6i15KJQB3I1NgVaEALgE1AwI+xFwh9QK7awhNPeQxRFHZx/w4H7HbVjSp45TBmY3l/wxDqCJSKGdK2V0fFvxXdUApHY6/rvngEHTCU3TEGZz5idLHj8+5cnDY37XM67pOOeavFB+/QtW2aC2SMpIUNymVOYgMkkQagbfQwLZBsYETRtpupYuRY7axNLnNLctyYTowiJAckNEQSB1Munvk3d8m9CBGCKqdpgJRQQEqlZ6NXqE4iOuhcErqWmoEhAcF4cgU8xdJbvDERFU9vCAs3V+Ba1G1BGrAzdj4bYxZDEQ84AmYfQGDU7wgrlio78HDoILiASqGsS4Rwd8SlCLU0ohjj2yFlYXa94trxndKLnnisTQj+SrNbbZYFYo6rj9g+93JAALEQl7vgIRKNkZc6GJG6JVbl4HXueBPBTykOm6RKnKcHmJ5gETZxwcqxCD4Ntm6J0nUsLtAA+YQr+uxJgxU1arAChmhlWj1kgeK2PJmBulOGPvbCfR1AUR3H0iAJRDCABYjZQMbSNINCQZXYyE0CIBSM68tPi6MuQC1YBJBpe7CTgJMvY95gcQCEFIKaE5MIjQRJjPHGuVFB3NThmdkgNWElEgRKeWgiN42L4i/9fq8UN2gYMgqCnDximjUjKoKoIQUwRxcs7gsv0dM9u2P+Ju7+HDAQQcuFmteHT2kM8/e8nFxTueffKUGCIhGRoGrq9XnJ18zKtXb/jiy69YLha7xWNmBALz+RwRoe97fJ9JuCPgTtM0vH37J998+x2qyk8//0IZC7PZDNJIsZ4Xnz7nxx/e0LbtBBrCLoeIEIIgEnYD6m8qvruCofY7XAAAAABJRU5ErkJggg==
 ---
 ## Summary:
@@ -50,15 +50,15 @@ Nmap scan reavled TCP ports listening on 22(SSH), 80(HTTP) and 3000 (Node.js Exp
 As we have http on port 80 enabled, I went ahead and tried browsing with IP address which redirected to codify.htb 
 I added the host entry to /etc/hosts file so we can resolve the domain and access the website.
 
-![img-description](/assets/img/htb/codify/1.png) _codify.htb_
+![img-description](/assets/img/htb/codify/1.webp) _codify.htb_
 
 Now accessing the web page, we see an application that provide a test environment for Node.js Upon click try me now button we land to a page that has a text editor where we can input node.js code and display its output. 
 
-![img-description](/assets/img/htb/codify/2.png) _editor_
+![img-description](/assets/img/htb/codify/2.webp) _editor_
 
 
 Further enumerating we see `About Us` page provides information on use of vm2 library. This library is used to create sandboxes (isolated environment) allowing us to execute untrusted codes security.
-![img-description](/assets/img/htb/codify/3.png) _vm2 library_
+![img-description](/assets/img/htb/codify/3.webp) _vm2 library_
 
 ## Foothold:
 
@@ -96,7 +96,7 @@ console.log(vm.run(code));
 
 If we run this JavaScript code on the editor page, we see that it executes successfully and list out the folder directory and ownership.
 
-![img-description](/assets/img/htb/codify/4.png) _ls -la_
+![img-description](/assets/img/htb/codify/4.webp) _ls -la_
 
 As we know that we can read files from /home/svc let us try to put an SSH public key onto ~/.ssh/authorized_keys file.
 
@@ -130,7 +130,7 @@ console.log(vm.run(code));
 ```
 Once we had the public key in place, I used the private key and was able to login to machine through SSH as SVC user.  
 
-![img-description](/assets/img/htb/codify/5.png) _SSH to SVC_
+![img-description](/assets/img/htb/codify/5.webp) _SSH to SVC_
 
 ## Privilege Escalation:
 
@@ -300,18 +300,18 @@ Let us test and see if it works.
 
 I downloaded the pspy64 binary using python server to vulnerable machine and changed the permission of the file to make it executable.  
 
-![img-description](/assets/img/htb/codify/7.png) _password bypass_
+![img-description](/assets/img/htb/codify/7.webp) _password bypass_
  
 
 I ran the pspy binary and went to another ssh session, and ran the script, providing * as the password, we see the `mysqldump `command being triggered in the pspy output. 
 
-![img-description](/assets/img/htb/codify/8.png) _pspy output with password_
+![img-description](/assets/img/htb/codify/8.webp) _pspy output with password_
 
 Here we can see the password for the root user in the pspy shell.  
 ```bash
 2024/04/10 15:35:53 CMD: UID=0     PID=2415   | /usr/bin/mysql -u root -h 0.0.0.0 -P 3306 -p kljh12k3jhaskjh12kjh3 -e SHOW DATABASES; 
 ```
 I tried switching to root user with this password and was able to authenticate as root user.  
-![img-description](/assets/img/htb/codify/9.png) _password bypass_
+![img-description](/assets/img/htb/codify/9.webp) _password bypass_
 We have the machine `ROOTED!`  
 

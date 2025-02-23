@@ -38,16 +38,16 @@
 <link rel="canonical" href="http://localhost:4000/posts/htb-BoardLight-writeup/" />
 <meta property="og:url" content="http://localhost:4000/posts/htb-BoardLight-writeup/" />
 <meta property="og:site_name" content="INTROVERTED BYTES" />
-<meta property="og:image" content="http://localhost:4000/assets/img/headers/boardlight.png" />
+<meta property="og:image" content="http://localhost:4000/assets/img/headers/boardlight.webp" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2024-09-27T17:30:00+00:00" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="http://localhost:4000/assets/img/headers/boardlight.png" />
+<meta property="twitter:image" content="http://localhost:4000/assets/img/headers/boardlight.webp" />
 <meta property="twitter:title" content="Hack The Box BoardLight Writeup" />
 <meta name="twitter:site" content="@kasyapgirijan" />
 <meta name="twitter:creator" content="@kasyapgirijan" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Kasyap Girijan","url":"https://github.com/kasyapgirijan/"},"dateModified":"2025-02-03T16:21:30+00:00","datePublished":"2024-09-27T17:30:00+00:00","description":"Summary: In this challenge, I explored and exploited a subdomain hosting Dolibarr CRM. After conducting some research, I was able to gain access using default credentials. Through further enumeration, I identified a vulnerability within the version of Dolibarr that allowed remote code execution, granting me an initial foothold.","headline":"Hack The Box BoardLight Writeup","image":{"lqip":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAABg2lDQ1BJQ0MgUHJvZmlsZQAAeJx9kT1Iw0AcxV9TpSotDmYQdchQnexSRRxrFYpQIdQKrTqYj35Bk4YkxcVRcC04+LFYdXBx1tXBVRAEP0CcHZwUXaTE/yWFFjEeHPfj3b3H3TuAa1YVzepJAJpum5lUUsjlV4XQK/oxigh4xCXFMuZEMQ3f8XWPAFvvYizL/9yfI6IWLAUICMQJxTBt4g3imU3bYLxPzCtlSSU+J5406YLEj0yXPX5jXHKZY5m8mc3ME/PEQqmL5S5WyqZGPE0cVTWd8rmcxyrjLcZata6078leGC7oK8tMpzmGFBaxBBECZNRRQRU2YrTqpFjI0H7Sxz/i+kVyyeSqQCHHAmrQILl+sD/43a1VnIp7SeEk0PviOB/jQGgXaDUc5/vYcVonQPAZuNI7/loTmP0kvdHRokfA4DZwcd3R5D3gcgcYfjIkU3KlIE2uWATez+ib8sDQLTCw5vXW3sfpA5ClrtI3wMEhMFGi7HWfd/d19/bvmXZ/P8cMcsjGb8DqAAADIUlEQVR4nJ2Vz2/kRBCFv1fd7bEnJLtZhUNuSAhxRKAV//91L0hIcAWBFGARBCXD/LDdXbUHOwsXyEBfbKml7u+9elWt69tPg/+xLEE4pGwMV0DAaQ/VRUkiEAAVgUABTxflp78I8n+9WAJ32D84KYntVXD6c9mYmhiKeKFKBDTEIxkBEUEEILiyRoogxJkAAWUj+svEsElYNnIxth0IOLYFyrxxOAW7HdQxyAQlGgCOFk8iOLjYKCjy8wBk0A2GbQo5i6zEi2R8ICHBQWI3B26GFWc7OOMcyN/zYwFa6yDBrkLflecBIiAlkXuDrqPPcLPdcHuz4WJbQOI4Vn75beL+cGIP5FapKWh1uVTxpF4rjkiIpjMAYAlc7oR3hT43rraZ4SKzi44IcdEHl9vEfk5ghjXDklNX5SahCGItRUhkFifsHACAlAUmunAuqXRRmQ4z02Gm85krKhtvyIycRZIwIElkiSwjmWESxrIvzg0h4C0gghF4mCFPEM0JGadZ7FpiRBCBO4DW2C0N+aTUY60EQJwJ4A51CsiNKcHRDbfMh9cZmTiNwd6DUwOPRp2hOUuLaLE8iOWrpRStNVqdnweQFvV1dFKeOGXxdjcytsZgIIlDiIdTMNUGrdEmp9YFoEX8pZzAF+E0FpCzHIiA6ehs0sSYoXWNqsSQWBwIo7bApxmfnXp0vAW2Bq8F6zACjyWK7W9h/MeVktGVDplIydiWQhkECazLHBXvbSpZBAkDxtxgG0SdqNVxX+xndUOAm+jtX0ZxRJAs0XUFSeSc6cuWoStYcfoLw1lGbpBQGIdpJBRYnnA1CMdbZfYKtgTx6T24zNBFfaYEEu7BXCc4jdTW2O8TzRulGLU1QGz6DSkb8zjiLRjnhjfHwmksOYhYAVYXLtMzGZBErZXHxx1fvv6c1198xu/3f1C6wqvrl3z3/Q8Mfc9wkbj79Ueur254dX3L3d0dmyR++vktX339LbkfcNNq/HJuxrmvix967jmOCLpSsJSIcCSDCI6nE8MwIODlTU+o8vFHn/DmzTdM00zpCrU59tTz60wI1ijEMlfeAU13texQy3o3AAAAAElFTkSuQmCC","url":"http://localhost:4000/assets/img/headers/boardlight.png","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/htb-BoardLight-writeup/"},"url":"http://localhost:4000/posts/htb-BoardLight-writeup/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Kasyap Girijan","url":"https://github.com/kasyapgirijan/"},"dateModified":"2025-02-03T16:21:30+00:00","datePublished":"2024-09-27T17:30:00+00:00","description":"Summary: In this challenge, I explored and exploited a subdomain hosting Dolibarr CRM. After conducting some research, I was able to gain access using default credentials. Through further enumeration, I identified a vulnerability within the version of Dolibarr that allowed remote code execution, granting me an initial foothold.","headline":"Hack The Box BoardLight Writeup","image":{"lqip":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAABg2lDQ1BJQ0MgUHJvZmlsZQAAeJx9kT1Iw0AcxV9TpSotDmYQdchQnexSRRxrFYpQIdQKrTqYj35Bk4YkxcVRcC04+LFYdXBx1tXBVRAEP0CcHZwUXaTE/yWFFjEeHPfj3b3H3TuAa1YVzepJAJpum5lUUsjlV4XQK/oxigh4xCXFMuZEMQ3f8XWPAFvvYizL/9yfI6IWLAUICMQJxTBt4g3imU3bYLxPzCtlSSU+J5406YLEj0yXPX5jXHKZY5m8mc3ME/PEQqmL5S5WyqZGPE0cVTWd8rmcxyrjLcZata6078leGC7oK8tMpzmGFBaxBBECZNRRQRU2YrTqpFjI0H7Sxz/i+kVyyeSqQCHHAmrQILl+sD/43a1VnIp7SeEk0PviOB/jQGgXaDUc5/vYcVonQPAZuNI7/loTmP0kvdHRokfA4DZwcd3R5D3gcgcYfjIkU3KlIE2uWATez+ib8sDQLTCw5vXW3sfpA5ClrtI3wMEhMFGi7HWfd/d19/bvmXZ/P8cMcsjGb8DqAAADIUlEQVR4nJ2Vz2/kRBCFv1fd7bEnJLtZhUNuSAhxRKAV//91L0hIcAWBFGARBCXD/LDdXbUHOwsXyEBfbKml7u+9elWt69tPg/+xLEE4pGwMV0DAaQ/VRUkiEAAVgUABTxflp78I8n+9WAJ32D84KYntVXD6c9mYmhiKeKFKBDTEIxkBEUEEILiyRoogxJkAAWUj+svEsElYNnIxth0IOLYFyrxxOAW7HdQxyAQlGgCOFk8iOLjYKCjy8wBk0A2GbQo5i6zEi2R8ICHBQWI3B26GFWc7OOMcyN/zYwFa6yDBrkLflecBIiAlkXuDrqPPcLPdcHuz4WJbQOI4Vn75beL+cGIP5FapKWh1uVTxpF4rjkiIpjMAYAlc7oR3hT43rraZ4SKzi44IcdEHl9vEfk5ghjXDklNX5SahCGItRUhkFifsHACAlAUmunAuqXRRmQ4z02Gm85krKhtvyIycRZIwIElkiSwjmWESxrIvzg0h4C0gghF4mCFPEM0JGadZ7FpiRBCBO4DW2C0N+aTUY60EQJwJ4A51CsiNKcHRDbfMh9cZmTiNwd6DUwOPRp2hOUuLaLE8iOWrpRStNVqdnweQFvV1dFKeOGXxdjcytsZgIIlDiIdTMNUGrdEmp9YFoEX8pZzAF+E0FpCzHIiA6ehs0sSYoXWNqsSQWBwIo7bApxmfnXp0vAW2Bq8F6zACjyWK7W9h/MeVktGVDplIydiWQhkECazLHBXvbSpZBAkDxtxgG0SdqNVxX+xndUOAm+jtX0ZxRJAs0XUFSeSc6cuWoStYcfoLw1lGbpBQGIdpJBRYnnA1CMdbZfYKtgTx6T24zNBFfaYEEu7BXCc4jdTW2O8TzRulGLU1QGz6DSkb8zjiLRjnhjfHwmksOYhYAVYXLtMzGZBErZXHxx1fvv6c1198xu/3f1C6wqvrl3z3/Q8Mfc9wkbj79Ueur254dX3L3d0dmyR++vktX339LbkfcNNq/HJuxrmvix967jmOCLpSsJSIcCSDCI6nE8MwIODlTU+o8vFHn/DmzTdM00zpCrU59tTz60wI1ijEMlfeAU13texQy3o3AAAAAElFTkSuQmCC","url":"http://localhost:4000/assets/img/headers/boardlight.webp","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/htb-BoardLight-writeup/"},"url":"http://localhost:4000/posts/htb-BoardLight-writeup/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -984,7 +984,7 @@
         
 
         <div class="mt-3 mb-3">
-          <a href="/assets/img/headers/boardlight.png" class="popup img-link preview-img blur"><img data-src="/assets/img/headers/boardlight.png"  alt="Preview Image" width="1200" height="630" data-lqip="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAABg2lDQ1BJQ0MgUHJvZmlsZQAAeJx9kT1Iw0AcxV9TpSotDmYQdchQnexSRRxrFYpQIdQKrTqYj35Bk4YkxcVRcC04+LFYdXBx1tXBVRAEP0CcHZwUXaTE/yWFFjEeHPfj3b3H3TuAa1YVzepJAJpum5lUUsjlV4XQK/oxigh4xCXFMuZEMQ3f8XWPAFvvYizL/9yfI6IWLAUICMQJxTBt4g3imU3bYLxPzCtlSSU+J5406YLEj0yXPX5jXHKZY5m8mc3ME/PEQqmL5S5WyqZGPE0cVTWd8rmcxyrjLcZata6078leGC7oK8tMpzmGFBaxBBECZNRRQRU2YrTqpFjI0H7Sxz/i+kVyyeSqQCHHAmrQILl+sD/43a1VnIp7SeEk0PviOB/jQGgXaDUc5/vYcVonQPAZuNI7/loTmP0kvdHRokfA4DZwcd3R5D3gcgcYfjIkU3KlIE2uWATez+ib8sDQLTCw5vXW3sfpA5ClrtI3wMEhMFGi7HWfd/d19/bvmXZ/P8cMcsjGb8DqAAADIUlEQVR4nJ2Vz2/kRBCFv1fd7bEnJLtZhUNuSAhxRKAV//91L0hIcAWBFGARBCXD/LDdXbUHOwsXyEBfbKml7u+9elWt69tPg/+xLEE4pGwMV0DAaQ/VRUkiEAAVgUABTxflp78I8n+9WAJ32D84KYntVXD6c9mYmhiKeKFKBDTEIxkBEUEEILiyRoogxJkAAWUj+svEsElYNnIxth0IOLYFyrxxOAW7HdQxyAQlGgCOFk8iOLjYKCjy8wBk0A2GbQo5i6zEi2R8ICHBQWI3B26GFWc7OOMcyN/zYwFa6yDBrkLflecBIiAlkXuDrqPPcLPdcHuz4WJbQOI4Vn75beL+cGIP5FapKWh1uVTxpF4rjkiIpjMAYAlc7oR3hT43rraZ4SKzi44IcdEHl9vEfk5ghjXDklNX5SahCGItRUhkFifsHACAlAUmunAuqXRRmQ4z02Gm85krKhtvyIycRZIwIElkiSwjmWESxrIvzg0h4C0gghF4mCFPEM0JGadZ7FpiRBCBO4DW2C0N+aTUY60EQJwJ4A51CsiNKcHRDbfMh9cZmTiNwd6DUwOPRp2hOUuLaLE8iOWrpRStNVqdnweQFvV1dFKeOGXxdjcytsZgIIlDiIdTMNUGrdEmp9YFoEX8pZzAF+E0FpCzHIiA6ehs0sSYoXWNqsSQWBwIo7bApxmfnXp0vAW2Bq8F6zACjyWK7W9h/MeVktGVDplIydiWQhkECazLHBXvbSpZBAkDxtxgG0SdqNVxX+xndUOAm+jtX0ZxRJAs0XUFSeSc6cuWoStYcfoLw1lGbpBQGIdpJBRYnnA1CMdbZfYKtgTx6T24zNBFfaYEEu7BXCc4jdTW2O8TzRulGLU1QGz6DSkb8zjiLRjnhjfHwmksOYhYAVYXLtMzGZBErZXHxx1fvv6c1198xu/3f1C6wqvrl3z3/Q8Mfc9wkbj79Ueur254dX3L3d0dmyR++vktX339LbkfcNNq/HJuxrmvix967jmOCLpSsJSIcCSDCI6nE8MwIODlTU+o8vFHn/DmzTdM00zpCrU59tTz60wI1ijEMlfeAU13texQy3o3AAAAAElFTkSuQmCC"></a></div>
+          <a href="/assets/img/headers/boardlight.webp" class="popup img-link preview-img blur"><img data-src="/assets/img/headers/boardlight.webp"  alt="Preview Image" width="1200" height="630" data-lqip="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAABg2lDQ1BJQ0MgUHJvZmlsZQAAeJx9kT1Iw0AcxV9TpSotDmYQdchQnexSRRxrFYpQIdQKrTqYj35Bk4YkxcVRcC04+LFYdXBx1tXBVRAEP0CcHZwUXaTE/yWFFjEeHPfj3b3H3TuAa1YVzepJAJpum5lUUsjlV4XQK/oxigh4xCXFMuZEMQ3f8XWPAFvvYizL/9yfI6IWLAUICMQJxTBt4g3imU3bYLxPzCtlSSU+J5406YLEj0yXPX5jXHKZY5m8mc3ME/PEQqmL5S5WyqZGPE0cVTWd8rmcxyrjLcZata6078leGC7oK8tMpzmGFBaxBBECZNRRQRU2YrTqpFjI0H7Sxz/i+kVyyeSqQCHHAmrQILl+sD/43a1VnIp7SeEk0PviOB/jQGgXaDUc5/vYcVonQPAZuNI7/loTmP0kvdHRokfA4DZwcd3R5D3gcgcYfjIkU3KlIE2uWATez+ib8sDQLTCw5vXW3sfpA5ClrtI3wMEhMFGi7HWfd/d19/bvmXZ/P8cMcsjGb8DqAAADIUlEQVR4nJ2Vz2/kRBCFv1fd7bEnJLtZhUNuSAhxRKAV//91L0hIcAWBFGARBCXD/LDdXbUHOwsXyEBfbKml7u+9elWt69tPg/+xLEE4pGwMV0DAaQ/VRUkiEAAVgUABTxflp78I8n+9WAJ32D84KYntVXD6c9mYmhiKeKFKBDTEIxkBEUEEILiyRoogxJkAAWUj+svEsElYNnIxth0IOLYFyrxxOAW7HdQxyAQlGgCOFk8iOLjYKCjy8wBk0A2GbQo5i6zEi2R8ICHBQWI3B26GFWc7OOMcyN/zYwFa6yDBrkLflecBIiAlkXuDrqPPcLPdcHuz4WJbQOI4Vn75beL+cGIP5FapKWh1uVTxpF4rjkiIpjMAYAlc7oR3hT43rraZ4SKzi44IcdEHl9vEfk5ghjXDklNX5SahCGItRUhkFifsHACAlAUmunAuqXRRmQ4z02Gm85krKhtvyIycRZIwIElkiSwjmWESxrIvzg0h4C0gghF4mCFPEM0JGadZ7FpiRBCBO4DW2C0N+aTUY60EQJwJ4A51CsiNKcHRDbfMh9cZmTiNwd6DUwOPRp2hOUuLaLE8iOWrpRStNVqdnweQFvV1dFKeOGXxdjcytsZgIIlDiIdTMNUGrdEmp9YFoEX8pZzAF+E0FpCzHIiA6ehs0sSYoXWNqsSQWBwIo7bApxmfnXp0vAW2Bq8F6zACjyWK7W9h/MeVktGVDplIydiWQhkECazLHBXvbSpZBAkDxtxgG0SdqNVxX+xndUOAm+jtX0ZxRJAs0XUFSeSc6cuWoStYcfoLw1lGbpBQGIdpJBRYnnA1CMdbZfYKtgTx6T24zNBFfaYEEu7BXCc4jdTW2O8TzRulGLU1QGz6DSkb8zjiLRjnhjfHwmksOYhYAVYXLtMzGZBErZXHxx1fvv6c1198xu/3f1C6wqvrl3z3/Q8Mfc9wkbj79Ueur254dX3L3d0dmyR++vktX339LbkfcNNq/HJuxrmvix967jmOCLpSsJSIcCSDCI6nE8MwIODlTU+o8vFHn/DmzTdM00zpCrU59tTz60wI1ijEMlfeAU13texQy3o3AAAAAElFTkSuQmCC"></a></div>
       
 
       <div class="d-flex justify-content-between">
@@ -1132,7 +1132,7 @@ OS and Service detection performed. Please report any incorrect results at https
 
 <p>Visiting the web application at http://10.10.11.11/ doesn’t provide much information.</p>
 
-<p><a href="/assets/img/htb/boardlight/1.png" class="popup img-link  shimmer"><img src="/assets/img/htb/boardlight/1.png" alt="img-description" loading="lazy"></a> <em>Web application</em></p>
+<p><a href="/assets/img/htb/boardlight/1.webp" class="popup img-link  shimmer"><img src="/assets/img/htb/boardlight/1.webp" alt="img-description" loading="lazy"></a> <em>Web application</em></p>
 
 <p>I added board.htb to our /etc/hosts file, associating it with the IP address, so we can access the domain in our browser.</p>
 
@@ -1202,7 +1202,7 @@ crm                     [Status: 200, Size: 6360, Words: 397, Lines: 150, Durati
 
 <p>After identifying the subdomain crm, I added it to the /etc/hosts file to facilitate easy access. Visiting the subdomain at crm.board.htb revealed that the application was running Dolibarr CRM.</p>
 
-<p><a href="/assets/img/htb/boardlight/2.png" class="popup img-link  shimmer"><img src="/assets/img/htb/boardlight/2.png" alt="img-description" loading="lazy"></a> <em>Dolibarr CRM</em></p>
+<p><a href="/assets/img/htb/boardlight/2.webp" class="popup img-link  shimmer"><img src="/assets/img/htb/boardlight/2.webp" alt="img-description" loading="lazy"></a> <em>Dolibarr CRM</em></p>
 
 <p>With some research, I was able to discover the default login credentials for Dolibarr CRM and successfully logged in. However, the interface didn’t provide many useful functions that could be directly leveraged for further exploitation.</p>
 
@@ -1602,6 +1602,13 @@ uid=0(root) gid=0(root) groups=0(root),4(adm),1000(larissa)
         
         
         <li class="text-truncate lh-lg">
+          <a href="/posts/exploring_tls_securing_tcp_communication/">Exploring TLS: Securing TCP Communication</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
           <a href="/posts/htb-keeper-writeup/">Hack The Box | Keeper Writeup</a>
         </li>
       
@@ -1624,13 +1631,6 @@ uid=0(root) gid=0(root) groups=0(root),4(adm),1000(larissa)
         
         <li class="text-truncate lh-lg">
           <a href="/posts/htb-manager-writeup/">Hack The Box | Manager Writeup</a>
-        </li>
-      
-        
-        
-        
-        <li class="text-truncate lh-lg">
-          <a href="/posts/htb-analytics-writeup/">Hack The Box | Analytics Writeup</a>
         </li>
       
     </ul>

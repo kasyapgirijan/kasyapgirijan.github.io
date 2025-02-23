@@ -8,7 +8,7 @@ math: true
 mermaid: true
 author: 7h3h0und
 image:
-  path: /assets/img/headers/manager.png
+  path: /assets/img/headers/manager.webp
   lqip: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAABhGlDQ1BJQ0MgUHJvZmlsZQAAeJx9kT1Iw0AcxV/TSkUqKnYQccjQOlkQFXHUKhShQqgVWnUwufQLmjQkKS6OgmvBwY/FqoOLs64OroIg+AHi7OCk6CIl/i8ptIj14Lgf7+497t4BQr3MNCswDmi6baYScTGTXRWDr/CjHwMIICozy5iTpCQ6jq97+Ph6F+NZnc/9OXrVnMUAn0g8ywzTJt4gnt60Dc77xGFWlFXic+Ixky5I/Mh1xeM3zgWXBZ4ZNtOpeeIwsVhoY6WNWdHUiKeII6qmU76Q8VjlvMVZK1dZ8578haGcvrLMdZojSGARS5AgQkEVJZRhI0arToqFFO3HO/iHXb9ELoVcJTByLKACDbLrB/+D391a+ckJLykUB7peHOcjCgR3gUbNcb6PHadxAvifgSu95a/UgZlP0mstLXIE9G0DF9ctTdkDLneAoSdDNmVX8tMU8nng/Yy+KQsM3gI9a15vzX2cPgBp6ip5AxwcAqMFyl7v8O7u9t7+PdPs7wc0mHKOWhBNVgAAAyxJREFUeJyVlU9v3EYMxX/kjLR/vFrbSZughxyCHnpo77n1+3+QHooUjp31rqTVDMkepHXRi70RIBACNMPH9x5Juf/lt+AHHxVAoFTYr4W7nVBq8HgCqQ0qCRGl3SaaFVh1ihnhTpvmf23KRDj5R5MnheMIHvBxH/y0Fx6e4eEIXdMgklBVAiXnRJOCRNBoQkNQAQ2nV0VdrgfQrYVd07BJHR8+d7zbZbKvAEE+TTw+9Xw7FPo6MIZzmsCqMVqQEohACfAquCdEFbiCgQCaBLuVsPYVN+2ed/sdP2+F87BHJHOzPyGm9INRDXI7UAMmE1QFlUAlEJFZv4CcoRa9AkDMAG5aJU0tN5stnz6u+XwrHL/fAYnuvdHQ889TYhwbNI+sGhgrpKWIiCUiBOAoSKCvJZeFgqSwykLbtmy6htv7Nfv7jqfa8bVf40lpW8OkEBLkJOT0fxrjvxsRgUAR4XUAFwkW0xMilAo2KVGU6kYNQ02RaJlqYOFcmL4cjJe7BAhi4QJ4WwKR2fHVIWvFbKQ/rRjawnYd7G4SWR1HUK1orlgE9YXyJb0oEYEHRAT4jOFVAJfqi8FYg3U70Zcjfz8q4pnDNKBJGS346+HEYXwmmAgLzlVmqiNmFkQWLzgO1Nqjkq5joFQ4jAbpjLvwtXeGaHg+OxHOJjkPjyeOZaBJifOUGMusboQvUYnw5RWKDYhcMQdUBFGlknEEAaZS+V4Lw2QAFDWmWmlzRlQ5ngUPUBWIIEIwB49YZAgQwT3ekCACzZnVqiW3LZ4ym+2GrmvYNIHgqMzOHgo8nYynUyVRaLRi5oTHYntfWnGOIkLwBoCLBADTVBjPE8NYeTxk1i1khZQSIFgIx6HSnw0zI5ZqI+aud+fl2wPcZmmuGsURgbnjZgwRVDOSziYTkXmpJCV8rs599r5HQDiEvNCPO+GynHtrEIlQSuV06jEz7u/vaFctd3e35KZlnIzb3Zbff/3An1/+YL3Z0Kw3TKUynQu1VCafO67TgkYw2jwrLoXJtes4IiiloiqY+TzjVSnFuN0q3Vap1TmeBcktOWdkYUEIOikcJmECcMd93g3/AuUs/1f4gqqXAAAAAElFTkSuQmCC
 ---
 
@@ -157,7 +157,7 @@ Many people use the same word for their username and password. This makes it eas
 ```bash
 crackmapexec smb manager.htb -u users.txt -p users.txt
 ```
-![img-description](/assets/img/htb/manager/1.png) _password spraying_
+![img-description](/assets/img/htb/manager/1.webp) _password spraying_
 
 We now have the credentials for user `operator` with password `operator`.
 
@@ -171,7 +171,7 @@ I moved on attempting access to MSSQL server,  with SQL server we might have som
 ```bash
 impacket-mssqlclient -port 1433 manager.htb/operator:operator@10.129.220.106 -windows-auth
 ```
-![img-description](/assets/img/htb/manager/2.png) _MSSQL Server Login_
+![img-description](/assets/img/htb/manager/2.webp) _MSSQL Server Login_
 
 While trying to figureout whats next, I came accross an article from [hacktricks](https://book.hacktricks.xyz/network-services-pentesting/pentesting-mssql-microsoft-sql-server) and learned that we can use the `xp_dirtree` procedure to traverse the filesystem and list folders.
 
@@ -180,11 +180,11 @@ Initially, I checked for level of permission for `xp_dirtree`.
 ```bash
 EXEC sp_helprotect 'xp_dirtree';
 ```
-![img-description](/assets/img/htb/manager/3.png) _Permissions: xp_dirtree_
+![img-description](/assets/img/htb/manager/3.webp) _Permissions: xp_dirtree_
 
 Now, I inspected the contents of the web-root folder /inetpub/wwwroot to see if we have anything that we can leverage.
 
-![img-description](/assets/img/htb/manager/4.png) _xp_dirtree:/inetpub/wwwroot_
+![img-description](/assets/img/htb/manager/4.webp) _xp_dirtree:/inetpub/wwwroot_
 
 Found an interesting file `website-backup-27-07-23-old.zip`, which seems to be a backup of the website. 
 
@@ -198,15 +198,15 @@ wget http://manager.htb/website-backup-27-07-23-old.zip
 ### To User Access:
 While unzipping the backup file, we can see a hidden file .old-config.xml.
 
-![img-description](/assets/img/htb/manager/5.png) _backup files_
+![img-description](/assets/img/htb/manager/5.webp) _backup files_
 
 The .old-conf.xml file reveals the password `R4v3nBe5tD3veloP3r!123` for the user Raven.
 
-![img-description](/assets/img/htb/manager/6.png) _old-config.xml_
+![img-description](/assets/img/htb/manager/6.webp) _old-config.xml_
 
 I used the obtained credentials to connect to the WinRM service running on the target.
 
-![img-description](/assets/img/htb/manager/7.png) _Evil-WinRM: User_
+![img-description](/assets/img/htb/manager/7.webp) _Evil-WinRM: User_
 
 We now own the USER for this machine!
 
@@ -218,8 +218,8 @@ Given an Active Directory domain, it might have an `Active Directory Certificate
 
 I utilized certipy to find any vulnerabilities that may exist. Which indicated that the user Raven possesses hazardous permissions, particularly having "ManageCA" rights over the Certification Authority.
 
-![img-description](/assets/img/htb/manager/8.png) _certipy enumeration_
-![img-description](/assets/img/htb/manager/9.png) _certipy output report_
+![img-description](/assets/img/htb/manager/8.webp) _certipy enumeration_
+![img-description](/assets/img/htb/manager/9.webp) _certipy output report_
 By leveraging the ESC7 scenario, we could potentially elevate our privileges to Domain Admin while operating as user Raven. There is [hacktricks]( https://book.hacktricks.xyz/windows-hardening/active-directory-methodology/ad-certificates/domain-escalation#vulnerable-certificate-authority-access-control-esc7) article which has a detailed explanation.
 
 To leverage this vulnerability, we would need to add Raven as an “officer” which will allow us to have the ability to manage certificates and issue them.
@@ -237,7 +237,7 @@ Now as we can Manage Certificate and have the `SubCA` template enabled. We can r
 ```bash
 certipy-ad req -u raven@manager.htb -p 'R4v3nBe5tD3veloP3r!123' -ca 'manager-DC01-CA' -template 'SubCA' -target manager.htb -upn administrator@manager.htb
 ```
-![img-description](/assets/img/htb/manager/10.png) _Reqesting SubCA Cert_
+![img-description](/assets/img/htb/manager/10.webp) _Reqesting SubCA Cert_
 
 The request was denied but as we see we have certificate request ID is 18 and have obtained the private key.
 
@@ -252,7 +252,7 @@ Now, we retrieve the issued certificate.
 ```bash
 certipy-ad req -u raven@manager.htb -p 'R4v3nBe5tD3veloP3r!123' -ca 'manager-DC01-CA' -target manager.htb -retrieve 18
 ```
-![img-description](/assets/img/htb/manager/11.png) _Retrieve CA Certificate_
+![img-description](/assets/img/htb/manager/11.webp) _Retrieve CA Certificate_
 
 
 We now have possession of `administrators PFX file`. We can now utilize the PFX to authenticate however it fails with the error "KRB_AP_ERR_SKEW (Clock skew too great)".
